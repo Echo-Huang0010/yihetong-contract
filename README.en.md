@@ -1,11 +1,7 @@
 Mini-Contract(Free and Open Source Electronic Contracts)
 ===============
 
-Current Latest Version: v2.0.0 (Release Date: 2024-02-08)
-
-[![输入图片说明](https://img.shields.io/static/v1?label=licents&message=Apache%20License%202.0&color=green)](https://gitee.com/leepm/mini-contract/blob/master/LICENSE)
-[![输入图片说明](https://img.shields.io/static/v1?label=Author&message=重庆弈联数聚科技有限公司&color=blue)](https://wwww.yi-types.com)
-[![输入图片说明](https://img.shields.io/static/v1?label=version&message=2.0.0&color=green)](https://wwww.yi-types.com)
+Current Latest Version: v2.0.1 (Release Date: 2024-02-08)
 
 
 #### Introduction
@@ -14,7 +10,7 @@ Current Latest Version: v2.0.0 (Release Date: 2024-02-08)
 
 <h3 align="center">Mini-Contract</h3>
 
-⭐️⭐️⭐️   Mini-Contract is an open-source product that has been separated from the commercial product "YiHetong" by "Chongqing Yeeco Technology Co., Ltd." This tool provides a comprehensive solution customized for industry-specific needs and business scenarios. It enables convenient online contract signing, ensuring security, compliance, and reliability. It builds a time-saving and efficient closed-loop service system for small and medium-sized enterprises and users, creating a worry-free legal protection system. The underlying electronic contract technology is based on "eSign" and other "contract vendors," which are nationally certified and secure.
+⭐️⭐️⭐️Mini-Contract is an open-source product that has been separated from the commercial product "YiHetong" by "Chongqing Yeeco Technology Co., Ltd." This tool provides a comprehensive solution customized for industry-specific needs and business scenarios. It enables convenient online contract signing, ensuring security, compliance, and reliability. It builds a time-saving and efficient closed-loop service system for small and medium-sized enterprises and users, creating a worry-free legal protection system. The underlying electronic contract technology is based on "eSign" and other "contract vendors," which are nationally certified and secure.
 
 
 

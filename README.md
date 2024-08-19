@@ -2,15 +2,7 @@
   ===============
 
 
-当前最新版本：v2.0.0 (发布时间：2024-02-08)
-
-
-
-[![输入图片说明](https://img.shields.io/static/v1?label=licents&message=Apache%20License%202.0&color=green)](https://gitee.com/leepm/mini-contract/blob/master/LICENSE)
-
-[![输入图片说明](https://img.shields.io/static/v1?label=Author&message=重庆弈联数聚科技有限公司&color=blue)](https://www.yi-types.com)
-
-[![输入图片说明](https://img.shields.io/static/v1?label=version&message=2.0.0&color=green)](https://www.yi-types.com)
+当前最新版本：v2.0.1 (发布时间：2024-02-08)
 
 
 
@@ -20,7 +12,7 @@
 
 <h3 align="center">Mini-Contract</h3>
 
-🔥🔥🔥  Mini-Contract是一款由重庆弈联数聚科技有限公司自主研发、拥有自主知识产权的免费开源电子合同产品，提供一站式的合同签署解决方案。我们的产品创新地采用了“证据链”与“非证据链”两种签署模式，支持在线电子签名、电子合同、电子签章、电子合同SDK、电子合同API、多方合同发起、骑缝章等多种功能。
+🔥🔥🔥Mini-Contract是一款由重庆弈联数聚科技有限公司自主研发、拥有自主知识产权的免费开源电子合同产品，提供一站式的合同签署解决方案。我们的产品创新地采用了“证据链”与“非证据链”两种签署模式，支持在线电子签名、电子合同、电子签章、电子合同SDK、电子合同API、多方合同发起、骑缝章等多种功能。
 
 在数据安全方面，Mini-Contract严格遵循合规要求，独立运营和管理合同，确保您的合同信息得到最佳保护。我们提供Web端管理、H5、微信小程序平台，以及深度个性化的定制综合解决方案，满足您不同场景的管理需求，作为一款平台型产品，在安全性方面我们的底层基于蚂蚁司法链，已获得国家认证，确保安全可靠，支持数据和项目私有化本地，降低数据泄露风险，同时确保合同的合法性和安全性。
 
@@ -569,11 +561,6 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 * 在线演示：
 
 ![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_qrcode.png)
-
-
-### Star走势图
-
-[![Star History Chart](https://api.star-history.com/svg?repos=freeleepm/mini-contract&type=Date)](https://star-history.com/#freeleepm/mini-contract&Date)
 
 
 
