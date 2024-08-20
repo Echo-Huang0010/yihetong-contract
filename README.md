@@ -4,7 +4,9 @@
 
 当前最新版本：v2.0.1 (发布时间：2024-02-08)
 
+[![输入图片说明](https://img.shields.io/static/v1?label=licents&message=Apache%20License%202.0&color=green)](https://gitee.com/yi-lian-shu-ju/mini-contract/blob/master)
 
+[![输入图片说明](https://img.shields.io/static/v1?label=version&message=2.0.0&color=green)](https://www.yi-types.com)
 
 ### 介绍
 
@@ -567,12 +569,12 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 ### 交流合作
 
 如果你想加入我们的开源交流群，请扫码添加 Mini-Contract 项目团队，加入群聊：
-![输入图片说明](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/shawn_huangxing_qrcode.png)
+![输入图片说明](http://si8oqru15.hd-bkt.clouddn.com/20240820-102548.jpeg)
 
 
 
 如果你有任何对 Mini-Contract 产品上的想法、意见或建议，或商务上的合作需求，请扫码添加 Mini-Contract 项目团队进一步沟通：
-![输入图片说明](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/shawn_huangxing_qrcode.png)
+![输入图片说明](http://si8oqru15.hd-bkt.clouddn.com/20240820-102548.jpeg)
 
 ## 产品认可
 

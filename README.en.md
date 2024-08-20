@@ -3,6 +3,9 @@ Mini-Contract(Free and Open Source Electronic Contracts)
 
 Current Latest Version: v2.0.1 (Release Date: 2024-02-08)
 
+[![输入图片说明](https://img.shields.io/static/v1?label=licents&message=Apache%20License%202.0&color=green)](https://gitee.com/yi-lian-shu-ju/mini-contract/blob/master)
+
+[![输入图片说明](https://img.shields.io/static/v1?label=version&message=2.0.0&color=green)](https://wwww.yi-types.com)
 
 #### Introduction
 
@@ -548,12 +551,12 @@ Project Screenshots
 ### Contact and Collaboration
 
 If you would like to join our open-source discussion group, please scan the QR code to add the Mini-Contract project team and join the group chat:
-![输入图片说明](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/shawn_company_qrcode.png)
+![输入图片说明](http://si8oqru15.hd-bkt.clouddn.com/20240820-102548.jpeg)
 
 
 
 If you have any ideas, suggestions, or business collaboration needs regarding the Mini-Contract product, please scan the QR code to add the Mini-Contract project team for further communication:
-![输入图片说明](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/shawn_huangxing_qrcode.png)
+![输入图片说明](http://si8oqru15.hd-bkt.clouddn.com/20240820-102548.jpeg)
 
 ## Donations
 
