@@ -534,12 +534,12 @@ Project Screenshots
 ### Contact and Collaboration
 
 If you would like to join our open-source discussion group, please scan the QR code to add the Mini-Contract project team and join the group chat:
-![输入图片说明](http://dev-yeeco.oss-cn-chengdu.aliyuncs.com/gitee/20240820-102548.jpeg)
+![输入图片说明](http://dev-yeeco.oss-cn-chengdu.aliyuncs.com/gitee/1724135858279.png)
 
 
 
 If you have any ideas, suggestions, or business collaboration needs regarding the Mini-Contract product, please scan the QR code to add the Mini-Contract project team for further communication:
-![输入图片说明](http://dev-yeeco.oss-cn-chengdu.aliyuncs.com/gitee/20240820-102548.jpeg)
+![输入图片说明](http://dev-yeeco.oss-cn-chengdu.aliyuncs.com/gitee/1724135858279.png)
 
 ## Donations
 
