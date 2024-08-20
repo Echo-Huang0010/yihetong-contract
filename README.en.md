@@ -451,20 +451,6 @@ Project Screenshots
 
 ### Operation Demonstration (Mini Program version)
 
-> Chain of Evidence
-
-<div align="center" >
-    <img src="http://imgs.leepm.com/public-images/2024040902.gif"  width="300px"/>
-</div>
-
-
-
-> Non-Chain of Evidence
-
-<div align="center" >
-    <img src="http://imgs.leepm.com/public-images/2024040901.gif" width="300px" />
-</div>
-
 
 
 ### Updates Logs

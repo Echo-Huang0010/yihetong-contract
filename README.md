@@ -466,23 +466,6 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 
 
 
-### 操作演示（小程序端）
-
-> 证据链方式
-
-<div align="center" >
-    <img src="http://imgs.leepm.com/public-images/2024040902.gif"  width="300px"/>
-</div>
-
-
-
-> 非证据链方式
-
-<div align="center" >
-    <img src="http://imgs.leepm.com/public-images/2024040901.gif" width="300px" />
-</div>
-
-
 
 
 
