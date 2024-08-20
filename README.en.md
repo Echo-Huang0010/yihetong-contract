@@ -534,12 +534,12 @@ Project Screenshots
 ### Contact and Collaboration
 
 If you would like to join our open-source discussion group, please scan the QR code to add the Mini-Contract project team and join the group chat:
-![输入图片说明](https://gitee-yi-lian.oss-cn-chengdu.aliyuncs.com/20240820-102548.jpeg?Expires=1724124205&OSSAccessKeyId=TMP.3KhMooxU6iatakSz4w6weK5Q9NXTpevgwRHUgjiSHPC7UV6Q7UUfeeLyvHZmiTFhNNKHBjM7evAxtfZz7ijomCXuHCToWA&Signature=TFypRL9MOj7M3%2F44aENP461OFVo%3D)
+![输入图片说明](http://dev-yeeco.oss-cn-chengdu.aliyuncs.com/gitee/20240820-102548.jpeg)
 
 
 
 If you have any ideas, suggestions, or business collaboration needs regarding the Mini-Contract product, please scan the QR code to add the Mini-Contract project team for further communication:
-![输入图片说明](https://gitee-yi-lian.oss-cn-chengdu.aliyuncs.com/20240820-102548.jpeg?Expires=1724124205&OSSAccessKeyId=TMP.3KhMooxU6iatakSz4w6weK5Q9NXTpevgwRHUgjiSHPC7UV6Q7UUfeeLyvHZmiTFhNNKHBjM7evAxtfZz7ijomCXuHCToWA&Signature=TFypRL9MOj7M3%2F44aENP461OFVo%3D)
+![输入图片说明](http://dev-yeeco.oss-cn-chengdu.aliyuncs.com/gitee/20240820-102548.jpeg)
 
 ## Donations
 
