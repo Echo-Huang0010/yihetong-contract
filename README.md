@@ -549,17 +549,17 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 希望您百忙中协助我们进行一个小调研
 提交问卷即可享受100元无条件优惠哦！
 
-![输入图片说明](http://babyedu.oss-cn-chengdu.aliyuncs.com/9261725502403_.pic.jpg)
+![输入图片说明](http://babyedu.oss-cn-chengdu.aliyuncs.com/9431725516387_.pic.jpg)
 
 ### 交流合作
 
 如果你想加入我们的开源交流群，请扫码添加 Mini-Contract 项目团队，加入群聊：
-![输入图片说明](http://dev-yeeco.oss-cn-chengdu.aliyuncs.com/gitee/1724135858279.png)
+![输入图片说明](http://babyedu.oss-cn-chengdu.aliyuncs.com/9441725516387_.pic.jpg)
 
 
 
 如果你有任何对 Mini-Contract 产品上的想法、意见或建议，或商务上的合作需求，请扫码添加 Mini-Contract 项目团队进一步沟通：
-![输入图片说明](http://dev-yeeco.oss-cn-chengdu.aliyuncs.com/gitee/1724135858279.png)
+![输入图片说明](http://babyedu.oss-cn-chengdu.aliyuncs.com/9441725516387_.pic.jpg)
 
 ## 产品认可
 
