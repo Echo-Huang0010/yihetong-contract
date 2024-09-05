@@ -545,7 +545,11 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 
 ![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_qrcode.png)
 
+### 领取优惠
+希望您百忙中协助我们进行一个小调研
+提交问卷即可享受100元无条件优惠哦！
 
+![输入图片说明](http://babyedu.oss-cn-chengdu.aliyuncs.com/9261725502403_.pic.jpg)
 
 ### 交流合作
 
