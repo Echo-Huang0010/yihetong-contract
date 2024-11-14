@@ -535,7 +535,7 @@ Project Screenshots
 
 
 If you have any ideas, suggestions, or business collaboration needs regarding the Mini-Contract product, please scan the QR code to add the Mini-Contract project team for further communication:
-![输入图片说明](https://pic.yeecoss.com/oss.git/16371727339849_.pic.jpg)
+![输入图片说明](http://babyedu.oss-cn-chengdu.aliyuncs.com/9441725516387_.pic.jpg)
 
 ## Donations
 
