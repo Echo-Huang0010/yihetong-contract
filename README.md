@@ -220,107 +220,93 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 
 
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_01.png)
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_02.png)
+![](http://pic.yeecoss.com/gitee/7.png)
+![](http://pic.yeecoss.com/gitee/8.png)
 
 
 
 #### 用户端（移动端）
 > 首页能快速的发起合同的签署，签署人或者公司支持多选择（就是支持多人或者多公司同时签署），同时还能设置本次签署合同的有效果期，从而避免地一些法律风险
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_12.png)
+![](http://pic.yeecoss.com/gitee/23.png)
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_03.png)
+![](http://pic.yeecoss.com/gitee/3.png)
 
 
 
 > 作为企业需要在签署之前完成“企业认证”、“法人实名认证”；同时在使用过程中如果额度用完，可自行购买额度
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_04.png)
+![](http://pic.yeecoss.com/gitee/1.png)
 
 
 
 > 登录应用之后能查看到相应的功能，企业管理，印章管理，签署的文件管理，签署额度购买等等 
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_05.png)
+![](http://pic.yeecoss.com/gitee/4.png)
 
 
 
 >  用户或者企业可自行设置和上传自己的个人性的签名，骑缝章
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_13.png)
+![](http://pic.yeecoss.com/gitee/16.png)
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_14.png)
+![](http://pic.yeecoss.com/gitee/19.png)
 
 
 
 
 > 签署前如果是个人需要做“实名认证”、“人证比对”、“人脸识别”等，从而来确保信息的真实性
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_06.png)
+![](http://pic.yeecoss.com/gitee/2.png)
 
 
 
 > 在签署详情里面能查看到合同签署人和各方签署的状态信息，同时签署方还可以点击进行签署，签署方式有“手写签名、盖章”等 
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_07.png)
+![](http://pic.yeecoss.com/gitee/11.png)
 
 
 
 
 > 作为企业管理人员，可以管理企业成员，同时可以授权企业成员是否拥签署权限
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_09.png)
+![](http://pic.yeecoss.com/gitee/19.png)
 
 
 
 
 > 实名认证企业之后可自动生成合规的ca证书签章，企业管理人员可为每一个成员设置不同的签章权限
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_10.png)
+![](http://pic.yeecoss.com/gitee/20.png)
 
 
 
 > 平台默认非常多非常丰富的合同模板，我们还会不定期更新模板，开发者或者可免费享用模板
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_11.png)
+![](http://pic.yeecoss.com/gitee/30.png)
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_15.png)
-
-
-
-> 批量发起签署，一对多，生成多份合同，针对一方数据固定，另外一方或者多方不固定，统一设置之后，同时批量生成多份合同，提升发起合同效率（针对一些人力资源行业可以一个公司主体不变，对应多个其它方签署）
-
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_19.png)
-
-
-
-> 为了快速创建合同，可通通过快速生成一份在线合同，免去下载合同之后又上传的麻烦
-
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_16.png)
-
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_17.png)
+[//]: # (![]&#40;https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_15.png&#41;)
 
 
 
 
 > 在未签署合同的时候，还可以支持临时合同文件的管理和上传（您可以拿我们的来当成云盘了，哈哈）
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_18.png)
+![](http://pic.yeecoss.com/gitee/21.png)
 
 
 
 > 同时目前支持批量签署合同能力（主要是针对在一对多的签署场景当中，如：甲方信息固定，乙方信息不固定的业务场景）
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_20.png)
+![](http://pic.yeecoss.com/gitee/23.png)
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_21.png)
+![](http://pic.yeecoss.com/gitee/24.png)
 
 
 
 > 参与签署的人可以收到签署的短信信息提醒，在有效期内点击链接可以到H5或者小程序里面进行签署，所有签署人都签署完成之后有短信通知提示
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_08.png)
+![](http://pic.yeecoss.com/gitee/6.png)
 
 
 
@@ -328,59 +314,59 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 
 > Web 用户端，可以在后台对自己的合同进行相应的签署和查看
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_pc_01.png)
+![](http://pic.yeecoss.com/gitee/a1.png)
 
 
 
 > Web 用户端，支持在线签署合同，点击“签署”跳转到相应的签署页面
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_pc_02.png)
+![](http://pic.yeecoss.com/gitee/a2.png)
 
 
 
 > 手写签署，以及上传自己专属的个性签名信息 
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_pc_03.png)
+![](http://pic.yeecoss.com/gitee/a3.png)
 
 
 
 
 > Web 用户端支持，“个人” 和 “企业” 不同身份的切换
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_pc_04.png)
+![](http://pic.yeecoss.com/gitee/a4.png)
 
 
 
 
 > 作为企业管理人员，在Web端也能管理成员
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_pc_05.png)
+![](http://pic.yeecoss.com/gitee/a5.png)
 
 
 
 > 输入"手机号"和“姓名”即可完成成员增加
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_pc_06.png)
+![](http://pic.yeecoss.com/gitee/a7.png)
 
 
 
 > 同时Web端还能根据合同签署的状态“我发起的”、“待我处理”、“待他人处理“、”已完成“、“已拒签”、“已撤销”、“已逾期” 进行查询
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_pc_07.png)
+![](http://pic.yeecoss.com/gitee/a6.png)
 
 
 
 
 > 作为企业管理人员或者个人在Web端能查看到所有已经签署过并且归档的合同，支持在线查看，下载等操作
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_pc_08.png)
+![](http://pic.yeecoss.com/gitee/a8.png)
 
 
 
 
 > Web管理端还支持账号的更换和密码的修改等操作
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_pc_09.png)
+![](http://pic.yeecoss.com/gitee/a9.png)
 
 
 #### 平台端
@@ -389,7 +375,7 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 
 > 了解合同平台下所有使用者的基本信息，并对相应的数据进行综合概览汇总
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_admin_01.png)
+![](http://pic.yeecoss.com/gitee/d1.png)
 
 
 
@@ -397,7 +383,7 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 
 > 平台可查看到脱敏后的所有个人认证的基本信息
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_admin_02.png)
+![](http://pic.yeecoss.com/gitee/d2.png)
 
 
 
@@ -405,7 +391,7 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 
 > 平台可查看到脱敏后的所有企业认证的基本信息
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_admin_03.png)
+![](http://pic.yeecoss.com/gitee/d3.png)
 
 
 
@@ -413,7 +399,7 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 
 > 平台可查看所有合同销售情况
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_admin_04.png)
+![](http://pic.yeecoss.com/gitee/d5.png)
 
 
 
@@ -421,7 +407,7 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 
 > 平台可查看到所有合同的使用和消费情况
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_admin_05.png)
+![](http://pic.yeecoss.com/gitee/d6.png)
 
 
 
@@ -429,7 +415,7 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 
 > 平台可根据自己合同运营情况设置相应的价格，可单独对企业和个人的合同购买金额进行设置
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_admin_06.png)
+![](http://pic.yeecoss.com/gitee/d7.png)
 
 
 
@@ -437,7 +423,7 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 
 > 平台根据不同角色进行相应的用户权限设置，不同的用户有不同的管理权限
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_admin_07.png)
+![](http://pic.yeecoss.com/gitee/d8.png)
 
 
 
@@ -447,22 +433,23 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 
 > 新增运营平台可独立运营自己的合同模板，让平台管理更加灵活更方便，运营平台建立起了合同模板之后，所有合同用户和企业都可以享受到运营平台提前设置好的合同模板
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_admin_08.png)
+![](http://pic.yeecoss.com/gitee/d9.png)
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_admin_09.png)
+[//]: # (![]&#40;https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_admin_09.png&#41;)
 
 
 
 > 在设置合同横版的时候，可提前设置好该模板预设好的签署方“个人”、“企业”，目前单个横版最多支持10个签署对象
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_admin_10.png)
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_admin_12.png)
+![](http://pic.yeecoss.com/gitee/d0.png)
+
+[//]: # (![]&#40;https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_admin_12.png&#41;)
 
 
 
 > 合同模板支持动态设置里面的参数信息，也可以提前预设一些参数信息，从而大大的增加了合同的灵活性
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_admin_13.png)
+![](http://pic.yeecoss.com/gitee/d10.png)
 
 
 
@@ -539,11 +526,12 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 
 
 
-### 技术文档
+[//]: # (### 技术文档)
 
-* 在线演示：
+[//]: # ()
+[//]: # (* 在线演示：)
 
-![](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_qrcode.png)
+[//]: # (![]&#40;https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_qrcode.png&#41;)
 
 
 ### 交流合作
