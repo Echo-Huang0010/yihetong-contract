@@ -550,7 +550,7 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 
 
 如果你有任何对 Mini-Contract 产品上的想法、意见或建议，或商务上的合作需求，请扫码添加 Mini-Contract 项目团队进一步沟通：
-![输入图片说明](http://babyedu.oss-cn-chengdu.aliyuncs.com/9441725516387_.pic.jpg)
+![输入图片说明](https://dev-yeeco.oss-cn-chengdu.aliyuncs.com/70611745547447_.pic.jpg)
 
 ## 产品认可
 
