@@ -567,18 +567,11 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 
 
 如果你有任何对 Mini-Contract 产品上的想法、意见或建议，或商务上的合作需求，请扫码添加 Mini-Contract 项目团队进一步沟通：
-![输入图片说明](https://resource.yi-types.com/eSign/hx_qrcode.jpg)
+![输入图片说明](https://resource.yi-types.com/eSign/hx_qrcode_git.jpg)
 
 ## 产品认可
 
 > 从产品对外开源之后，得到了特别多朋友们的关注和认可最终我们也达成了一些深度的合作，目前我们已经合作超过200+以上的合作伙伴，这当中有“企业”的朋友也有一些“个人独立开发者”
-
-
-![输入图片说明](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/img/hp_001.png)
-![输入图片说明](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/img/hp_002.png)
-![输入图片说明](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/img/hp_003.png)
-![输入图片说明](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/img/hp_004.png)
-![输入图片说明](https://leepm.oss-cn-beijing.aliyuncs.com/public-images/img/hp_005.png)
 
 
 
