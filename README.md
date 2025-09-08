@@ -2,9 +2,43 @@
   ===============
 
 
-当前最新版本：v2.1.0 (发布时间：2025-04-25)
+### 传送门
+船新版本全量升级，详情查看 https://gitee.com/yi-lian-shu-ju/mini-contract_puls
 
-最新版本更新核心功能：合同AI审计、PC签署、文书管理、分销推广
+
+
+
+
+### 相关部署文档
+
+一合通开源版部署文档
+https://xurankeji.feishu.cn/wiki/Yr1NwQ5aOiXHN8kG4e5cIngmnTe
+
+一合通后端开发文档
+https://xurankeji.feishu.cn/docx/R4jqdEnZ1o4BZsxsp6cc6z2rnXg
+
+一合通前端开发文档
+https://xurankeji.feishu.cn/wiki/CYzfwuuDIimMurkpigPc3RKpn3f
+
+一合通部署常见问题汇总
+https://xurankeji.feishu.cn/docx/YGqndZg8io9d4ixI7KFck9s8nqc
+
+一合通标准版产品手册
+https://xurankeji.feishu.cn/file/Hg52bzxnYoeh3nxcIYCcNlFjnHd
+
+
+
+
+
+
+
+### 演示视频
+
+https://xurankeji.feishu.cn/drive/folder/SBEefsMQ9l6CsKd8cWDciFVxnNg
+
+
+
+
 
 
 ### 介绍
@@ -38,7 +72,7 @@ Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简
 ### 商业授权
 
 1. 商业版本与开源版本代码一致，没有区分；
-2. 商业授权模式为永久授权，支持永久升级；
+2. 商业授权模式为永久授权；
 3. 商业使用需要授权，授权方式可选择联系下方技术同学。
 
 
