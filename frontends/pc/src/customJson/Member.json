@@ -1,0 +1,133 @@
+{
+  "search": {
+    "type": 1
+  },
+  "list": {
+    "title": "成员列表",
+    "getList": {
+      "requestUrl": "/mgt/v3/company/member",
+      "requestType": "get",
+      "requestResult": {
+        "data": "data",
+        "transRules": [{
+            "old": "rows",
+            "new": "list"
+        }]
+      }
+    }
+  },
+  "detail": {
+    "title": "详情",
+    "getDetail": {
+      "requestUrl": "/api/customList/getDetail",
+      "requestParams": ["id"],
+      "requestType": "get"
+    },
+    "group": [
+      {
+        "title": "",
+        "id": 1,
+        "data": []
+      }
+    ]
+  },
+  "fieldList": [
+    {
+      "label": "",
+      "fieldName": "searchName",
+      "useName": "a-input",
+      "placeholder": "请输入员工姓名",
+      "search": {
+        "sort": 0,
+        "defaultValue": ""
+      }
+    },
+    {
+      "label": "姓名",
+      "fieldName": "name",
+      "useName": "a-input",
+      "placeholder": "请输入姓名",
+      "maxlength": "15",
+      "list": {
+        "sort": 0,
+        "slot": true
+      },
+      "add": {
+        "sort": 0,
+        "groupId": 1
+      },
+      "edit": {
+        "sort": 0,
+        "groupId": 1
+      },
+      "detail": {
+        "sort": 0,
+        "groupId": 1
+      },
+      "rules": [
+        { "required": true, "message": "姓名不能为空" },
+        {
+          "validator": "checkSpecificKey",
+          "trigger": "change",
+          "message": "值不能包含特殊字段"
+        }
+      ]
+    },
+    {
+      "label": "账号",
+      "fieldName": "account",
+      "useName": "a-input",
+      "placeholder": "请输入账号",
+      "maxlength": "11",
+      "list": {
+        "sort": 1,
+        "slot": true
+      },
+      "add": {
+        "sort": 1,
+        "groupId": 1
+      },
+      "edit": {
+        "sort": 1,
+        "groupId": 1
+      },
+      "detail": {
+        "sort": 0,
+        "groupId": 1
+      },
+      "rules": [
+        { "required": true, "message": "账号不能为空" },
+        {
+          "validator": "isPhone",
+          "trigger": "change",
+          "message": "请输入正确的手机号"
+        }
+      ]
+    }
+  ],
+  "listOperates": [
+    {
+      "name": "删除",
+      "operate": "delete",
+      "tip": {
+        "msg": "是否删除该成员?",
+        "requestUrl": "/mgt/v3/company/member",
+        "requestParams": ["id"],
+        "paramsType": "link",
+        "requestType": "delete"
+      }
+    }
+  ],
+  "batchOperates": [
+    {
+      "name": "新建",
+      "type": "primary",
+      "operate": "add",
+      "icon": "icon-plus",
+      "customModal": {
+        "requestUrl": "/mgt/v3/company/member",
+        "requestType": "post"
+      }
+    }
+  ]
+}

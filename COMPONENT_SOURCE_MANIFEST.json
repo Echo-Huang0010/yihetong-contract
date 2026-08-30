@@ -1,0 +1,58 @@
+{
+  "schema": "contract-pro-public-component-source-manifest-v2",
+  "generated_at": "2026-08-30T18:40:00+08:00",
+  "product": "Contract.Pro",
+  "public_repository_base_commit": "a28d82ea723dc62caa775c1b35e2c4251e625af1",
+  "private_source_head": "55bf1dd0e7d7add9f5177a5ab8e79545b1fdac67",
+  "release_artifact_source_head": "daa3a930bd953e627564748461f51b12660e663a",
+  "components": [
+    {
+      "id": "mini-h5",
+      "private_path": "esign-mini",
+      "public_path": ".",
+      "delivery": "sanitized_source"
+    },
+    {
+      "id": "pc-user",
+      "private_path": "esign-pc-admin",
+      "public_path": "frontends/pc",
+      "delivery": "sanitized_source"
+    },
+    {
+      "id": "official-website",
+      "private_path": "website",
+      "public_path": "frontends/website",
+      "delivery": "sanitized_source"
+    },
+    {
+      "id": "installer-cli-skill",
+      "private_path": "tools/yhtctl + skills/yihetong-installer",
+      "public_path": "installer",
+      "delivery": "source_and_release_artifact"
+    }
+  ],
+  "download_artifacts": [
+    {
+      "id": "community-installer-2.0.0",
+      "url": "https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.0/yihetong-installer-2.0.0-vnext-20260830-community.zip",
+      "bytes": 299130510,
+      "sha256": "e66c1635256fb88fb96ea994f73273579dfa16937204cda94fca0f57bd8f21a2"
+    }
+  ],
+  "source_exclusions": [
+    "management-admin source",
+    "server source",
+    "commercial-control source",
+    "production and customer configuration",
+    "credentials, certificates and private keys",
+    "real customer records and contracts",
+    "internal governance and release receipts",
+    "build output, caches and dependency directories"
+  ],
+  "public_services": [
+    "official signing service",
+    "commercial authorization",
+    "contract quota",
+    "delivery and update support"
+  ]
+}

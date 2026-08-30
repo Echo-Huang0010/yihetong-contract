@@ -1,17 +1,18 @@
 <template>
   <view class="text-28 flex-ct" @click="onChange">
     <view class="check-box flex-ct" :class="{ active: checked }">
-      <image src="@/static/check.png" class="icon" mode="widthFix"></image>
+      <image src="@/static/check.png" class="icon" mode="widthFix" />
     </view>
     <view>请阅读并同意</view>
     <navigator @click.stop class="text-link" hover-class="none" url="/pages/user/setting/Privacy">
-      《{{ setting.appName }}服务协议和隐私政策》
+      《{{ activeSetting.appName }}服务协议和隐私政策》
     </navigator>
   </view>
 </template>
 
 <script>
-import setting from '@/static/config/setting.js';
+import { mapState } from 'vuex';
+import setting from '@/config/setting.js';
 export default {
   props: {
     check: {
@@ -24,6 +25,12 @@ export default {
       setting,
       checked: false,
     };
+  },
+  computed: {
+    ...mapState(['brandConfig']),
+    activeSetting() {
+      return this.brandConfig || this.setting;
+    },
   },
   created() {
     this.checked = this.check;
@@ -39,7 +46,7 @@ export default {
 
 <style lang="scss" scoped>
 .text-link {
-  color: $uni-color-primary;
+  color: #317CFF;
 }
 .check-box {
   width: 30rpx;
@@ -52,8 +59,17 @@ export default {
     width: 100%;
   }
   &.active {
-    border: 1px solid $uni-color-primary;
-    background-color: $uni-color-primary;
+    border: 1px solid #317CFF;
+    background-color: #317CFF;
   }
+}
+
+.text-28 {
+  font-size: 26rpx;
+  color: #666666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10rpx;
 }
 </style>

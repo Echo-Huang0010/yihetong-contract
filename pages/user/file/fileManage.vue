@@ -17,6 +17,15 @@
       <view class="btn-primary text-30" @click="openAction">选择文件</view>
     </view>
 
+    <!-- 新增AI生成合同模块 -->
+    <view class="container-card flex-col">
+      <view class="text-26 color-base">智能生成合同</view>
+      <view class="tip text-24 color-grey-minor">
+        只需输入简单描述，即可为您生成专业合同文档
+      </view>
+      <view class="btn-primary text-30" @click="openAIGenerate">生成合同</view>
+    </view>
+
     <view class="container-card">
       <view class="text-28 color-base bold">签署合同</view>
 
@@ -26,7 +35,7 @@
             type="search"
             size="24"
             class="icon-search flex-ct"
-            color="#3277FF"
+            color="#FF6565"
           ></uni-icons>
           <input
             class="flex-1 text-28 color-base"
@@ -52,12 +61,12 @@
           :key="i"
           bg="#ffffff"
           border
-          @click.native="openFile(item)"
+          @click="openFile(item)"
         >
           <uni-icons
             type="checkbox-filled"
             size="24"
-            color="#3277FF"
+            color="#FF6565"
             v-if="pick == 1 && id == item.id"
           ></uni-icons>
           <view @click.stop="del(item.id, i)" v-if="!pick">
@@ -68,7 +77,9 @@
       <Images ref="image" @success="onSuccess" />
       <loadMore v-if="loading"></loadMore>
       <baseline v-if="showBaseline"></baseline>
-      <BaseEmpty v-if="noData" massage="暂无相关文件" style="padding-top: 32rpx"></BaseEmpty>
+      <view v-if="noData" class="empty-container">
+        <BaseEmpty massage="暂无相关文件"></BaseEmpty>
+      </view>
       <backTop ref="top" />
     </view>
   </view>
@@ -104,9 +115,14 @@ export default {
     if (e.id) that.id = e.id;
     that.init();
     fastClick = true;
+    
+    // 监听AI生成页面返回的刷新事件
+    uni.$on('refreshFileList', this.refreshList);
   },
   onUnload() {
     uni.hideLoading();
+    // 移除事件监听
+    uni.$off('refreshFileList', this.refreshList);
   },
   computed: {
     noData() {
@@ -175,6 +191,12 @@ export default {
         },
       });
     },
+    openAIGenerate() {
+      // 跳转到AI生成合同页面
+      uni.navigateTo({
+        url: '/pages/user/file/aiGenerate'
+      });
+    },
     onSuccess(file) {
       console.log(file);
       create(file).then(callbackFile => {
@@ -201,14 +223,13 @@ export default {
             uni.showLoading({
               title: '正在上传',
             });
-            // 跳过图片压缩的大小限制
             let size = res.tempFiles[0].size;
-            res.tempFiles[0].size = 10485760 - 1;
-            upload([res.tempFiles[0]]).then(urls => {
-              if (urls) {
-                let obj = urls[0];
-                obj.size = size;
-                create(obj).then(file => {
+            upload([res.tempFiles[0]])
+              .then(urls => {
+                if (urls) {
+                  let obj = urls[0];
+                  obj.size = size;
+                  return create(obj).then(file => {
                   if (file) {
                     if (that.pick == 1) {
                       uni.$emit('file', file);
@@ -218,8 +239,15 @@ export default {
                     }
                   }
                 });
-              }
-            });
+                }
+                return null;
+              })
+              .catch(() => {
+                that.common.showToast('上传失败，请重试');
+              })
+              .finally(() => {
+                uni.hideLoading();
+              });
           }
         },
       });
@@ -244,12 +272,12 @@ export default {
               // 跳过图片压缩的大小限制
               let size = res.tempFiles[0].size;
               res.tempFiles[0].size = 10485760 - 1;
-              upload([res.tempFiles[0]]).then(urls => {
-                if (urls) {
-                  let obj = urls[0];
-                  obj.size = size;
-                  create(obj).then(file => {
-                    uni.hideLoading();
+              upload([res.tempFiles[0]])
+                .then(urls => {
+                  if (urls) {
+                    let obj = urls[0];
+                    obj.size = size;
+                    return create(obj).then(file => {
                     console.log(file);
                     if (file) {
                       if (that.pick == 1) {
@@ -261,8 +289,15 @@ export default {
                       }
                     }
                   });
-                }
-              });
+                  }
+                  return null;
+                })
+                .catch(() => {
+                  that.common.showToast('上传失败，请重试');
+                })
+                .finally(() => {
+                  uni.hideLoading();
+                });
             } else {
               that.common.showToast('文件格式不支持');
             }
@@ -286,8 +321,14 @@ export default {
     },
     openFile(item) {
       if (that.pick == 1) {
+        console.log('openFile', item);
         uni.$emit('file', item);
         uni.navigateBack();
+        return;
+      }
+      const fileUrl = item && item.url ? String(item.url).trim() : '';
+      if (!fileUrl) {
+        that.common.showToast('文件地址无效');
         return;
       }
       // #ifndef H5
@@ -297,8 +338,13 @@ export default {
       });
       fastClick = false;
       uni.downloadFile({
-        url: item.url,
+        url: fileUrl,
         success: function (res) {
+          if (res.statusCode && res.statusCode !== 200) {
+            fastClick = true;
+            that.common.showToast('文件下载失败，请重试');
+            return;
+          }
           var filePath = res.tempFilePath;
           uni.openDocument({
             filePath: filePath,
@@ -311,6 +357,7 @@ export default {
             },
             fail: function (res) {
               fastClick = true;
+              that.common.showToast('文件无法打开，请检查文件格式');
             },
           });
         },
@@ -319,11 +366,14 @@ export default {
         },
         fail: function (res) {
           fastClick = true;
+          that.common.showToast('文件下载失败，请重试');
         },
       });
       // #endif
       // #ifdef H5
-      that.common.showToast('请在小程序端打开');
+      if (typeof window !== 'undefined') {
+        window.open(fileUrl, '_blank');
+      }
       // #endif
     },
     del(id, i) {
@@ -347,6 +397,13 @@ export default {
         },
       });
     },
+    // 刷新文件列表
+    refreshList() {
+      that.params.pageNum = 1;
+      that.loading = true;
+      that.list = [];
+      that.getList();
+    },
   },
 };
 </script>
@@ -363,6 +420,12 @@ export default {
   .text-26 {
     line-height: 37rpx;
   }
+}
+
+.empty-container {
+  height: 450rpx;
+  display: flex;
+  justify-content: center;
 }
 
 .search-box {

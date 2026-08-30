@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <script>
+      var coverSupport =
+        'CSS' in window &&
+        typeof CSS.supports === 'function' &&
+        (CSS.supports('top: env(a)') || CSS.supports('top: constant(a)'));
+      document.write(
+        '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
+          (coverSupport ? ', viewport-fit=cover' : '') +
+          '" />'
+      );
+    </script>
+    <link rel="stylesheet" href="<%= BASE_URL %>static/index.<%= VUE_APP_INDEX_CSS_HASH %>.css" />
+    <%= htmlWebpackPlugin.options.AliYunCloudAuthWebSDK %>
+    <style>
+      #yht-h5-boot {
+        position: fixed;
+        inset: 0;
+        z-index: 2147483647;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        box-sizing: border-box;
+        padding: 24px;
+        background: #f3f6fb;
+        color: #172033;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        transition: opacity 160ms ease;
+        pointer-events: none;
+      }
+
+      #yht-h5-boot.yht-h5-boot-ready {
+        opacity: 0;
+      }
+
+      #yht-h5-boot img {
+        width: 56px;
+        height: 56px;
+        object-fit: contain;
+      }
+
+      #yht-h5-boot .yht-h5-boot-brand {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.4;
+      }
+
+      #yht-h5-boot .yht-h5-boot-status {
+        min-height: 20px;
+        color: #667085;
+        font-size: 14px;
+        line-height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <strong>请启用 JavaScript 后继续使用一合通。</strong>
+    </noscript>
+    <div id="yht-h5-boot" role="status" aria-live="polite">
+      <img src="<%= BASE_URL %>static/flagship-logo.svg" alt="" />
+      <div class="yht-h5-boot-brand">一合通</div>
+      <div class="yht-h5-boot-status">正在加载</div>
+    </div>
+    <div id="app"></div>
+    <script>
+      (function () {
+        var boot = document.getElementById('yht-h5-boot');
+        var observer;
+
+        function hasVisiblePage() {
+          var pageBody = document.querySelector('uni-page-body');
+          var pageContent = pageBody && pageBody.firstElementChild;
+          if (!pageContent) return false;
+          var rect = pageContent.getBoundingClientRect();
+          return rect.width > 0 && rect.height > 0;
+        }
+
+        function hideBootWhenReady() {
+          if (!boot || !hasVisiblePage()) return;
+          if (observer) observer.disconnect();
+          boot.classList.add('yht-h5-boot-ready');
+          window.setTimeout(function () {
+            if (boot && boot.parentNode) boot.parentNode.removeChild(boot);
+            boot = null;
+          }, 180);
+        }
+
+        observer = new MutationObserver(hideBootWhenReady);
+        observer.observe(document.body, { childList: true, subtree: true });
+        window.addEventListener('load', hideBootWhenReady);
+        window.setTimeout(function () {
+          if (!boot) return;
+          var status = boot.querySelector('.yht-h5-boot-status');
+          if (status) status.textContent = '加载时间较长，请稍候';
+        }, 8000);
+      })();
+    </script>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

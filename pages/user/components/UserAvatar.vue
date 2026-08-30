@@ -5,16 +5,7 @@
     :open-type="userInfo ? 'chooseAvatar' : ''"
     @chooseavatar="onChooseAvatar"
   >
-    <view
-      v-if="userInfo.authentication"
-      class="auth-box flex-ct"
-      :class="{
-        company: userInfo.companyId,
-      }"
-    >
-      <image src="/static/auth-icon-white.png"></image>
-    </view>
-    <image class="img-avatar" :src="userInfo.avatarUrl"></image>
+    <image class="img-avatar" :src="userInfo && userInfo.avatarUrl ? userInfo.avatarUrl : '/static/ic_user_head.svg'" mode="aspectFill" />
   </button>
 </template>
 
@@ -49,26 +40,16 @@ export default {
 
 <style lang="scss" scoped>
 .img-avatar {
-  margin-right: 16rpx;
-  width: 100rpx;
-  height: 100rpx;
+  width: 160rpx;
+  height: 160rpx;
   background: #ffffff;
-  border-radius: 8rpx;
-  .auth-box {
-    width: 38rpx;
-    height: 38rpx;
-    border-radius: 8rpx;
-    background: linear-gradient(180deg, #8ba7ff 0%, #4673ff 100%);
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    image {
-      width: 28rpx;
-      height: 28rpx;
-    }
-    &.company {
-      background: linear-gradient(139deg, #e0ceab 8%, #e2b36d 100%);
-    }
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 0;
+  
+  image {
+    width: 100%;
+    height: 100%;
   }
 }
 </style>

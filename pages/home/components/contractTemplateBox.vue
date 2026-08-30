@@ -2,16 +2,16 @@
   <view class="flex-sb">
     <view
       class="template-box flex-sb"
-      @click="$emit('onClick', '/pages/home/contractTemplate/index')"
+      @click="$emit('onClick', '/pages/template/index')"
     >
-      <image src="/static/home-icon1.png"></image>
+      <image src="/static/legacy/asset-origin-a/images/home-icon1.png"></image>
       <view class="flex-1">
         <view class="bold text-30 color-base">合同模板</view>
         <view class="text-24 color-base-minor">各行业合同模板</view>
       </view>
     </view>
     <view class="template-box flex-sb" @click="$emit('onClick', '/pages/home/draft/index')">
-      <image src="/static/home-icon2.png"></image>
+      <image src="/static/legacy/asset-origin-a/images/home-icon2.png"></image>
       <view class="flex-1">
         <view class="bold text-30 color-base">草稿发起</view>
         <view class="text-24 color-base-minor">保存草稿发起签署</view>

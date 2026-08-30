@@ -1,0 +1,28 @@
+<svg width="360" height="250" viewBox="0 0 360 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="paper" x1="100" y1="35" x2="285" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F3F8FF"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="42" y1="132" x2="108" y2="238" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8FC0FF"/>
+      <stop offset="1" stop-color="#1F73FF"/>
+    </linearGradient>
+    <filter id="shadow" x="55" y="5" width="280" height="240" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#7AAFFF" flood-opacity=".22"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <rect x="113" y="39" width="188" height="157" rx="18" transform="rotate(7 113 39)" fill="#CFE1FF"/>
+    <rect x="93" y="56" width="190" height="160" rx="20" transform="rotate(-5 93 56)" fill="#E4F0FF"/>
+    <rect x="118" y="27" width="184" height="166" rx="20" transform="rotate(12 118 27)" fill="url(#paper)"/>
+  </g>
+  <text x="173" y="82" fill="#5E7191" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="19" font-weight="600" transform="rotate(12 173 82)">合同文书</text>
+  <path d="M170 111l82 17M163 138l105 22M156 164l90 19" stroke="#DDE9F8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M169 107l65 14" stroke="#88B7FF" stroke-width="9" stroke-linecap="round"/>
+  <g transform="rotate(-29 80 166)">
+    <rect x="70" y="112" width="25" height="116" rx="8" fill="url(#blue)"/>
+    <rect x="70" y="104" width="25" height="25" rx="7" fill="#A7CAFF"/>
+    <path d="M82 227l10 23H72l10-23Z" fill="#1F73FF"/>
+  </g>
+</svg>

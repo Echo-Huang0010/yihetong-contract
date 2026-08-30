@@ -1,9 +1,10 @@
-import setting from '@/static/config/setting.js';
+import setting from '@/config/setting.js';
 
 export default {
   onShareAppMessage() {
+    const brandConfig = uni.getStorageSync('brandConfig') || setting;
     return {
-      ...setting.share,
+      ...(brandConfig.share || setting.share),
       success() {
         uni.showToast({
           title: '分享成功',
@@ -18,8 +19,9 @@ export default {
     };
   },
   onShareTimeline() {
+    const brandConfig = uni.getStorageSync('brandConfig') || setting;
     return {
-      ...setting.share,
+      ...(brandConfig.share || setting.share),
       success() {
         uni.showToast({
           title: '分享成功',

@@ -1,6 +1,12 @@
 <template>
   <view class="flex-fs list">
-    <view class="item" :class="{active: current === item.value}" v-for="(item,i) in list" :key="i" @click="onChange(item)">
+    <view
+      class="item"
+      :class="{ active: current === item.value }"
+      v-for="(item, i) in list"
+      :key="i"
+      @click="onChange(item)"
+    >
       {{ item.name }}
       <view class="icon" v-if="current === item.value">
         <uni-icons type="checkmarkempty" color="#ffffff" size="10"></uni-icons>
@@ -14,72 +20,77 @@ export default {
   name: 'list',
   model: {
     prop: 'value',
-    event: 'change'
+    event: 'change',
   },
   props: {
     value: {
       type: Number,
-      default: 1
-    }
+      default: 1,
+    },
+    list: {
+      type: Array,
+      default() {
+        return [
+          {
+            name: '模板签名',
+            value: 1,
+          },
+          {
+            name: '手写签名',
+            value: 2,
+          },
+        ];
+      },
+    },
   },
   data() {
     return {
       current: this.value,
-      list: [
-        {
-          name: '模板签名',
-          value: 1
-        },
-         {
-          name: '手写签名',
-          value: 2
-        }
-      ]
-    }
+    };
   },
   methods: {
     onChange(e) {
-      this.current = e.value
-      this.$emit('change', e.value)
-    }
-  }
+      this.current = e.value;
+      this.$emit('change', e.value);
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-.item{
+.item {
   line-height: 60rpx;
   border-radius: 6rpx;
   padding: 0 20rpx;
   margin: 0 8rpx;
   font-size: 28rpx;
-  background: #F5F5F5;
+  background: #f5f5f5;
   position: relative;
   overflow: hidden;
-  &.active{
-    background: #EBF1FF;
+  &.active {
+    background: #ebf1ff;
     color: $uni-color-primary;
   }
-  .icon{
+  .icon {
     position: absolute;
     right: 0;
     bottom: 0;
     height: 28rpx;
     width: 36rpx;
     overflow: hidden;
-    uni-icons{
+    uni-icons {
       position: absolute;
       z-index: 1;
       line-height: 0;
       bottom: 10rpx;
       right: 0;
     }
-    /deep/ {
-        .uni-icons {
-          font-size: 18rpx !important;
-        }
+    ::v-deep {
+      .uni-icons {
+        font-size: 18rpx !important;
       }
-    &::before{
+    }
+    &::before {
       position: absolute;
       content: '';
       width: 120%;

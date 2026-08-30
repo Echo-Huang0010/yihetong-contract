@@ -233,7 +233,7 @@ export default {
     }
 
     .tag-auth__auth {
-      color: #3277ff;
+      color: #FF6565;
     }
 
     .tag-auth__enterauth {

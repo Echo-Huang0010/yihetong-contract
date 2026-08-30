@@ -74,7 +74,7 @@
                   ></image>
                   <image src="@/static/idcard-border.png" mode="widthFix"></image>
 
-                  <image src="@/static/add-icon.png" mode="widthFix" class="icon-tianjia"></image>
+                  <image src="/static/legacy/asset-origin-a/images/add-icon.png" mode="widthFix" class="icon-tianjia"></image>
                 </view>
               </view>
               <view class="idcard-back">
@@ -86,40 +86,40 @@
                     :src="tempPicPaths.back"
                     mode="aspectFit"
                   ></image>
-                  <image v-else class="car" src="@/static/idcard-back.png" mode="aspectFit"></image>
+                  <image v-else class="car" src="/static/legacy/asset-origin-a/images/idcard-back.png" mode="aspectFit"></image>
                   <image src="@/static/idcard-border.png" mode="widthFix"></image>
-                  <image src="@/static/add-icon.png" mode="widthFix" class="icon-tianjia"></image>
+                  <image src="/static/legacy/asset-origin-a/images/add-icon.png" mode="widthFix" class="icon-tianjia"></image>
                 </view>
               </view>
             </template>
             <view class="step-2" v-if="step == 2">
               <view>人脸识别</view>
               <view class="Compared-box flex-ct" @click="startSoterAuthentication">
-                <image src="@/static/compared-box.png" mode="widthFix"></image>
+                <image src="/static/legacy/asset-origin-a/images/compared-box.png" mode="widthFix"></image>
                 <view class="tips">点击进行识别</view>
               </view>
               <view>拍摄需知</view>
               <view class="tip">请您本人亲自完成，请将脸部置于提示框内，并按提示做动作。</view>
               <view class="mude flex-sb">
                 <view class="model">
-                  <image src="@/static/compared-1.png" mode="heightFix"></image>
+                  <image src="/static/legacy/asset-origin-a/images/compared-1.png" mode="heightFix"></image>
                   <image class="right" src="@/static/right.png" mode="heightFix"></image>
                   <view>正对手机</view>
                 </view>
                 <view class="model">
-                  <image src="@/static/compared-2.png" mode="heightFix"></image>
+                  <image src="/static/legacy/asset-origin-a/images/compared-2.png" mode="heightFix"></image>
                   <image class="right" src="@/static/right.png" mode="heightFix"></image>
                   <view>光线充足</view>
                 </view>
                 <view class="model">
-                  <image src="@/static/compared-3.png" mode="heightFix"></image>
+                  <image src="/static/legacy/asset-origin-a/images/compared-3.png" mode="heightFix"></image>
                   <image class="right" src="@/static/right.png" mode="heightFix"></image>
                   <view>放慢动作</view>
                 </view>
               </view>
             </view>
             <view class="step-3" v-if="step == 3">
-              <image class="authenticating-img" src="@/static/authenticating.png"></image>
+              <image class="authenticating-img" src="/static/legacy/asset-origin-a/images/authenticating.png"></image>
               <view class="authenticating-tips">
                 <view>认证中</view>
                 <text>已提交申请，等待后台处理</text>
@@ -147,7 +147,6 @@
 var that;
 import { upload } from '@/api/oss.js';
 import { idcardOcr, individualFace3Factors } from '@/api/company.js';
-import { myRequest } from '@/api/api.js';
 import { compressImage } from '@/utils/compress.js';
 import { mapState } from 'vuex';
 export default {
@@ -174,7 +173,19 @@ export default {
         license: '',
         id: '',
       },
+      contractId: '',
+      originType: '',
     };
+  },
+  onLoad(e) {
+    that = this;
+    console.log('认证参数:', e);
+    if (e.id) {
+      this.contractId = e.id;
+    }
+    if (e.originType) {
+      this.originType = e.originType;
+    }
   },
   unmounted() {
     uni.hideLoading();
@@ -186,44 +197,17 @@ export default {
     },
   },
   onShow(e) {
-    that = this;
-    if (e && e?.photoUrl) {
+    if (e && e.photoUrl) {
       that.form.faceUrl = e.photoUrl;
       that.submit(that.form);
     }
-    // that.getDetail();
-    // that.step = 2
     if (that.userInfo.witnessComparison) {
       that.$refs.loading.hide();
     }
-    // that.tab_fixed = false
   },
   methods: {
-    getDetail() {
-      myRequest('account', 'getVerifyResult').then(res => {
-        if (res.data) {
-          if (res.data.state == 0) {
-            // 认证中
-            that.step = 3;
-            that.title = '认证中';
-          }
-          if (res.data.state == 2) {
-            // 成功
-            uni.redirectTo({
-              url: './success',
-            });
-          }
-          that.pageData = res.data;
-        }
-        setTimeout(() => {
-          that.tab_fixed = false;
-          that.$refs.loading.hide();
-        }, 500);
-      });
-    },
     next() {
       if (!that.disabled) {
-        // if (!that.fastClick) return;
         that.fastClick = false;
         uni.showLoading({
           title: '请稍等',
@@ -288,6 +272,10 @@ export default {
       individualFace3Factors(data).then(res => {
         console.log('res :', res);
         that.step = 3;
+        
+        if (that.originType && that.originType === 'sign' && that.contractId) {
+          uni.setStorageSync('auth_success_' + that.contractId, true);
+        }
       });
     },
   },
@@ -346,7 +334,7 @@ export default {
               .cricle-1 {
                 width: 12rpx;
                 height: 12rpx;
-                background: #3277ff;
+                background: #FF6565;
               }
             }
           }
@@ -549,7 +537,7 @@ export default {
     border-radius: 8rpx;
     display: flex;
     justify-content: center;
-    background: #3277ff;
+    background: #FF6565;
     color: #fff !important;
     &.disabled {
       background: #ccddff;
@@ -558,7 +546,7 @@ export default {
   }
 }
 .active {
-  color: #3277ff !important;
+  color: #FF6565 !important;
 }
 .h100 {
   height: 100vh;
@@ -569,7 +557,7 @@ export default {
   width: 360rpx;
   height: 82rpx;
   border-radius: 8rpx;
-  background: #3277ff;
+  background: #FF6565;
   display: flex;
   align-items: center;
   justify-content: center;

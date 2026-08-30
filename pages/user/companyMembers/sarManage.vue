@@ -285,13 +285,13 @@
 			letter-spacing: 0.05em;
 			overflow: hidden;
 			&:hover{
-				background: #3277ff;
+				background: #FF6565;
 				color: white !important;
 			}
 		}
 	}
 	.pop-btn view:nth-child(2){
-		color: #3277ff;
+		color: #FF6565;
 		border-left: 1rpx solid #eee;
 	}
 </style>

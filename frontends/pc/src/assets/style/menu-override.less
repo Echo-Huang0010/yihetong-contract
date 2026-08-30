@@ -1,0 +1,82 @@
+/* 菜单样式覆盖 */
+.arco-menu .arco-menu-inner .arco-menu-item.arco-menu-selected.menu-item-level-0 {
+  color: #FFFFFF !important;
+  background-color: transparent !important;
+  position: relative;
+}
+
+.arco-menu .arco-menu-inner .menu-item-selected.menu-item-level-0 {
+  color: #FFFFFF !important;
+  background-color: transparent !important;
+  position: relative;
+}
+
+.arco-menu-inline-header arco-menu-selected arco-menu-has-icon{
+  color: var(--color-text-2) !important;
+}
+
+.arco-menu .arco-menu-inner .menu-item-selected.menu-item-level-0 .menu-item-title {
+  color: #FFFFFF !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* 二级菜单样式覆盖 */
+.arco-menu .arco-menu-inner .arco-menu-item.arco-menu-selected.menu-item-level-1 {
+  color: #FFFFFF !important;
+  background-color: transparent !important;
+  position: relative;
+}
+
+.arco-menu .arco-menu-inner .menu-item-selected.menu-item-level-1 {
+  color: #FFFFFF !important;
+  background-color: transparent !important;
+  position: relative;
+}
+
+.arco-menu .arco-menu-inner .menu-item-selected.menu-item-level-1 .menu-item-title {
+  color: #FFFFFF !important;
+  position: relative;
+  z-index: 1;
+}
+
+.arco-menu .arco-menu-inner .menu-item-selected.menu-item-level-1 .submenu-dot {
+  background-color: #FFFFFF !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* 确保背景图片正确显示 */
+.arco-menu .arco-menu-inner .menu-item-selected.menu-item-level-0::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('@/assets/images/bg_menu_check.svg');
+  background-repeat: no-repeat;
+  background-position: right center;
+  z-index: 0;
+}
+
+/* 二级菜单背景图片 */
+.arco-menu .arco-menu-inner .menu-item-selected.menu-item-level-1::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('@/assets/images/bg_menu_check.svg');
+  background-repeat: no-repeat;
+  background-position: right center;
+  z-index: 0;
+}
+
+/* 确保图标显示在背景之上 */
+.arco-menu .menu-icon,
+.arco-menu .arco-icon {
+  position: relative;
+  z-index: 1;
+}

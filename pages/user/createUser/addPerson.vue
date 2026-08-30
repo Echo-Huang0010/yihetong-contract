@@ -161,7 +161,7 @@ export default {
     font-size: $uni-font-size-lg;
     letter-spacing: 4rpx;
   }
-  /deep/ {
+  ::v-deep {
     uni-button[disabled][type='primary'] {
       opacity: 0.77;
     }

@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+/* ---- 自定义动画 ---- */
+@theme {
+  --animate-shimmer: shimmer 3s ease-in-out infinite;
+  --animate-spin-slow: spin-slow 20s linear infinite;
+}
+
+/* ============================================
+   电子合同客户官网设计系统 v4
+   浅色玻璃态 · 蓝紫主色调 · Cyber/Data 特效
+   ============================================ */
+
+:root {
+  /* ---- 背景（暖白基底） ---- */
+  --bg-primary: #fafaf8;
+  --bg-secondary: #f3f2ee;
+  --bg-elevated: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.65);
+
+  /* ---- 主色调（蓝紫） ---- */
+  --accent-primary: #5b5cf6;
+  --accent-primary-light: #818cf8;
+  --accent-primary-dark: #4f46e5;
+  --accent-secondary: #8b5cf6;
+  --accent-tech: #3b82f6;
+  --accent-tech-light: #60a5fa;
+  --accent-tech-glow: #93bbfd;
+  --accent-trust: #5b9e8b;
+
+  /* ---- 渐变 ---- */
+  --gradient-brand: linear-gradient(135deg, #5b5cf6 0%, #8b5cf6 100%);
+  --gradient-tech: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(91, 92, 246, 0.04) 0%, rgba(139, 92, 246, 0.02) 100%);
+
+  /* ---- 文字色 ---- */
+  --text-primary: #1a1a2e;
+  --text-secondary: rgba(26, 26, 46, 0.62);
+  --text-tertiary: rgba(26, 26, 46, 0.42);
+  --text-on-brand: #ffffff;
+
+  /* ---- 边框 ---- */
+  --border-default: rgba(0, 0, 0, 0.07);
+  --border-hover: rgba(91, 92, 246, 0.25);
+  --border-active: rgba(91, 92, 246, 0.4);
+  --border-glass: rgba(255, 255, 255, 0.7);
+
+  /* ---- 玻璃态 ---- */
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-bg-hover: rgba(255, 255, 255, 0.8);
+  --glass-blur: blur(16px);
+  --glass-border: rgba(255, 255, 255, 0.7);
+  --glass-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 32px rgba(0, 0, 0, 0.04);
+
+  /* ---- 光效（Cyber） ---- */
+  --glow-brand: 0 0 16px rgba(91, 92, 246, 0.3), 0 0 40px rgba(91, 92, 246, 0.1);
+  --glow-purple: 0 0 16px rgba(139, 92, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.1);
+  --glow-blue: 0 0 16px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1);
+  --glow-card-hover: 0 0 20px rgba(91, 92, 246, 0.12), 0 4px 24px rgba(0, 0, 0, 0.05);
+
+  /* ---- 阴影 ---- */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 16px rgba(0, 0, 0, 0.03);
+  --shadow-elevated: 0 2px 6px rgba(0, 0, 0, 0.07), 0 12px 40px rgba(0, 0, 0, 0.05);
+  --shadow-accent: 0 0 0 1px rgba(91, 92, 246, 0.3), 0 4px 16px rgba(91, 92, 246, 0.1);
+
+  /* ---- 圆角 ---- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+
+  /* ---- 间距 ---- */
+  --section-py: 120px;
+  --section-py-mobile: 80px;
+
+  /* ---- 字体 ---- */
+  --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "Fira Code", "Cascadia Code", "JetBrains Mono", monospace;
+}
+
+/* ---- 全局重置（Tailwind v4 @layer base 已提供 reset，此处仅补充） ---- */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+/* ---- 工具类 ---- */
+.text-gradient-brand {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-tech {
+  background: var(--gradient-tech);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-accent {
+  color: var(--accent-primary-light);
+}
+
+.text-tech {
+  color: var(--accent-tech);
+}
+
+/* 玻璃卡片 */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+/* 霓虹文字发光 */
+.text-glow-brand {
+  text-shadow: 0 0 16px rgba(91, 92, 246, 0.4), 0 0 40px rgba(91, 92, 246, 0.15);
+}
+
+.text-glow-purple {
+  text-shadow: 0 0 16px rgba(139, 92, 246, 0.4), 0 0 40px rgba(139, 92, 246, 0.15);
+}
+
+.text-glow-blue {
+  text-shadow: 0 0 16px rgba(59, 130, 246, 0.4), 0 0 40px rgba(59, 130, 246, 0.15);
+}
+
+/* 网格纹理（浅色版） */
+.bg-grid-subtle {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* 连接线 */
+.connection-line {
+  stroke: rgba(91, 92, 246, 0.3);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-dasharray: 4 6;
+  animation: dash-flow 30s linear infinite;
+}
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -1000; }
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ---- 滚动条 ---- */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* ---- 可访问性 ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- 选中 ---- */
+::selection {
+  background: rgba(91, 92, 246, 0.2);
+  color: var(--text-primary);
+}

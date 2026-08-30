@@ -1,0 +1,69 @@
+{
+  "schema": "contract-pro-public-origin-inventory-v2",
+  "generated_at": "2026-08-30T18:50:00+08:00",
+  "components": [
+    {
+      "id": "mini-h5",
+      "lockfile": "package-lock.json",
+      "packages": 30,
+      "sha256": "635492964f1e1a0d09ab12d300643197c7e799ce8b1c018b8bc6735df301878f"
+    },
+    {
+      "id": "pc-user",
+      "lockfile": "frontends/pc/package-lock.json",
+      "packages": 1669,
+      "sha256": "10396bf878a797c5b0386451328ecf92c7957d605f2c1ff40915fcb2391626a4"
+    },
+    {
+      "id": "official-website",
+      "lockfile": "frontends/website/package-lock.json",
+      "packages": 529,
+      "sha256": "1c7a70a3a3ef7dc34cf763ed200e49429c417d9aff34422fe409e8bce737d0a0"
+    },
+    {
+      "id": "installer-cli-skill",
+      "lockfile": "installer/yhtctl/package-lock.json",
+      "packages": 7,
+      "sha256": "5ec0b1026f0c3c8523e9c534a4fc8cc8468908d46f2a4adb133d6386dfd40055"
+    }
+  ],
+  "dependency_summary": {
+    "lockfile_entries": 2235,
+    "unique_packages": 1713,
+    "package_metadata_missing_license": 47
+  },
+  "asset_origins": [
+    {
+      "host": "yeeco.oss-cn-chengdu.aliyuncs.com",
+      "classification": "first_party_authorized_public_oss",
+      "usage": "README visuals, historical screenshots, installer and checksums"
+    },
+    {
+      "host": "esign.yi-types.com",
+      "classification": "first_party_product_entry",
+      "usage": "website, H5 and Mini QR"
+    },
+    {
+      "host": "esign-pc-admin.yi-types.com",
+      "classification": "first_party_product_entry",
+      "usage": "PC demo"
+    },
+    {
+      "host": "esign-manage-admin.yi-types.com",
+      "classification": "first_party_isolated_demo",
+      "usage": "package validation management demo"
+    },
+    {
+      "host": "smart.yi-types.com",
+      "classification": "first_party_complete_product_entry",
+      "usage": "complete product portal"
+    }
+  ],
+  "exclusions": [
+    "production credentials",
+    "customer data",
+    "server source",
+    "management source",
+    "internal release material"
+  ]
+}

@@ -1,7 +1,26 @@
-import {
-  compressImage
-} from '@/utils/compress.js'
-import request from '@/utils/request.js';
+import { upload as uploadByApi } from '@/api/upload.js';
+
+function uploadViaApi(fileList = [], field = 'url') {
+  if (!fileList.length) {
+    return Promise.resolve([]);
+  }
+  const backList = [];
+  return fileList.reduce((queue, file) => {
+    return queue.then(() => uploadByApi(file, '/upload/v1/oss').then(url => {
+      if (!url) {
+        return Promise.reject(new Error('upload failed'));
+      }
+      const uploadedFile = {
+        name: file.name || file.fileName || '',
+        size: file.size || 0,
+        type: file.type || '',
+        path: file.path || file.tempFilePath || '',
+      };
+      uploadedFile[field] = url;
+      backList.push(uploadedFile);
+    }));
+  }, Promise.resolve()).then(() => backList);
+}
 /***
   @param [fileList]
    参数示例：
@@ -14,69 +33,5 @@ import request from '@/utils/request.js';
   @param 'field' 上传后返回的附件key值 默认url
 ***/
 export function upload(fileList = [], field = 'url') {
-  let len = fileList.length,
-    backList = [],
-    index = 0,
-    d = new Date();
-  let date = d.getFullYear() + '' + (d.getMonth() + 1) + '' + d.getDate()
-  return new Promise((resolve, reject) => {
-    request({ // 获取OSS配置
-      url: `/upload`,
-      method: "GET"
-    }).then(oss => {
-      if (!fileList.length) {
-        resolve([]);
-        return
-      }
-
-      function handleOss() {
-        compressImage(fileList[index]).then(filePath => {
-          let lastInx = filePath.lastIndexOf('/');
-          let name = filePath.slice(lastInx + 1, filePath.length);
-          let key = 'mp-weixin/' + date + '/' + d.getTime() + name
-          let uploadTask = uni.uploadFile({
-            url: oss.host,
-            filePath: filePath,
-            name: 'file',
-            formData: {
-              'policy': oss.policy,
-              'key': key,
-              'OSSAccessKeyId': oss.accessKeyId,
-              'signature': oss.signature,
-              'bucketName': oss.bucketName,
-              'accessKeySecret': oss.accessKeySecret,
-            },
-            success: (res) => {
-              if (res.statusCode == 204) {
-                fileList[index][field] = oss.host + '/' + key
-                backList.push(fileList[index])
-                index++
-                if (index == len) { // 上传完毕
-                  resolve(backList);
-                } else if (index < len) {
-                  handleOss()
-                }
-              } else {
-                reject()
-                uni.showToast({
-                  title: res.errMsg,
-                  icon: 'none'
-                })
-              }
-            },
-            fail: (err) => {
-              reject()
-              uni.showToast({
-                title: err.errMsg,
-                icon: 'none'
-              })
-            }
-          })
-        }).catch(() => {
-          reject()
-        })
-      }
-      handleOss()
-    })
-  })
+  return uploadViaApi(fileList, field)
 }

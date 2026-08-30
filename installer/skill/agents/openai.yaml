@@ -1,0 +1,4 @@
+interface:
+  display_name: "Yihetong Installer"
+  short_description: "Safely prepare and operate a Yihetong installer"
+  default_prompt: "Use $yihetong-installer to prepare or operate a Yihetong installation without collecting secrets."

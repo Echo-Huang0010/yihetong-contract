@@ -1,613 +1,370 @@
-  Mini-Contract(免费开源电子合同)
-  ===============
+<p align="center">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/contract-pro-platform-overview.png" alt="Contract.Pro 开源电子合同、合法电子签署与私有化部署平台" width="100%">
+</p>
 
+# Contract.Pro｜开源电子合同｜合法电子签署｜私有化部署｜全流程合同管理平台
 
-### 传送门
-船新版本全量升级，详情查看 https://gitee.com/yi-lian-shu-ju/mini-contract_puls
+> 功能最完善的电子合同开源项目之一
 
+Contract.Pro 面向需要建设电子合同能力的企业、软件服务商、实施团队和独立开发者，覆盖合同模板、文件上传、参与方管理、实名认证、个人签名、企业印章、多方签署、状态跟踪、合同下载与归档。小程序、H5、PC 用户端和管理后台围绕同一份合同协同工作，既能用于产品体验，也能部署到自己的服务器环境。
 
+正式签署服务支持对接 e签宝 CA 能力。根据实际业务配置，可完成签署主体实名认证、数字证书申请、签署意愿确认、可信签名签章和签署记录留存。电子签名的法律效力以具体签署流程、证据完整性、适用法律及业务场景为准。
 
+**[访问官网](https://esign.yi-types.com/)**　**[PC 用户端](https://esign-pc-admin.yi-types.com/)**　**[H5 体验](https://esign.yi-types.com/h5/)**　**[管理后台演示](https://esign-manage-admin.yi-types.com/demo/manage/)**　**[完整产品入口](https://smart.yi-types.com/)**
 
+<p align="center">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/contract-pro-business-flow.png" alt="Contract.Pro 从合同创建到签署归档的完整业务流程" width="100%">
+</p>
 
-### 相关部署文档
+## 为什么选择 Contract.Pro
 
-一合通开源版部署文档
-https://xurankeji.feishu.cn/wiki/Yr1NwQ5aOiXHN8kG4e5cIngmnTe
+- **完整合同流程**：从模板、文书和文件开始，完成发起、参与方配置、签名签章、进度跟踪、下载和归档。
+- **个人与企业共同使用**：一个账号可按认证结果使用个人身份，并管理或加入多个企业，适配个人签署、企业签章和多方合同。
+- **多端协同**：小程序适合移动发起与签署，H5 适合链接直达，PC 适合集中处理，管理后台负责运营和配置。
+- **合法电子签署能力**：支持接入实名认证、CA 数字证书、签署意愿确认和签署过程记录。
+- **私有化部署**：可部署到自有服务器、数据库、域名与对象存储环境，品牌、入口和第三方服务按项目配置。
+- **快速安装与外部接入**：提供安装包、配置中心、CLI 和安装辅助能力，支持 Codex、Claude Code、WorkBuddy 等 Agent 辅助安装部署；支持通过 Agent、Skill、MCP 与 CLI 调用合同创建、文件上传、参与方配置、发起签署和状态查询等主要能力。
 
-一合通后端开发文档
-https://xurankeji.feishu.cn/docx/R4jqdEnZ1o4BZsxsp6cc6z2rnXg
+<p align="center">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/contract-pro-core-advantages.png" alt="Contract.Pro 电子合同平台的核心优势" width="100%">
+</p>
 
-一合通前端开发文档
-https://xurankeji.feishu.cn/wiki/CYzfwuuDIimMurkpigPc3RKpn3f
+## 一份合同如何完成
 
-一合通部署常见问题汇总
-https://xurankeji.feishu.cn/docx/YGqndZg8io9d4ixI7KFck9s8nqc
+### 1. 准备模板、文书或合同文件
 
-一合通标准版产品手册
-https://xurankeji.feishu.cn/file/Hg52bzxnYoeh3nxcIYCcNlFjnHd
+可以按业务建立合同分类和模板，预设参与方与填写内容；也可以上传已有 Word 或 PDF 文件。常用协议可从文书模板开始编辑，保存后继续发起签署。
 
+### 2. 选择个人或企业身份
 
+发起人可以使用个人身份，也可以从自己管理或加入的企业中选择签署主体。合同支持添加多个个人或企业参与方，并设置合同名称、有效期、签署顺序与处理要求。
 
+### 3. 完成认证、签名与盖章
 
+个人可完成实名认证并使用个人签名；企业可完成企业认证，维护成员、印章和用章权限。正式签署按接入服务完成数字证书、意愿确认与签署记录留存。
 
+### 4. 跟踪、催办与归档
 
+合同按待我处理、待他人处理、已完成、已拒签、已撤销和已逾期分类。发起人可查看各参与方进度并进行催办，签署完成后统一查看、下载与归档。
 
-### 演示视频
+## 主要功能
 
-https://xurankeji.feishu.cn/drive/folder/SBEefsMQ9l6CsKd8cWDciFVxnNg
+### 合同、模板与文书
 
+- 合同分类、合同模板、模板参数和预设参与方
+- 文书分类、专业文书模板、在线编辑和复用
+- Word、PDF 文件上传与 Word 转 PDF
+- 从模板发起、从文件发起、文书编辑后发起
+- 草稿保存、合同详情、文件管理和归档下载
+- 一对一、多方、一对多和批量发起场景
 
+### 参与方、身份与印章
 
+- 个人与企业两类合同身份
+- 个人实名认证、企业实名认证和认证状态管理
+- 一个用户管理个人身份及多个企业角色
+- 企业成员、角色、印章与用章权限
+- 个人签名、企业签章和签署顺序配置
 
+### 流程与合同处理
 
+- 合同发起、签署、拒签、撤销、逾期和完成
+- 待办、已办、待他人处理与历史合同
+- 发起人催办、详情分享和处理进度查看
+- 审批流程、审批角色与审批待办
+- 视频签署问答规则与签署过程辅助
+- 合同审查、合同生成和常用文书管理
 
-### 介绍
+### 平台运营与配置
 
+- 用户、企业、管理员、角色和权限管理
+- 合同、模板、文书、分类和内容管理
+- 认证记录、订单、服务消耗与额度查看
+- 品牌名称、Logo、登录背景、首页素材与公开入口配置
+- 数据库、缓存、对象存储、短信、开放接口和第三方服务配置
+- 配置帮助文档、申请入口、示例和生效方式说明
 
+<p align="center">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/contract-pro-function-architecture.png" alt="Contract.Pro 小程序、H5、PC、管理后台与部署能力结构" width="100%">
+</p>
 
-<h3 align="center">Mini-Contract</h3>
+## 小程序、H5、PC 与管理后台
 
-🔥🔥🔥Mini-Contract是一款由重庆弈联数聚科技有限公司自主研发、拥有自主知识产权的免费开源电子合同产品，提供一站式的合同签署解决方案。我们的产品创新地采用了“证据链”与“非证据链”两种签署模式，支持在线电子签名、电子合同、电子签章、电子合同SDK、电子合同API、多方合同发起、骑缝章等多种功能。
+| 使用端 | 适合完成的工作 |
+| --- | --- |
+| 微信小程序 | 移动端查看、发起、认证、签署、企业和合同管理 |
+| H5 | 从业务链接直接进入合同详情和签署流程 |
+| PC 用户端 | 集中查看合同、处理待办、管理企业成员和下载归档文件 |
+| 管理后台 | 维护用户、企业、合同、模板、审批、内容、品牌和部署配置 |
+| CLI / Agent | 辅助安装部署，并通过标准接口完成合同主要能力对接 |
 
-在数据安全方面，Mini-Contract严格遵循合规要求，独立运营和管理合同，确保您的合同信息得到最佳保护。我们提供Web端管理、H5、微信小程序平台，以及深度个性化的定制综合解决方案，满足您不同场景的管理需求，作为一款平台型产品，在安全性方面我们的底层基于蚂蚁司法链，已获得国家认证，确保安全可靠，支持数据和项目私有化本地，降低数据泄露风险，同时确保合同的合法性和安全性。
+### 小程序体验
 
-充值合同价格特惠， **单价最高仅1元/份** ，包含使命认证和短信等。
+<p align="center">
+  <img src="https://esign.yi-types.com/r/yihetong-standard/mini-program-qrcode.jpeg" alt="Contract.Pro 微信小程序体验二维码" width="240">
+</p>
 
-可针对国企、事业单位、各行企业 **二次开发定制** 需求提供 **专业对接** 方式
+> 微信扫码进入小程序。小程序正式版、审核状态和可用能力以微信端实际展示为准。
 
+## 真实产品界面
 
+以下均为真实系统界面，公开前仅对账号、统计数据和配置值进行了脱敏，没有重绘产品界面。
 
+### 平台运营总览
 
+![Contract.Pro 管理后台运营总览](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/admin-overview-redacted.png)
 
-### 为什么选择Mini-Contract ?
+### 合同文书分类
 
-我们汇集了市场上各类电子合同解决方案提供商，为您提供一站式便捷的独立合同运营管理平台服务。您无需逐一对接各个电子合同厂商，避免了费时费力的过程。我们已经完成了这项繁琐的工作，您只需一个接口就能轻松使用我们所有的服务商。同时，您还可以享受我们提供的接口渠道价格优势，让您的成本更加可控。
+![Contract.Pro 合同文书分类管理](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/document-category-redacted.png)
 
-Mini-Contract 是基于企业实际项目经验精心打造的成果，采用简洁的代码和最新的技术栈，非常适合各种需求的前端研发人员。同时，能够帮助您解决前端项目中80%以上的重复工作，提高开发效率。
+### 视频签署规则
 
-如果您愿意使用我们提供的界面风格，您可以直接采用，无需担心版权问题，从而快速实现项目落地。让我们的解决方案助您轻松应对电子合同需求，提高工作效率，让您的项目更加顺利地推进。
+![Contract.Pro 视频签署规则配置](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/video-rule-redacted.png)
 
+### 品牌与产品入口配置
 
+![Contract.Pro 品牌配置与多端入口管理](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/brand-config-redacted.png)
 
-### 商业授权
+历史版本中的合同模板、发起签署、个人签名、企业印章、认证、套餐和运营后台截图继续保留，用于展示产品从早期版本到当前版本的功能积累。历史截图中的页面样式可能与当前版本不同，功能以当前演示环境为准。
 
-1. 商业版本与开源版本代码一致，没有区分；
-2. 商业授权模式为永久授权；
-3. 商业使用需要授权，授权方式可选择联系下方技术同学。
+<details>
+<summary><strong>展开查看历史版本功能与界面</strong></summary>
 
+### 历史功能导览
 
+<p>
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/7.png" alt="Contract.Pro 历史版本功能导览" width="49%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/8.png" alt="Contract.Pro 历史版本合同业务能力" width="49%">
+</p>
 
-### 开源须知
+### 小程序与移动端
 
-1. 仅允许用于个人学习研究使用；
-2. 禁止将本开源的代码和资源进行任何形式任何名义的出售。
+<p>
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/23.png" alt="历史版本移动端首页" width="32%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/3.png" alt="历史版本移动端合同列表" width="32%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/1.png" alt="历史版本移动端合同详情" width="32%">
+</p>
 
+<p>
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/4.png" alt="历史版本合同模板" width="32%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/16.png" alt="历史版本发起合同" width="32%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/19.png" alt="历史版本参与方配置" width="32%">
+</p>
 
+<p>
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/2.png" alt="历史版本个人签署" width="32%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/11.png" alt="历史版本企业签章" width="32%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/20.png" alt="历史版本签署进度" width="32%">
+</p>
 
-### 业务场景
+<p>
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/30.png" alt="历史版本身份认证" width="32%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/21.png" alt="历史版本企业管理" width="32%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/24.png" alt="历史版本合同套餐" width="32%">
+</p>
 
-1. 人力派遣公司
+<p>
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/6.png" alt="历史版本文件与归档管理" width="32%">
+</p>
 
-   > 频繁签署合同，纸质合同成本高，批量签署合同的业务场景
+### PC 用户端
 
-2. 金融公司
+<p>
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a1.png" alt="历史版本 PC 用户端首页" width="49%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a2.png" alt="历史版本 PC 合同工作台" width="49%">
+</p>
 
-   > 通过线上完成合同签署，留存有及时有效的合同管理合同
+<p>
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a3.png" alt="历史版本 PC 合同详情" width="49%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a4.png" alt="历史版本 PC 企业管理" width="49%">
+</p>
 
-3. 市场销售签单公司
+<p>
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a5.png" alt="历史版本 PC 模板管理" width="49%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a6.png" alt="历史版本 PC 签署流程" width="49%">
+</p>
 
-   > 对一些网络销售的产品进行销售的时候，需要快速达成合作，立刻签署合同的场景
+<p>
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a7.png" alt="历史版本 PC 文件管理" width="49%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a8.png" alt="历史版本 PC 账号设置" width="49%">
+</p>
 
-4. 租赁公司
-
-   > 需要对一些线下租赁公司进行快速合同签署，线上合同管理，查询和合同到期自动提醒的场景
-
-
-
-目录结构
------------------------------------
-
-```
-├─App.vue                           // 应用配置，用来配置APP全局样式以及监听
-├─index.html                        // 给网页开发提供的功能，提供模板
-├─jsconfig.json                     // 规范配置等
-├─main.js                           // 入口文件
-├─manifest.json                     // 配置应用名称、appid、logo、版本等打包信息
-├─pages.json                        // 配置页面路由、导航条、选项卡等页面类信息
-├─README.md                         // 帮助文档
-├─uni.scss                          // scss变量预置, 为了方便整体控制应用的风格
-├─vue.config.js                     // 开发设置
-├─api                               // 接口管理，按照功能分类
-├─components                        // 公共组件库
-│  ├─backTop                        // 返回顶部
-│  ├─BaseEmpty                      // 缺省页
-│  ├─baseline                       // 没有更多数据
-│  ├─btn-fixed                      // 固定在页面底部组件（插槽）
-│  ├─checkUser                      // 切换身份
-│  ├─contractState                  // 合同状态
-│  ├─FileItem                       // 文件信息
-│  ├─loading                        // 页面加载
-│  ├─loadMore                       // 加载数据
-│  ├─SwitchEnvironment              // 切换环境
-│  ├─tag-auth                       // 用户身份
-│  ├─userInfo                       // 用户信息
-│  └─v-tabs                         // tab切换
-├─config                            // 配置
-│  ├─config.js                      // 系统配置（域名等）
-│  ├─net.config.js                  // 域名配置
-│  └─setting.js                     // 其他全局配置（如：页面分享文案）
-├─filters                           // 过滤器
-├─mixins                            // 混入
-│  └─share.js                       // 页面分享
-├─pages                             // 页面文件夹
-│  ├─contract                       // 合同相关页面
-│  │  ├─index.vue                   // 合同首页
-│  │  │    └─index.vue              // 合同详情
-│  │  ├─sign                        // 发起签署
-│  │  └─revoke                      // 撤销合同
-│  ├─home                           // 首页
-│  │  └─contractTemplate            // 合同模板
-│  ├─index                          // 启动页
-│  ├─login                          // 登录注册
-│  └─user                           // 我的
-│     ├─company                     // 企业相关
-│     │    ├─addCompany.vue         // 添加企业
-│     │    ├─addSeal.vue            // 添加印章
-│     │    ├─authorize.vue          // web-view页面
-│     │    ├─Certification.vue      // 企业认证
-│     │    ├─companySeal.vue        // 企业印章管理
-│     │    ├─create.vue             // 创建企业（已废弃）
-│     │    ├─myCompany.vue          // 我的企业
-│     │    └─removeComfirm.vue      // 移除企业
-│     ├─companyMembers              // 成员
-│     │    ├─createMember.vue       // 添加成员
-│     │    └─index.vue              // 企业成员
-│     ├─createUser                  // 签署
-│     │    ├─addPerson.vue          // 添加最近签署人（已废弃）
-│     │    └─index.vue              // 最近签署人
-│     ├─file                        // 文件管理
-│     ├─package                     // 套餐
-│     │    ├─buy.vue                // 购买套餐
-│     │    └─comboDetails.vue       // 我的套餐
-│     ├─personal                    // 个人
-│     │    └─Certification.vue      // 个人认证
-│     └─setting                     // 设置
-│          ├─changeIdentity.vue     // 切换身份（已废弃）
-│          ├─password.vue           // 修改密码（已废弃）
-│          └─Privacy.vue            // 隐私申明
-├─static                            // 存放静态资源，如图片、视频
-│  └─tabbar                         // tabbar图标
-├─store                             // 状态管理库
-├─style                             // 公共样式库
-├─uni_modules                       // 项目组件、页面、公共模块等
-├─unpackage                         // 打包目录
-└─utils                             // 工具
-   ├─cache.js                       // 设置缓存
-   ├─common.js                      // 公共方法
-   ├─compress.js                    // 图片压缩
-   ├─reg.js                         // 通用正则表达式
-   └─request.js                     // 网络请求设置
-```
-
-
-
-技术架构
------------------------------------
-
-#### 开发环境
-
-- 语言：Vue2.0
-
-- IDE(前端)： Vscode、HBuilder
-
-- 依赖管理：npm
-
-
-
-#### 移动端框架
-
-| 说明       | 框架       | 说明       | 框架      |
-| ---------- | ---------- | ---------- | --------- |
-| 基础框架   | uni-app    | JS版本     | ES6       |
-| 基础JS框架 | Vue.js     | 视频播放器 | 原生video |
-| 路由管理   | Vue Router | 状态管理   | Vuex      |
-| 网络请求   | axios      | css预处理  | scss      |
-| 地图引擎   | map        |            |           |
-
-
-
-### 功能模块
-
-```html
-业务功能
-├─登录注册
-│  ├─账号方式
-│  └─微信授权
-├─首页
-│  ├─快捷合同处理
-│  │  ├─待我处理
-│  │  └─待他人处理
-│  ├─最近合同
-│  └─智能助手
-│      ├─AI合同生成
-│      ├─合同审计
-│      └─合同优化建议
-├─合同
-│  ├─待我处理
-│  ├─待他人处理
-│  ├─已完成
-│  ├─已拒签
-│  ├─已撤销
-│  └─已逾期
-├─发起新签署合同
-│  ├─模板签署
-│  ├─AI生成签署
-│  └─自定义签署
-├─资讯中心
-│  ├─合同模块
-│  └─政策解读
-└─个人中心
-├─我的企业
-├─企业印章
-├─文件管理
-│  ├─合同文件
-│  └─AI生成记录
-├─套餐管理
-    ├─隐私政策
-├─修改密码
-└─个人中心
-    ├─企业套餐
-    └─个人套餐
+<p>
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a9.png" alt="历史版本 PC 合同归档" width="49%">
+</p>
+
+### 运营管理后台
+
+<p>
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d1.png" alt="历史版本管理后台数据概况" width="49%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d2.png" alt="历史版本个人认证管理" width="49%">
+</p>
+
+<p>
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d3.png" alt="历史版本企业认证管理" width="49%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d5.png" alt="历史版本销售订单管理" width="49%">
+</p>
+
+<p>
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d6.png" alt="历史版本服务消耗管理" width="49%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d7.png" alt="历史版本价格设置" width="49%">
+</p>
+
+<p>
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d8.png" alt="历史版本管理员与角色设置" width="49%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d9.png" alt="历史版本合同模板分类" width="49%">
+</p>
+
+<p>
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d0.png" alt="历史版本模板参与方设置" width="49%">
+  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d10.png" alt="历史版本模板动态参数设置" width="49%">
+</p>
+
+</details>
+
+## 在线体验
+
+| 入口 | 地址 | 说明 |
+| --- | --- | --- |
+| 官方网站 | [打开官网](https://esign.yi-types.com/) | 查看产品介绍与公开入口 |
+| PC 用户端 | [打开 PC 用户端](https://esign-pc-admin.yi-types.com/) | 合同、企业与个人工作台 |
+| H5 | [打开 H5](https://esign.yi-types.com/h5/) | 移动网页体验 |
+| 管理后台演示 | [打开演示管理后台](https://esign-manage-admin.yi-types.com/demo/manage/) | 来自安装包验证环境，不使用线上生产管理数据 |
+| 完整产品入口 | [进入完整产品](https://smart.yi-types.com/) | 商业授权、合同额度与产品服务入口 |
+
+体验环境用于查看产品流程，不承诺永久保存测试数据。请勿上传真实身份证件、商业合同、印章、证书或其他敏感资料。
+
+## 下载与私有化部署
+
+Contract.Pro 可以安装到个人电脑的 WSL2 Ubuntu 环境，也可以部署到 Ubuntu 22.04/24.04 或 Rocky Linux 9 服务器。安装过程不限定云厂商，也不强制使用 Agent、阿里云 RAM 或特定控制台。
+
+- [下载安装包](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.0/yihetong-installer-2.0.0-vnext-20260830-community.zip)
+- [查看 SHA-256 校验清单](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.0/ARTIFACT_SHA256SUMS.txt)
+- [查看制品清单](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.0/ARTIFACT_MANIFEST.json)
+- [查看系统部署手册](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.0/Contract.Pro-%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C.pdf)
+
+安装包 SHA-256：
+
+```text
+e66c1635256fb88fb96ea994f73273579dfa16937204cda94fca0f57bd8f21a2
 ```
 
+Windows 校验：
 
+```powershell
+Get-FileHash .\yihetong-installer-2.0.0-vnext-20260830-community.zip -Algorithm SHA256
+```
 
+Linux / WSL2 校验：
 
+```bash
+sha256sum yihetong-installer-2.0.0-vnext-20260830-community.zip
+```
 
+校验值一致后，再按照压缩包内的部署手册准备配置并安装。密码、AccessKey、AppSecret、证书私钥和正式 License 只放在自己的受保护配置中，不写入代码仓库。
 
+## 社区内容与完整产品
 
-项目效果
-----
+Contract.Pro 通过两种交付形态服务不同用户：
 
+### 社区公开内容
 
+- 经脱敏的小程序、H5、PC 用户端和官网前端源码
+- 可下载的安装包、运行程序与部署手册
+- 本地或服务器安装、配置和基础流程体验
+- CLI、Agent 安装辅助和标准接口接入示例
 
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/7.png)
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/8.png)
+### 完整产品与商业服务
 
+- 管理后台与服务端运行交付
+- 正式电子签署服务、商业授权与合同额度
+- 客户版本配置、升级支持和交付服务
+- 开放接口、CLI、Agent、Skill 与 MCP 的业务接入支持
+- 按授权版本提供的持续更新和服务保障
 
+公开内容能够帮助开发者了解产品、调整前端并完成独立部署；需要正式签署、合同额度、商业授权和持续服务时，可通过完整产品入口选择对应方案。
 
-#### 用户端（移动端）
-> 首页能快速的发起合同的签署，签署人或者公司支持多选择（就是支持多人或者多公司同时签署），同时还能设置本次签署合同的有效果期，从而避免地一些法律风险
+## 开源协议与商业许可
 
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/23.png)
+社区公开代码采用 **AGPL-3.0-only**。你可以在协议范围内学习、使用、修改和部署；如果修改后的程序通过网络向用户提供服务，需要按照 AGPL-3.0-only 的要求向相应用户提供对应源码。
 
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/3.png)
+商业许可用于需要闭源修改、商业分发、正式签署服务、合同额度、交付支持和持续更新的场景。Contract.Pro 名称、Logo、官方认证标识和品牌素材不因开源代码许可而自动获得商标使用权；第三方组件和素材继续遵循各自的许可条款。
 
+使用前请同时阅读仓库根目录中的 `LICENSE`、`COMMERCIAL-LICENSE.md`、`NOTICE`、`THIRD_PARTY_NOTICES` 和 `TRADEMARKS.md`。
 
+## 常见问题
 
-> 作为企业需要在签署之前完成“企业认证”、“法人实名认证”；同时在使用过程中如果额度用完，可自行购买额度
+### Contract.Pro 是单一签名组件吗？
 
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/1.png)
+不是。它覆盖合同准备、参与方配置、认证、签署、状态跟踪、下载、归档以及平台运营管理。
 
+### 可以部署到自己的服务器吗？
 
+可以。安装包支持本地 WSL2 和常见 Linux 服务器环境，数据库、域名、对象存储和第三方服务由部署方按手册配置。
 
-> 登录应用之后能查看到相应的功能，企业管理，印章管理，签署的文件管理，签署额度购买等等 
+### “合法电子签署”是什么意思？
 
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/4.png)
+平台支持对接实名认证、CA 数字证书、签署意愿确认和签署记录留存。具体合同是否满足法律效力要求，需要结合签署主体、签署流程、证据完整性、合同内容和适用法律判断。
 
+### 一个账号可以给多个企业签合同吗？
 
+可以。用户完成个人认证后，可使用个人身份；当账号管理或加入多个企业时，可在有权限的企业中选择签署主体。
 
->  用户或者企业可自行设置和上传自己的个人性的签名，骑缝章
+### H5、PC 和小程序的数据互通吗？
 
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/16.png)
+同一部署实例中的各端围绕统一账号、企业和合同数据协同，实际入口和功能由部署配置决定。
 
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/19.png)
+### 可以用 Agent 或 CLI 对接吗？
 
+可以。安装包提供 CLI 和安装辅助能力，外部 Agent 可通过 Skill、MCP 或标准接口完成合同文件上传、参与方设置、发起与状态查询等流程。调用时需要使用对应部署实例的身份与授权。
 
+## 最近更新
 
+### V2.1.0
 
-> 签署前如果是个人需要做“实名认证”、“人证比对”、“人脸识别”等，从而来确保信息的真实性
+- 新增内容资讯模块
+- 新增后台用户合同分配
+- 修复用户实名认证已知问题
+- 优化企业实名认证流程
 
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/2.png)
+### V2.0.0
 
+- 全新页面风格与多端体验
+- 支持一对多批量发起合同
+- 支持个性签名、草稿箱和发起人催办
+- 支持图片辅助生成在线合同
+- 新增文件管理与合同详情分享
 
+### V1.5.x
 
-> 在签署详情里面能查看到合同签署人和各方签署的状态信息，同时签署方还可以点击进行签署，签署方式有“手写签名、盖章”等 
+- 支持实名认证环节的人证对比
+- 支持签署完成短信通知
+- 支持签署方与发起方分离
+- 优化印章管理、企业认证和多渠道签署逻辑
 
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/11.png)
+### V1.1.x
 
+- 支持后台查看企业合同
+- 优化个人与企业合同套餐
+- 丰富合同模板和应用内签署体验
 
+## 项目入口
 
+- Gitee：[yi-lian-shu-ju/mini-contract](https://gitee.com/yi-lian-shu-ju/mini-contract)
+- GitHub：[Echo-Huang0010/yihetong-contract](https://github.com/Echo-Huang0010/yihetong-contract)
+- 官网：[https://esign.yi-types.com/](https://esign.yi-types.com/)
+- 完整产品：[https://smart.yi-types.com/](https://smart.yi-types.com/)
 
-> 作为企业管理人员，可以管理企业成员，同时可以授权企业成员是否拥签署权限
+## 交流合作
 
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/19.png)
+如果你有任何对 Contract.Pro 产品上的想法、意见或建议，或商务上的合作需求，请扫码添加 Contract.Pro 项目团队进一步沟通：
 
-
-
-
-> 实名认证企业之后可自动生成合规的ca证书签章，企业管理人员可为每一个成员设置不同的签章权限
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/20.png)
-
-
-
-> 平台默认非常多非常丰富的合同模板，我们还会不定期更新模板，开发者或者可免费享用模板
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/30.png)
-
-[//]: # (![]&#40;https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_15.png&#41;)
-
-
-
-
-> 在未签署合同的时候，还可以支持临时合同文件的管理和上传（您可以拿我们的来当成云盘了，哈哈）
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/21.png)
-
-
-
-> 同时目前支持批量签署合同能力（主要是针对在一对多的签署场景当中，如：甲方信息固定，乙方信息不固定的业务场景）
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/23.png)
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/24.png)
-
-
-
-> 参与签署的人可以收到签署的短信信息提醒，在有效期内点击链接可以到H5或者小程序里面进行签署，所有签署人都签署完成之后有短信通知提示
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/6.png)
-
-
-
-#### 用户端（Web端）
-
-> Web 用户端，可以在后台对自己的合同进行相应的签署和查看
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/a1.png)
-
-
-
-> Web 用户端，支持在线签署合同，点击“签署”跳转到相应的签署页面
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/a2.png)
-
-
-
-> 手写签署，以及上传自己专属的个性签名信息 
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/a3.png)
-
-
-
-
-> Web 用户端支持，“个人” 和 “企业” 不同身份的切换
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/a4.png)
-
-
-
-
-> 作为企业管理人员，在Web端也能管理成员
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/a5.png)
-
-
-
-> 输入"手机号"和“姓名”即可完成成员增加
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/a7.png)
-
-
-
-> 同时Web端还能根据合同签署的状态“我发起的”、“待我处理”、“待他人处理“、”已完成“、“已拒签”、“已撤销”、“已逾期” 进行查询
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/a6.png)
-
-
-
-
-> 作为企业管理人员或者个人在Web端能查看到所有已经签署过并且归档的合同，支持在线查看，下载等操作
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/a8.png)
-
-
-
-
-> Web管理端还支持账号的更换和密码的修改等操作
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/a9.png)
-
-
-#### 平台端
-
-***数据概况***
-
-> 了解合同平台下所有使用者的基本信息，并对相应的数据进行综合概览汇总
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/d1.png)
-
-
-
-***个人认证***
-
-> 平台可查看到脱敏后的所有个人认证的基本信息
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/d2.png)
-
-
-
-***企业认证***
-
-> 平台可查看到脱敏后的所有企业认证的基本信息
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/d3.png)
-
-
-
-***销售订单***
-
-> 平台可查看所有合同销售情况
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/d5.png)
-
-
-
-***消耗服务***
-
-> 平台可查看到所有合同的使用和消费情况
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/d6.png)
-
-
-
-***价格设置***
-
-> 平台可根据自己合同运营情况设置相应的价格，可单独对企业和个人的合同购买金额进行设置
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/d7.png)
-
-
-
-***账号管理***
-
-> 平台根据不同角色进行相应的用户权限设置，不同的用户有不同的管理权限
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/d8.png)
-
-
-
-
-
-***横版分类***
-
-> 新增运营平台可独立运营自己的合同模板，让平台管理更加灵活更方便，运营平台建立起了合同模板之后，所有合同用户和企业都可以享受到运营平台提前设置好的合同模板
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/d9.png)
-
-[//]: # (![]&#40;https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_admin_09.png&#41;)
-
-
-
-> 在设置合同横版的时候，可提前设置好该模板预设好的签署方“个人”、“企业”，目前单个横版最多支持10个签署对象
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/d0.png)
-
-[//]: # (![]&#40;https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_admin_12.png&#41;)
-
-
-
-> 合同模板支持动态设置里面的参数信息，也可以提前预设一些参数信息，从而大大的增加了合同的灵活性
-
-![](https://babyedu.oss-cn-chengdu.aliyuncs.com/gitee/d10.png)
-
-
-
-
-
-
-
-### 最近更新
-
-##### V2.1.0 更新日志
-
-- [x] 【新增】内容资讯模块。
-- [x] 【新增】后台用户合同分配
-- [x] 【修复】已知bug，用户实名认证失败。
-- [x] 【新增】AI对话功能，可生成合同模版 --开发中
-- [x] 【新增】企业实名认证优化 --更新中
-
-
-##### V2.0.0 更新日志
-
-- [x] 【新增】新增全新风格的页面，提升整体用户体验
-- [x] 【新增】支持一对多批量发起合同，提升发起效率（用于一个主体对应多个不同签署人的业务地场景）
-- [x] 【新增】支持个性签名，用户可定义自己的签名样式
-- [x] 【新增】智能快速合同生成（通过手机拍照或者上传图片即可快速生成一份在线合同）
-- [x] 【新增】草稿箱，解决因为某些事情打断了签署工作
-- [x] 【新增】发起人催办，确保合同能在有效期内完成签署
-- [x] 【新增】文件管理（用于临时保存文件，您也可以拿我们的来当云盘了，哈哈）
-- [x] 【新增】合同详情页面便捷分享按钮，能快速分享给待签署人
-- [x] 【优化】其它体验
-- [x] 【修复】已知bug
-
-
-
-##### V1.5.5 更新日志
-
-- [x] 【新增】支持实名认证环节加入“人证对比”
-- [x] 【新增】签署完成后短信通知参与签署方
-- [x] 【新增】支持签署方可以不是发起方（可代发起合同）
-- [x] 【优化】企业与个人身份证切换体验
-
-- [x] 【优化】用户体验
-- [x] 【修复】已知bug
-
-
-
-##### V1.5.0 更新日志
-- [x] 【新增】非证据链合同签署（可用于企业内部日常审批使用）
-- [x] 【优化】印章管理
-- [x] 【优化】企业实名认证逻辑
-- [x] 【优化】证据链多渠道签署逻辑
-- [x] 【升级】第三方插件版本
-- [x] 【优化】隐私保护协义内容
-- [x] 【优化】用户体验
-- [x] 【修复】已知bug
-
-
-
-
-##### V1.1.2 更新日志
-
-- [x] 【新增】支持后台管理可查看企业合同情况
-- [x] 【优化】用户体验
-- [x] 【修复】已知bug
-
-
-
-##### V1.1.1 更新日志
-
-- [x] 【优化】企业和个人电子合同套餐份数
-- [x] 【优化】用户体验
-- [x] 【修复】已知bug
-
-
-
-##### V1.1.0 更新日志
-
-- [x] 【新增】丰富多样的合同模板
-- [x] 【新增】应用内合同签署，提升用户体验
-- [x] 【新增】签署方短信通知，避免消息不及时
-- [x] 【优化】用户体验
-- [x] 【修复】已知bug
-
-
-
-
-[//]: # (### 技术文档)
-
-[//]: # ()
-[//]: # (* 在线演示：)
-
-[//]: # (![]&#40;https://leepm.oss-cn-beijing.aliyuncs.com/public-images/yihetong_qrcode.png&#41;)
-
-
-### 交流合作
-
-
-
-
-
-如果你有任何对 Mini-Contract 产品上的想法、意见或建议，或商务上的合作需求，请扫码添加 Mini-Contract 项目团队进一步沟通：
-![输入图片说明](https://resource.yi-types.com/eSign/hx_qrcode_git.jpg)
+![Contract.Pro 项目团队联系方式](https://resource.yi-types.com/eSign/hx_qrcode_git.jpg)
 
 ## 产品认可
 
 > 从产品对外开源之后，得到了特别多朋友们的关注和认可最终我们也达成了一些深度的合作，目前我们已经合作超过200+以上的合作伙伴，这当中有“企业”的朋友也有一些“个人独立开发者”
-
-
 
 ## 给个鼓励
 

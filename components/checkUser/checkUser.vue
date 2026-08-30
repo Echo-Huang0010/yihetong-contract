@@ -17,7 +17,7 @@
             class="icon-checkbox"
             type="checkbox-filled"
             size="24"
-            color="#3277FF"
+            color="#FF6565"
           ></uni-icons>
         </view>
         <!-- 企业 -->
@@ -43,7 +43,7 @@
             class="icon-checkbox"
             type="checkbox-filled"
             size="24"
-            color="#3277FF"
+            color="#FF6565"
           ></uni-icons>
         </view>
       </view>
@@ -113,8 +113,10 @@ export default {
         this.contractCheckedIndex === -1 ? '' : this.contract[this.contractCheckedIndex].companyId;
       userInfoApi
         .IdentitySwitching({ companyId, identityType: companyId ? 1 : 0 })
-        .then(res => {
-          this.uinfo();
+        .then(() => {
+          return this.uinfo({ silent: false });
+        })
+        .then(() => {
           this.$refs.popupRef.close();
         })
         .catch(() => {
@@ -158,6 +160,7 @@ export default {
   background: #ffffff;
   border-radius: 12rpx 12rpx 0px 0px;
   position: relative;
+  margin-bottom: 80rpx;
   .list {
     overflow-y: scroll;
     max-height: 40vh;

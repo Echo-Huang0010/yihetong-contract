@@ -20,6 +20,17 @@ export function getCode(data) {
   return request({
     url: `/u/${data.phone}/verification-code/${data.type}`,
     method: 'GET',
+    data: {
+      challengeToken: data.challengeToken,
+      challengeAnswer: data.challengeAnswer,
+    },
+  });
+}
+
+export function getSmsLoginChallenge(phone) {
+  return request({
+    url: `/u/${phone}/sms-login-challenge`,
+    method: 'GET',
   });
 }
 
@@ -47,11 +58,12 @@ export function reset(data) {
     data,
   });
 }
-export function info() {
+export function info(options = {}) {
   // 查询个人信息
   return request({
     url: `/v3/u/info`,
     method: 'GET',
+    silent: options.silent === true,
   });
 }
 export function appletsLogin(data) {
@@ -60,6 +72,7 @@ export function appletsLogin(data) {
     url: `/u/third-login`,
     method: 'POST',
     data,
+    silent: true,
   });
 }
 
@@ -69,6 +82,7 @@ export function bind(data) {
     url: `/u/third-bind`,
     method: 'POST',
     data,
+    silent: true,
   });
 }
 

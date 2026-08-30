@@ -8,7 +8,7 @@
 <template>
   <view class="page-base">
     <view class="info-box flex-col">
-      <image class="icon" src="@/static/no-access.png"></image>
+      <image class="icon" src="/static/legacy/asset-origin-a/images/no-access.png"></image>
       <view class="title">您不能查看该文件</view>
       <view class="tips">请与发起人确认手机号是否一致</view>
       <navigator hover-class="none" open-type="switchTab" url="/pages/home/index" class="btn">
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import setting from '@/static/config/setting.js';
+import setting from '@/config/setting.js';
 export default {
   data() {
     return {};
@@ -50,7 +50,7 @@ export default {
     }
     .tips {
       margin-top: 26rpx;
-      color: #3277ff;
+      color: #FF6565;
     }
   }
   .btn {
@@ -58,7 +58,7 @@ export default {
     width: 360rpx;
     height: 82rpx;
     border-radius: 8rpx;
-    background: #3277ff;
+    background: #FF6565;
     display: flex;
     align-items: center;
     justify-content: center;

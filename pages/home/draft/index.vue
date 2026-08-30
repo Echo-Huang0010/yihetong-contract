@@ -39,8 +39,10 @@
     <loadMore v-if="loading"></loadMore>
     <baseline v-if="showBaseline"></baseline>
     <view v-if="noData" class="contailner-empty flex-col">
-      <BaseEmpty massage="暂无数据~"></BaseEmpty>
-      <view class="btn-primary" @click="navigateTo('/pages/contract/sign/index')">签署合同</view>
+      <BaseEmpty :massage="token ? '暂无草稿~' : '登录后查看草稿~'"></BaseEmpty>
+      <view class="btn-primary" @click="navigateTo('/pages/contract/sign/index')">
+        {{ token ? '签署合同' : '立即登录' }}
+      </view>
     </view>
   </view>
 </template>
@@ -67,7 +69,7 @@ export default {
     showBaseline() {
       return !this.hasMore && !this.loading && this.params.pageNum > 1;
     },
-    ...mapState(['token']),
+    ...mapState(['token', 'brandConfig']),
   },
   onShow() {
     this.init();
@@ -85,6 +87,10 @@ export default {
         this.params.pageNum = 1;
         this.loading = true;
         this.getData();
+      } else {
+        this.contract = [];
+        this.hasMore = false;
+        this.loading = false;
       }
     },
     getData() {
@@ -214,4 +220,15 @@ export default {
     border-radius: 8rpx;
   }
 }
+
+/* #ifdef H5 */
+.contailner-empty {
+  margin-top: 24rpx;
+  padding-top: 18rpx;
+
+  .btn-primary {
+    margin-top: 48rpx;
+  }
+}
+/* #endif */
 </style>

@@ -25,6 +25,8 @@ pnpm-debug.log*
 # Lock files
 pnpm-lock.yaml
 
+.specstory
+
 # Yarn v2
 .pnp.*
 .yarn/cache

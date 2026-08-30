@@ -37,6 +37,12 @@ export default {
         });
     },
     share() {
+      // #ifdef H5
+      if (this.contractData && this.contractData.url && typeof window !== 'undefined') {
+        window.open(this.contractData.url, '_blank');
+      }
+      return;
+      // #endif
       const that = this;
       uni.downloadFile({
         url: this.contractData.url,

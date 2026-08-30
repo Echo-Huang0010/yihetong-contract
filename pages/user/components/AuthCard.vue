@@ -3,7 +3,7 @@
     <image src="/static/auth-icon.png" class="icon"></image>
     <view class="text">
       您还未认证，实名认证后即可
-      <text class="bold">获赠3份合同</text>
+      <text class="bold">{{ authGiftText }}</text>
     </view>
     <navigator url="/pages/user/personal/Certification" hover-class="none" class="btn">
       去认证
@@ -12,7 +12,24 @@
   </view>
 </template>
 
-<script></script>
+<script>
+import { mapState } from 'vuex';
+
+export default {
+  computed: {
+    ...mapState(['brandConfig']),
+    authGiftText() {
+      const count = Number(
+        this.brandConfig && this.brandConfig.personalRegisterGiftContractCount
+      );
+      if (Number.isFinite(count) && count > 0) {
+        return `获赠${count}份合同`;
+      }
+      return '使用完整功能';
+    },
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 .card {

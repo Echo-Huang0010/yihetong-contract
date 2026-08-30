@@ -1,5 +1,6 @@
 {
-  "pages": [{
+  "pages": [
+    {
       "path": "pages/index/index",
       "style": {
         "navigationBarTitleText": "",
@@ -9,7 +10,8 @@
     {
       "path": "pages/home/index",
       "style": {
-        "navigationBarTitleText": ""
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
       }
     },
     {
@@ -20,273 +22,33 @@
       }
     },
     {
-      "path": "pages/contract/noAccess/index",
-      "style": {
-        "navigationBarTitleText": ""
-      }
-    },
-    {
-      "path": "pages/contract/sign/drawSign",
-      "style": {
-        "navigationBarTitleText": "创建个人签名"
-      }
-    },
-    {
-      "path": "pages/contract/detail/index",
-      "style": {
-        "navigationBarTitleText": "合同详情",
-        "enablePullDownRefresh": true
-      }
-    },
-    {
-      "path": "pages/contract/revoke/index",
-      "style": {
-        "navigationBarTitleText": "撤销合同",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/contract/sign/template",
-      "style": {
-        "navigationBarTitleText": "发起签署",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/contract/sign/index",
-      "style": {
-        "navigationBarTitleText": "发起签署",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
       "path": "pages/user/index",
       "style": {
         "navigationBarTitleText": "我的",
         "enablePullDownRefresh": false
       }
     },
-
     {
-      "path": "pages/user/company/myCompany",
+      "path": "pages/ai/index",
       "style": {
-        "navigationBarTitleText": "我的企业",
-        "enablePullDownRefresh": true
+        "navigationBarTitleText": "服务助手",
+        "enablePullDownRefresh": false,
+        "backgroundColor": "#E4EEFF",
+        "backgroundColorTop": "#E4EEFF",
+        "backgroundColorBottom": "#E4EEFF"
       }
     },
-
     {
-      "path": "pages/user/company/searchCompany",
+      "path": "pages/ai/report/index",
       "style": {
-        "navigationBarTitleText": "搜索企业",
-        "enablePullDownRefresh": true
-      }
-    },
-
-    {
-      "path": "pages/user/personal/searchPerson",
-      "style": {
-        "navigationBarTitleText": "添加个人",
-        "enablePullDownRefresh": true
-      }
-    },
-
-    {
-      "path": "pages/user/company/companySeal",
-      "style": {
-        "navigationBarTitleText": "企业印章",
+        "navigationBarTitleText": "企业报告",
         "enablePullDownRefresh": false
       }
     },
-    {
-      "path": "pages/user/setting/changeIdentity",
-      "style": {
-        "navigationBarTitleText": "切换身份",
-        "enablePullDownRefresh": true
-      }
-    },
-
-    {
-      "path": "pages/user/file/fileManage",
-      "style": {
-        "navigationBarTitleText": "文件管理",
-        "enablePullDownRefresh": true
-      }
-    },
-    {
-      "path": "pages/user/personal/Certification",
-      "style": {
-        "navigationBarTitleText": "个人认证",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/user/personal/camera",
-      "style": {
-        "navigationBarTitleText": "",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/user/personal/CertificationThree",
-      "style": {
-        "navigationBarTitleText": "个人认证",
-        "enablePullDownRefresh": false
-      }
-    },
-
-    {
-      "path": "pages/user/package/comboDetails",
-      "style": {
-        "navigationBarTitleText": "套餐详情",
-        "enablePullDownRefresh": true
-      }
-    },
-    {
-      "path": "pages/user/setting/Privacy",
-      "style": {
-        "navigationBarTitleText": "隐私政策",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/user/setting/password",
-      "style": {
-        "navigationBarTitleText": "忘记密码",
-        "enablePullDownRefresh": false
-      }
-    },
-
     {
       "path": "pages/login/login",
       "style": {
         "navigationBarTitleText": "登录",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/user/company/create",
-      "style": {
-        "navigationBarTitleText": "创建企业",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/user/company/addSeal",
-      "style": {
-        "navigationBarTitleText": "创建企业印章",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/user/company/Certification",
-      "style": {
-        "navigationBarTitleText": "企业认证",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/user/package/buy",
-      "style": {
-        "navigationBarTitleText": "购买套餐",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/user/createUser/index",
-      "style": {
-        "navigationBarTitleText": "添加个人",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/user/createUser/addPerson",
-      "style": {
-        "navigationBarTitleText": "自定义创建",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/user/company/addCompany",
-      "style": {
-        "navigationBarTitleText": "添加企业",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/user/company/removeComfirm",
-      "style": {
-        "navigationBarTitleText": "确认移除",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/user/company/authorize",
-      "style": {
-        "navigationBarTitleText": " ",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/home/contractTemplate/index",
-      "style": {
-        "navigationBarTitleText": "合同范本",
-        "enablePullDownRefresh": true
-      }
-    },
-    {
-      "path": "pages/user/companyMembers/index",
-      "style": {
-        "navigationBarTitleText": "企业成员",
-        "enablePullDownRefresh": true
-      }
-    },
-    {
-      "path": "pages/user/companyMembers/createMember",
-      "style": {
-        "navigationBarTitleText": "添加成员",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/user/companyMembers/sarManage",
-      "style": {
-        "navigationBarTitleText": "成员印章管理",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/contract/sign/signByTemplate",
-      "style": {
-        "navigationBarTitleText": "发起签署",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/home/draft/index",
-      "style": {
-        "navigationBarTitleText": "草稿发起",
-        "enablePullDownRefresh": true
-      }
-    },
-    {
-      "path": "pages/user/mySign/index",
-      "style": {
-        "navigationBarTitleText": "个人签名",
-        "enablePullDownRefresh": true
-      }
-    },
-    {
-      "path": "pages/user/mySign/create",
-      "style": {
-        "navigationBarTitleText": "添加签名",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/user/file/shareFile",
-      "style": {
-        "navigationBarTitleText": "分享文件",
         "enablePullDownRefresh": false
       }
     }
@@ -296,20 +58,16 @@
     "selectedColor": "#ffffff",
     "backgroundColor": "#FFFFFF",
     "borderStyle": "white",
-    "list": [{
+    "list": [
+      {
         "text": "首页",
         "pagePath": "pages/home/index",
         "iconPath": "static/tabbar/t.png",
         "selectedIconPath": "static/tabbar/t.png"
       },
       {
-        "text": "合同模板",
-        "pagePath": "pages/home/contractTemplate/index",
-        "iconPath": "static/tabbar/t.png",
-        "selectedIconPath": "static/tabbar/t.png"
-      }, {
-        "text": "发起签署",
-        "pagePath": "pages/contract/sign/template",
+        "text": "服务助手",
+        "pagePath": "pages/ai/index",
         "iconPath": "static/tabbar/t.png",
         "selectedIconPath": "static/tabbar/t.png"
       },
@@ -332,5 +90,555 @@
     "navigationBarTitleText": " ",
     "navigationBarBackgroundColor": "#FFFFFF",
     "backgroundColor": "#F8F8F8"
-  }
+  },
+  "subPackages": [
+    {
+      "root": "pages/contract/noAccess",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": ""
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/contract/detail",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "合同详情",
+            "enablePullDownRefresh": true
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/contract/revoke",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "撤销合同",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/contract/video",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "签署视频录制",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/contract/sign",
+      "pages": [
+        {
+          "path": "template",
+          "style": {
+            "navigationBarTitleText": "发起签署",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "发起签署",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "signByTemplate",
+          "style": {
+            "navigationBarTitleText": "发起签署",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/contract/signByBatch",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "批量签署",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "success",
+          "style": {
+            "navigationBarTitleText": "批量签署成功",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/contract/audit",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "合同审查",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/contract/compare",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "合同比对",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/contract/approval",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "审批记录",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "detail",
+          "style": {
+            "navigationBarTitleText": "审批详情",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/user/mySign",
+      "pages": [
+        {
+          "path": "drawSign",
+          "style": {
+            "navigationBarTitleText": "创建个人签名"
+          }
+        },
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "印章管理",
+            "enablePullDownRefresh": true
+          }
+        },
+        {
+          "path": "createPersonal",
+          "style": {
+            "navigationBarTitleText": "添加签名",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "createCompany",
+          "style": {
+            "navigationBarTitleText": "添加企业签名",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/user/company",
+      "pages": [
+        {
+          "path": "myCompany",
+          "style": {
+            "navigationBarTitleText": "我的企业",
+            "enablePullDownRefresh": true
+          }
+        },
+        {
+          "path": "searchCompany",
+          "style": {
+            "navigationBarTitleText": "搜索企业",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "companySeal",
+          "style": {
+            "navigationBarTitleText": "企业印章",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "create",
+          "style": {
+            "navigationBarTitleText": "创建企业",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "addSeal",
+          "style": {
+            "navigationBarTitleText": "创建企业印章",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "Certification",
+          "style": {
+            "navigationBarTitleText": "企业认证",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "addCompany",
+          "style": {
+            "navigationBarTitleText": "添加企业",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "removeComfirm",
+          "style": {
+            "navigationBarTitleText": "确认移除",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "authorize",
+          "style": {
+            "navigationBarTitleText": " ",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/user/personal",
+      "pages": [
+        {
+          "path": "searchPerson",
+          "style": {
+            "navigationBarTitleText": "添加个人",
+            "enablePullDownRefresh": true
+          }
+        },
+        {
+          "path": "Certification",
+          "style": {
+            "navigationBarTitleText": "个人认证",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "camera",
+          "style": {
+            "navigationBarTitleText": "",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "CertificationThree",
+          "style": {
+            "navigationBarTitleText": "个人认证",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "authWaiting",
+          "style": {
+            "navigationBarTitleText": "认证状态",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/user/setting",
+      "pages": [
+        {
+          "path": "changeIdentity",
+          "style": {
+            "navigationBarTitleText": "切换身份",
+            "enablePullDownRefresh": true
+          }
+        },
+        {
+          "path": "Privacy",
+          "style": {
+            "navigationBarTitleText": "隐私政策",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "password",
+          "style": {
+            "navigationBarTitleText": "忘记密码",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/user/file",
+      "pages": [
+        {
+          "path": "fileManage",
+          "style": {
+            "navigationBarTitleText": "文件管理",
+            "enablePullDownRefresh": true
+          }
+        },
+        {
+          "path": "aiGenerate",
+          "style": {
+            "navigationBarTitleText": "生成合同",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "shareFile",
+          "style": {
+            "navigationBarTitleText": "分享文件",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/user/package",
+      "pages": [
+        {
+          "path": "comboDetails",
+          "style": {
+            "navigationBarTitleText": "套餐详情",
+            "enablePullDownRefresh": true
+          }
+        },
+        {
+          "path": "buy",
+          "style": {
+            "navigationBarTitleText": "购买套餐",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/user/createUser",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "添加个人",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "addPerson",
+          "style": {
+            "navigationBarTitleText": "自定义创建",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/user/companyMembers",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "企业成员",
+            "enablePullDownRefresh": true
+          }
+        },
+        {
+          "path": "createMember",
+          "style": {
+            "navigationBarTitleText": "添加成员",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "sarManage",
+          "style": {
+            "navigationBarTitleText": "成员印章管理",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/user/template",
+      "pages": [
+        {
+          "path": "document-list",
+          "style": {
+            "navigationBarTitleText": "文书模板",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "document-detail",
+          "style": {
+            "navigationBarTitleText": "文书详情",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "my-documents",
+          "style": {
+            "navigationBarTitleText": "合同文书",
+            "enablePullDownRefresh": true
+          }
+        },
+        {
+          "path": "my-document-detail",
+          "style": {
+            "navigationBarTitleText": "文书详情",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/user/invite",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "邀请用户"
+          }
+        },
+        {
+          "path": "transaction",
+          "style": {
+            "navigationBarTitleText": "历史提现"
+          }
+        },
+        {
+          "path": "commission-records",
+          "style": {
+            "navigationBarTitleText": "合同交易数据"
+          }
+        },
+        {
+          "path": "lower-users",
+          "style": {
+            "navigationBarTitleText": "分享用户数据"
+          }
+        },
+        {
+          "path": "share-records",
+          "style": {
+            "navigationBarTitleText": "合同份额记录"
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/home/contractTemplate",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "合同范本",
+            "enablePullDownRefresh": true
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/home/draft",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "草稿发起",
+            "enablePullDownRefresh": true
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/template",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "合同模板",
+            "enablePullDownRefresh": true
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/content",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "企业服务",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "list",
+          "style": {
+            "navigationBarTitleText": "内容列表",
+            "enablePullDownRefresh": true
+          }
+        },
+        {
+          "path": "detail",
+          "style": {
+            "navigationBarTitleText": "详情",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "selected",
+          "style": {
+            "navigationBarTitleText": "甄选内容",
+            "enablePullDownRefresh": true,
+            "navigationBarBackgroundColor": "#E4EEFF",
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "service-detail",
+          "style": {
+            "navigationBarTitleText": "服务详情"
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/user/agent",
+      "pages": [
+        {
+          "path": "apply",
+          "style": {
+            "navigationBarTitleText": "申请代理"
+          }
+        }
+      ]
+    }
+  ]
 }
+

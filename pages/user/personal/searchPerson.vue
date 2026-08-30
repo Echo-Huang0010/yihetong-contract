@@ -9,7 +9,7 @@
   <view class="page-base">
     <view class="search-box flex-ct">
       <view class="search flex-fs">
-        <uni-icons type="search" size="24" class="icon-search flex-ct" color="#3277FF"></uni-icons>
+        <uni-icons type="search" size="24" class="icon-search flex-ct" color="#FF6565"></uni-icons>
         <input
           class="flex-1 text-28 color-base"
           placeholder="请输入用户全名搜索"
@@ -60,7 +60,7 @@
 import userInfoApi from '@/api/api.js';
 import { info } from '@/api/login.js';
 import { mapState } from 'vuex';
-import setting from '@/static/config/setting.js';
+import setting from '@/config/setting.js';
 export default {
   data() {
     return {
@@ -114,7 +114,7 @@ export default {
       let prevPage = pages[pages.length - 2]; //上一个页面
       let object = {
         name: item.authName,
-        mobile: item?.mobile,
+        mobile: item && item.mobile,
       };
       prevPage.onShow(object);
       uni.navigateBack();
@@ -154,7 +154,6 @@ export default {
       // path: '/pages/index/index?id=' + this.contractId + '&uid=' + this.userInfo.id,
       // path: '/pages/user/company/Certification',
       path: '/pages/index/index',
-      imageUrl: 'https://resource.yi-types.com/eSign/esign.png',
     };
   },
   onReachBottom() {
@@ -232,7 +231,7 @@ export default {
     }
 
     .tag-auth__auth {
-      color: #3277ff;
+      color: #FF6565;
     }
 
     .tag-auth__enterauth {

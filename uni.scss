@@ -1,10 +1,10 @@
 /* 颜色变量 */
-$uni-color-primary: #3277ff; // #0975E0
-$uni-color-minor: #ffa45a;
-$uni-color-success: #4cd964;
-$uni-color-warning: #ff6b01;
-$uni-color-error: #dd524d;
-$uni-color-red: #3277ff;
+$uni-color-primary: #317CFF; // 保持原有蓝色系
+$uni-color-minor: #8e71c7; // 辅助色为紫色系
+$uni-color-success: #63e2b7;
+$uni-color-warning: #f2c97d;
+$uni-color-error: #e88080;
+$uni-color-red: #e88080;
 /* 文字基本颜色 */
 $uni-text-price: #e1251b; //基本色
 $uni-text-color: #333333; //基本色
@@ -16,7 +16,7 @@ $uni-text-color-disable: #c0c0c0;
 
 /* 背景颜色 */
 $uni-bg-color: #ffffff;
-$uni-bg-color-grey: #f8f8f8;
+$uni-bg-color-grey: #f0f4f9; // 更柔和的灰色
 $uni-bg-color-hover: #f1f1f1; //点击状态颜色
 $uni-bg-color-mask: rgba(0, 0, 0, 0.4); //遮罩颜色
 
@@ -40,7 +40,7 @@ $uni-img-size-lg: 40px;
 
 /* Border Radius */
 $uni-border-radius-sm: 2px;
-$uni-border-radius-base: 12rpx;
+$uni-border-radius-base: 16rpx; // 修改圆角为更圆润的风格
 $uni-border-radius-lg: 6px;
 $uni-border-radius-circle: 50%;
 

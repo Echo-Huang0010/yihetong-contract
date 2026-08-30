@@ -1,6 +1,6 @@
 <template>
 	<view class="loading flex-ct" v-if="showLoading">
-		<image src="/static/loading.gif" mode="widthFix"></image>
+		<image src="/static/legacy/asset-origin-a/images/loading.gif" mode="widthFix"></image>
 	</view>
 </template>
 

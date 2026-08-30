@@ -65,6 +65,14 @@ export function pay(data) {
   });
 }
 
+export function reconcilePaidOrder(outTradeNo) {
+  return request({
+    url: `/meal/v1/pay/reconcile?outTradeNo=${encodeURIComponent(outTradeNo)}`,
+    method: 'POST',
+    silent: true,
+  });
+}
+
 export function list2(data) {
   // 印章列表
   return request({
@@ -87,5 +95,38 @@ export function getSealAuthUrl(seal) {
   return request({
     url: `/v3/company/member/${seal.id}/sealAuthUrl/${seal.sealId}`,
     method: 'GET',
+  });
+}
+
+export function addSeal(data) {
+  // 新增印章
+  return request({
+    url: `/v3/company/member/addSeal`,
+    method: 'POST',
+    data,
+  });
+}
+export function deleteSeal(sealId) {
+  // 删除印章
+  return request({
+    url: `/v3/company/member/deleteSeal/${sealId}`,
+    method: 'DELETE',
+  });
+}
+export function listSeal(query) {
+  // 印章列表
+  return request({
+    url: `/v3/company/member/sealList`,
+    method: 'GET',
+    data: query,
+  });
+}
+
+export function getSignUrl(data) {
+  // 印章列表
+  return request({
+    url: `/v5/contract/batch-sign`,
+    method: 'POST',
+    data,
   });
 }

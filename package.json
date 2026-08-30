@@ -1,0 +1,10 @@
+{
+  "name": "contract-pro-community",
+  "version": "2.0.0",
+  "private": false,
+  "license": "AGPL-3.0-only",
+  "dependencies": {
+    "qrcode": "^1.5.4",
+    "uqrcodejs": "^4.0.7"
+  }
+}

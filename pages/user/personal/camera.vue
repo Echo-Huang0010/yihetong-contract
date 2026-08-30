@@ -7,7 +7,7 @@
           <cover-image
             v-if="!showCamera"
             class="cover-image"
-            src="https://static.secee.tech/static/mp-weixin/evaluate/camera-cover.png"
+            src="/static/legacy/asset-origin-b/static/mp-weixin/evaluate/camera-cover.png"
             style="position: relative; width: 100%; height: 750rpx; display: block"
           ></cover-image>
           <camera
@@ -20,7 +20,7 @@
           >
             <cover-image
               class="cover-image"
-              src="https://static.secee.tech/static/mp-weixin/evaluate/camera-cover.png"
+              src="/static/legacy/asset-origin-b/static/mp-weixin/evaluate/camera-cover.png"
             ></cover-image>
           </camera>
           <view style="height: 120rpx">

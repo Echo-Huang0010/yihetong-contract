@@ -1,0 +1,9 @@
+{
+  "inquiry_method": [{
+    "label": "公开",
+    "value": 1
+  }, {
+    "label": "定向",
+    "value": 2
+  }]
+}

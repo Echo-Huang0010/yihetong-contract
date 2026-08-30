@@ -1,8 +1,8 @@
-import config from '@/static/config/index.js';
+import config from '@/config/index.js';
 import store from '../store/index.js';
 export function upload(file, url = '/upload/v1') {
   // #ifdef MP-WEIXIN
-  url = config.baseUrl + url;
+  url = config.getBaseUrl() + url;
   // #endif
   let Quality = 80;
   if (file.size > 2097152) {
@@ -23,9 +23,13 @@ export function upload(file, url = '/upload/v1') {
       title: '文件最大20M',
       icon: 'none',
     });
-    resolve(false);
-    return;
+    return Promise.resolve(false);
   }
+  // #ifdef H5
+  if (!/^https?:\/\//i.test(url)) {
+    url = config.getBaseUrl() + url;
+  }
+  // #endif
   return new Promise((resolve, reject) => {
     // #ifdef H5
     uni.uploadFile({
@@ -44,7 +48,7 @@ export function upload(file, url = '/upload/v1') {
           else {
             reject();
             uni.showToast({
-              title: uploadFileRes.data?.message,
+              title: uploadFileRes.data && uploadFileRes.data.message,
               icon: 'none',
             });
           }
@@ -56,8 +60,12 @@ export function upload(file, url = '/upload/v1') {
           });
         }
       },
-      fail() {
-        reject();
+      fail(res) {
+        reject(res);
+        uni.showToast({
+          title: '上传失败，请检查网络',
+          icon: 'none',
+        });
       },
     });
     // #endif
@@ -88,7 +96,7 @@ export function upload(file, url = '/upload/v1') {
               else {
                 reject();
                 uni.showToast({
-                  title: uploadFileRes.data?.message,
+                  title: uploadFileRes.data && uploadFileRes.data.message,
                   icon: 'none',
                 });
               }
@@ -124,7 +132,7 @@ export function upload(file, url = '/upload/v1') {
               else {
                 reject();
                 uni.showToast({
-                  title: uploadFileRes.data?.message || '上传失败！',
+                  title: (uploadFileRes.data && uploadFileRes.data.message) || '上传失败！',
                   icon: 'none',
                 });
               }
@@ -136,8 +144,12 @@ export function upload(file, url = '/upload/v1') {
               });
             }
           },
-          fail() {
-            reject();
+          fail(res) {
+            reject(res);
+            uni.showToast({
+              title: '上传失败，请检查网络',
+              icon: 'none',
+            });
           },
         });
       },

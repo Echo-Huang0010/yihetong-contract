@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import config from '@/static/config/index.js';
-import netConfig from '@/static/config/net.config.js';
+import config from '@/config/index.js';
+import netConfig from '@/config/net.config.js';
 var that;
 export default {
   name: 'SwitchEnvironment',
@@ -39,12 +39,21 @@ export default {
               return k.name + ':' + k.url;
             }),
             success: function (res) {
-              config.baseUrl = that.requestList[res.tapIndex].url;
+              const selected = that.requestList[res.tapIndex];
+              config.applyClientRuntimeConfig({ apiBaseUrl: selected.url });
+              try {
+                uni.setStorageSync('clientConfig', {
+                  ...(uni.getStorageSync('clientConfig') || {}),
+                  apiBaseUrl: config.getBaseUrl(),
+                });
+              } catch (error) {
+                // Storage can be unavailable in restricted H5 containers.
+              }
               config.manageAdminUrl =
-                netConfig.manageAdminUrls[that.requestList[res.tapIndex].name] ||
+                netConfig.manageAdminUrls[selected.name] ||
                 netConfig.manageAdminUrls['dev'];
               uni.showToast({
-                title: '已切换为' + that.requestList[res.tapIndex].name.replace('Url', '') + '环境',
+                title: '已切换为' + selected.name.replace('Url', '') + '环境',
                 icon: 'none',
               });
               setTimeout(() => {

@@ -1,6 +1,7 @@
 <template>
   <view
     class="flex-sb file-card"
+    @click="handleClick"
     :style="{
       borderBottom: border ? '1px solid #F6F6F6' : 'none',
       background: bg,
@@ -49,6 +50,11 @@ export default {
   },
   data() {
     return {};
+  },
+  methods: {
+    handleClick(event) {
+      this.$emit('click', event);
+    },
   },
 };
 </script>

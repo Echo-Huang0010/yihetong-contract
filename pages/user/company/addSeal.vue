@@ -93,7 +93,7 @@ export default {
     getEToken(code) {
       getToken({
         redirectUrl: '/pages/user/company/addSeal?id=' + that.currentCompany.id + '&auth=1', // 认证完成后跳转页面
-        // redirectUrl: encodeURIComponent('https://esign.yi-types.com/seal.html?type=2&id='+that.currentCompany.id), // 认证完成后跳转页面
+        // redirectUrl: encodeURIComponent('https://api.example.invalid/seal.html?type=2&id='+that.currentCompany.id), // 认证完成后跳转页面
         code: code,
         refreshToken: '',
       }).then(res => {
@@ -106,7 +106,7 @@ export default {
         redirectUrl: '/pages/user/company/addSeal?id=' + that.currentCompany.id + '&auth=1', // 认证完成后跳转页面
         account: this.userInfo.phone, // 账号标识（手机号或者邮箱）
         receiveUrlMobileNo: this.userInfo.phone, // 接收认证链接短信通知的手机号
-        receiveUrlEmail: 'bestjhh@163.com', // 接收认证链接通知的邮件地址
+        receiveUrlEmail: '', // 如服务商要求邮件通知，请由部署配置提供
         subjectName: that.currentCompany.name, // 组织名称
         subjectCertNo: that.currentCompany.creditCode, //统一信用代码
         organizationType: 1, // 组织机构类型 1 - 企业类,2 - 个体工商户,99 - 其他组织
@@ -154,7 +154,7 @@ export default {
                     content: '审核通过后即可使用，请您耐心等待！',
                     confirmText: '好的',
                     cancelText: '取消',
-                    confirmColor: '#3277FF',
+                    confirmColor: '#FF6565',
                     cancelColor: '#999999',
                     success: function (res) {
                       uni.redirectTo({

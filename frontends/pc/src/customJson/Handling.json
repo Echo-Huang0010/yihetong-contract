@@ -1,0 +1,284 @@
+{
+  "search": {
+    "type": 1
+  },
+  "windowListener": true,
+  "list": {
+    "title": "经办合同",
+    "getList": {
+      "requestUrl": "/mgt/v4/contract",
+      "requestType": "get",
+      "requestResult": {
+        "data": "data",
+        "transRules": [{
+            "old": "rows",
+            "new": "list"
+        }]
+      }
+    }
+  },
+  "detail": {
+    "title": "详情",
+    "getDetail": {
+      "requestUrl": "/mgt/v5/contract",
+      "paramsType": "link",
+      "requestParams": ["id"],
+      "requestType": "get"
+    },
+    "group": [
+      {
+        "title": "",
+        "id": 1,
+        "data": []
+      }
+    ]
+  },
+  "tabList": [
+    {
+      "label": "全部",
+      "value": {}
+    },
+    {
+      "label": "我发起的",
+      "value": {
+        "showStartWithMe": true
+      }
+    },
+    {
+      "label": "待我处理",
+      "value": {
+        "self": 1,
+        "state": 0
+      }
+    },
+    {
+      "label": "待他人处理",
+      "value": {
+        "self": 0,
+        "state": 0
+      }
+    },
+    {
+      "label": "已完成",
+      "value": {
+        "state": 1
+      }
+    },
+    {
+      "label": "已拒签",
+      "value": {
+        "state": 2
+      }
+    },
+    {
+      "label": "已撤销",
+      "value": {
+        "state": 3
+      }
+    },
+    {
+      "label": "已逾期",
+      "value": {
+        "state": 4
+      }
+    }
+  ],
+  "fieldList": [
+
+    {
+      "label": "合同名称",
+      "fieldName": "searchName",
+      "useName": "a-input",
+      "placeholder": "请输入合同名称",
+      "search": {
+        "sort": 0,
+        "defaultValue": ""
+      }
+    },
+    {
+      "label": "合同名称",
+      "fieldName": "name",
+      "useName": "a-input",
+      "placeholder": "请输入合同名称",
+      "list": {
+        "sort": 0,
+        "slot": true
+      },
+      "detail": {
+        "sort": 0,
+        "groupId": 1
+      }
+    },
+    {
+      "label": "发起方",
+      "fieldName": "initiatorName",
+      "useName": "a-input",
+      "list": {
+        "sort": 1,
+        "slot": true
+      },
+      "detail": {
+        "sort": 0,
+        "groupId": 1
+      }
+    },
+    {
+      "label": "发起时间",
+      "fieldName": "startTime",
+      "useName": "a-input",
+      "options": [],
+      "placeholder": "全部",
+      "list": {
+        "sort": 3,
+        "slot": true
+      },
+      "detail": {
+        "sort": 0,
+        "groupId": 1
+      }
+    },
+    {
+      "label": "签署时间",
+      "fieldName": "endTime",
+      "useName": "a-input",
+      "list": {
+        "sort": 5,
+        "slot": true
+      },
+      "detail": {
+        "sort": 0,
+        "groupId": 1
+      }
+    },
+    {
+      "label": "参与人",
+      "fieldName": "signers",
+      "useName": "a-input",
+      "list": {
+        "sort": 5,
+        "slot": true
+      },
+      "detail": {
+        "sort": 0,
+        "groupId": 1,
+        "show": {
+          "type": "Array",
+          "showField": "userName"
+        }
+      }
+    },
+    {
+      "label": "状态",
+      "fieldName": "state",
+      "useName": "a-select",
+      "options": [
+        {
+          "label": "待处理",
+          "value": 0,
+          "style": {
+            "color": "#ffc60a"
+          }
+        },
+        {
+          "label": "已完成",
+          "value": 1,
+          "style": {
+            "color": "#00A759"
+          }
+        },
+        {
+          "label": "已拒签",
+          "value": 2,
+          "style": {
+            "color": "red"
+          }
+        },
+        {
+          "label": "已撤销",
+          "value": 3
+        },
+        {
+          "label": "已逾期",
+          "value": 4,
+          "style": {
+            "color": "#FF5353"
+          }
+        },
+        {
+          "label": "流产",
+          "value": 5
+        }
+      ],
+      "list": {
+        "sort": 6,
+        "slot": true
+      },
+      "detail": {
+        "sort": 0,
+        "groupId": 1
+      }
+    },
+    {
+      "label": "",
+      "fieldName": "reason",
+      "useName": "my-textarea",
+      "placeholder": "请填写撤回原因，最多200个字",
+      "maxlength":200,
+      "showWordLimit": true,
+      "rules": [
+        { "required": true, "message": "撤回原因不能为空" }
+      ],
+      "signRevoke": {
+        "sort": 1
+      }
+    }
+  ],
+  "listOperates": [
+    {
+        "name": "签署",
+        "operate": "sign",
+        "link": {
+          "iframeH5": "/iframeH5",
+          "iframeParams": ["url"],
+          "params": ["signUrl"]
+        },
+        "show": [{
+          "fieldName": "canSign",
+          "value": true
+        }]
+    },
+    {
+        "name": "撤销",
+        "operate": "signRevoke",
+        "customModal": {
+          "msg": "确定撤回{name}吗？",
+          "msgParams": ["name"],
+          "requestUrl": "/mgt/v4/contract/{contractId}/revoke",
+          "requestType": "put",
+          "paramsType": "link",
+          "requestParams": [{
+            "fieldName": "id",
+            "transName": "contractId"
+          }]
+        },
+        "show": [{
+          "fieldName": "canRevoke",
+          "value": true
+        }]
+    },
+    {
+        "name": "查看",
+        "operate": "filePreview",
+        "link": {
+          "iframeH5": "/iframeH5",
+          "iframeParams": ["url"],
+          "params": ["signUrl"]
+        },
+        "show": [{
+          "fieldName": "canView",
+          "value": true
+        }]
+    }
+  ],
+  "batchOperates": []
+}

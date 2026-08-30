@@ -31,12 +31,50 @@ export function remove(data) {
   });
 }
 
-export function templateList(data) {
+// AI生成合同
+export function aiGenerateContract(data) {
+  return request({
+    url: `/ai/chat`,
+    method: 'POST',
+    data,
+  });
+}
+
+// 生成合同文档(PDF)
+export function generateContract(data) {
+  return request({
+    url: `/ai/generate-contract`,
+    method: 'POST',
+    data,
+  });
+}
+
+// 生成合同文档(Word)
+export function generateWordContract(data) {
+  return request({
+    url: `/ai/generate-word-contract`,
+    method: 'POST',
+    data,
+  });
+}
+
+export function templateList(data, options = {}) {
   // 签署模板列表
   return request({
     url: `/v1/contract/template`,
     method: 'GET',
     data,
+    ...options,
+  });
+}
+
+export function recommendedTemplateList(data, options = {}) {
+  // 首页推荐签署模板
+  return request({
+    url: `/v1/contract/template/recommended`,
+    method: 'GET',
+    data,
+    ...options,
   });
 }
 
@@ -77,5 +115,32 @@ export function imagesToPdf(data) {
     url: `/v1/contract-tools/images-to-pdf`,
     method: 'POST',
     data
+  });
+}
+
+// 合同审查
+export function auditDocument(data) {
+  return request({
+    url: `/ai/audit-document`,
+    method: 'POST',
+    data,
+  });
+}
+
+// 合同比对
+export function compareContracts(data) {
+  return request({
+    url: `/ai/contract-compare`,
+    method: 'POST',
+    data,
+  });
+}
+
+export function contractCompareHistory(data, options = {}) {
+  return request({
+    url: `/ai/contract-compare`,
+    method: 'GET',
+    data,
+    silent: options.silent === true,
   });
 }

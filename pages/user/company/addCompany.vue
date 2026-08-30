@@ -17,7 +17,7 @@
             <text>企业</text>
             <text>张三</text>
             <text>经办</text>
-            <text>13272651430</text>
+            <text>138****0000</text>
           </view>
         </view>
         <text class="iconfont icon-unCheck"></text>

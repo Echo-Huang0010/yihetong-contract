@@ -5,14 +5,24 @@
  * @LastEditTime: 2023-12-14 17:11:31
  * @Description:
  */
-import config from '@/static/config/index.js';
+import config from '@/config/index.js';
 import store from '../store/index.js';
+
+function readableMessage(value, fallback) {
+  if (value === null || value === undefined) return fallback;
+  const message = String(value).trim();
+  return !message || message.toLowerCase() === 'null' || message.toLowerCase() === 'undefined' ? fallback : message;
+}
 
 function request(obj) {
   var data = Object.assign({}, obj.data),
-    url = obj.url;
+    url = obj.url,
+    silent = obj.silent === true;
   // #ifdef MP-WEIXIN
-  url = config.baseUrl + obj.url;
+  url = config.getBaseUrl() + obj.url;
+  // #endif
+  // #ifdef H5
+  url = config.getBaseUrl() + obj.url;
   // #endif
   var headers = {
     'x-access-token': store.state.token,
@@ -24,12 +34,21 @@ function request(obj) {
       method: obj.method,
       data,
       dataType: 'json',
+      timeout: 2 * 60000,
       header: headers,
       success: function(res) {
+        if(res.header && res.header['content-type'] === 'image/jpeg'){
+            resolve(res.data);
+            return;
+        }
         if (res.data && res.data.flag) {
           resolve(res.data.data);
+        } else if (res.data && res.data.code === 0) {
+          resolve(res.data.data !== undefined ? res.data.data : res.data);
         } else {
-          if (res.data.code == 1000) {
+          const code = res.data && res.data.code;
+          const message = readableMessage(res.data && res.data.message, '请求失败');
+          if (code == 1000) {
             store.commit('setToken', '');
             uni.removeStorageSync('token');
             store.commit('setUserInfo', '');
@@ -37,7 +56,7 @@ function request(obj) {
               title: '异地登录提醒',
               content: '您的账号在其他设备登录，如非本人请及时更换密码！',
               confirmText: '去登录',
-              confirmColor: '#3277FF',
+              confirmColor: '#317CFF',
               showCancel: false,
               success: function(res) {
                 if (res.confirm) {
@@ -48,33 +67,49 @@ function request(obj) {
               },
             });
             reject();
-          } else if (res.data.code == 1010 || res.data.code == 1051) {
+          } else if (code == 1010 || code == 1051) {
             store.commit('setToken', '');
             uni.removeStorageSync('token');
             store.commit('setUserInfo', '');
-            // token过期
-            uni.reLaunch({
-              url: '/pages/login/login',
-            });
+            uni.showModal({
+                title: '登录失效提醒',
+                content: res.data.message,
+                confirmText: '去登录',
+                confirmColor: '#317CFF',
+                showCancel: true,
+                success: function(res) {
+                  if (res.confirm) {
+                    // token过期
+                    uni.reLaunch({
+                        url: '/pages/login/login',
+                    });
+                  }
+                },
+              });
+
             // this.$store.dispatch('login').then(res => {
             //   resolve(request(obj));
             // });
           } else {
-            reject();
-            uni.showToast({
-              title: res.data.message,
-              icon: 'none',
-              duration: 1500,
-            });
+            reject(res.data);
+            if (!silent) {
+              uni.showToast({
+                title: message,
+                icon: 'none',
+                duration: 1500,
+              });
+            }
           }
         }
       },
       fail: function(res) {
         reject();
-        uni.showToast({
-          title: '网络异常，请检查网络！',
-          icon: 'none',
-        });
+        if (!silent) {
+          uni.showToast({
+            title: '网络异常，请检查网络！',
+            icon: 'none',
+          });
+        }
       },
     });
   });

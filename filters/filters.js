@@ -49,7 +49,8 @@ export function stateHandle(state) {
       text: '流产'
     },
   ]
-  return states.find(i => i.state === state)?.text || ''
+  const match = states.find(i => i.state === state)
+  return match ? match.text : ''
 }
 export function duration(duration) {
   duration = duration || 0

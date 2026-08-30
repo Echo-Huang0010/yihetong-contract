@@ -1,0 +1,7 @@
+# Third-party notices
+
+Contract.Pro includes third-party open-source packages and frontend assets. Their copyrights and license terms remain with their respective owners.
+
+The repository provides `SBOM.spdx.json` and `DEPENDENCY_AND_ASSET_ORIGINS.json` as the machine-readable dependency and asset inventory. Package-level `LICENSE` files remain with the corresponding components.
+
+Before redistributing a modified build, review the lock files, SBOM and component notices for the exact version being distributed. Do not reuse third-party names, logos, certificates or promotional material as Contract.Pro endorsements.

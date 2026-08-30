@@ -66,7 +66,7 @@
 
 <script>
 import userInfoApi from '@/api/api.js';
-import { mapState } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import userInfo from '@/api/api.js';
 export default {
   data() {
@@ -85,6 +85,7 @@ export default {
     this.getEnterprises();
   },
   methods: {
+    ...mapActions(['uinfo']),
     getPerson() {
       this.person = this.userInfo;
       if (!this.person.companyId) return false;
@@ -111,14 +112,15 @@ export default {
           content: '确认选择当前身份吗?',
           confirmText: '确认',
           cancelText: '取消',
-          confirmColor: '#3277FF',
+          confirmColor: '#FF6565',
           cancelColor: '#999999',
           success: res => {
             console.log('item :', item)
             if (res.confirm) {
               userInfoApi
                 .IdentitySwitching({companyId:item.companyId, identityType: item.companyId ? 1 : 0})
-                .then(res => {
+                .then(() => this.uinfo({ silent: false }))
+                .then(() => {
                   uni.navigateBack({});
                 })
                 .catch(() => {
@@ -181,7 +183,7 @@ export default {
   }
 
   .tag-auth__auth {
-    color: #3277ff;
+    color: #FF6565;
   }
 
   .tag-auth__enterauth {

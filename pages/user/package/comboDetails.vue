@@ -52,7 +52,7 @@
             {{ item.name || '' }}
           </view>
           <view class="tag-status text-26 flex-ct color-primary" style="background: #ccddff">
-            {{ item.source == 0 ? '系统赠送' : '个人购买' }}
+            {{ item.source == 0 ? '系统赠送' : buyType }}
           </view>
         </view>
         <view class="date-box">
@@ -151,6 +151,9 @@ export default {
     showMealCount() {
       return this.MealCount ? this.MealCount.find(i => i.type === Number(this.current)) : '';
     },
+    buyType() {
+      return this.current == 0 ? '个人购买' : '企业购买';
+    },
   },
   methods: {
     getUinfo() {
@@ -189,7 +192,7 @@ export default {
         uni.showModal({
           content: '认证后才可购买套餐！',
           confirmText: '去认证',
-          confirmColor: '#3277FF',
+          confirmColor: '#FF6565',
           success: function (res) {
             if (res.confirm) {
               uni.navigateTo({
@@ -343,4 +346,5 @@ export default {
   border-radius: 8rpx;
   margin: 0 auto;
 }
+
 </style>

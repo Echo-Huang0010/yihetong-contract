@@ -5,7 +5,7 @@
       <view class="container-card">
         <view class="title bold text-28 color-base sign-box">
           <view>合同文件</view>
-          <!-- <uni-icons type="info" size="24" color="#3277FF" @click="showInfo"></uni-icons> -->
+          <!-- <uni-icons type="info" size="24" color="#FF6565" @click="showInfo"></uni-icons> -->
         </view>
         <FileItem
           :file="{
@@ -29,14 +29,21 @@
         </view>
         <view class="line-horizontal"></view>
         <view class="title bold text-28 color-base">签署截止日期</view>
-
-        <picker mode="date" :value="form.endTime" :start="start" @change="change" v-if="!reloading">
-          <view class="text-26 color-base flex-sb">
-            <view v-if="form.endTime">{{ form.endTime }}</view>
-            <view v-else class="text-26 color-grey">过期则无法签署</view>
+        <time-picker
+          showType="yearToMinute"
+          :begin-date="start"
+          :end-date="end"
+          @btnConfirm="e => (form.endTime = e.key + ':59')"
+          v-if="!reloading"
+        >
+          <!-- <picker mode="date" :value="form.endTime" :start="start" @change="change" v-if="!reloading"> -->
+          <view class="flex-sb">
+            <view class="text-26 color-base" v-if="form.endTime">{{ form.endTime }}</view>
+            <view v-else class="color-grey text-26">过期则无法签署</view>
             <uni-icons type="forward" size="15" color="#B3B3B3" class="flex-ct"></uni-icons>
           </view>
-        </picker>
+          <!-- </picker> -->
+        </time-picker>
       </view>
 
       <view class="flex-fs" style="margin-top: 32rpx">
@@ -118,6 +125,14 @@
               <label @click="tempItems[i].signers.splice(index, 1)">
                 <uni-icons type="trash" size="20" color="#dd524d"></uni-icons>
               </label>
+              <view class="contract-video-inline-switch" v-if="form.requireVideo">
+                <text class="text-24 color-grey-minor">录制</text>
+                <switch
+                  :checked="item.requireVideo"
+                  @change="e => setTemplateSignerRequireVideo(i, index, e.detail.value)"
+                  color="#317CFF"
+                />
+              </view>
             </view>
           </view>
 
@@ -155,6 +170,19 @@
         </view>
       </view>
 
+      <view class="container-card contract-video-card" style="margin-top: 32rpx;">
+        <view class="flex-sb" style="padding: 20rpx 0;">
+          <view>
+            <view class="text-28 bold color-base">签署前录制视频</view>
+            <view class="text-24 color-grey-minor">要求签署方签署前录制视频</view>
+          </view>
+          <switch :checked="form.requireVideo" @change="e => setFormRequireVideo(e.detail.value)" color="#317CFF" />
+        </view>
+        <view class="contract-video-empty" v-if="form.requireVideo">
+          <text class="text-24 color-grey-minor">开启后默认要求全部已添加签署方录制，可在每个签署方卡片中关闭。</text>
+        </view>
+      </view>
+
       <btn-fixed>
         <view class="flex-fs">
           <view
@@ -167,7 +195,7 @@
             <image src="/static/icon-draft.png"></image>
             <view>保存草稿</view>
           </view>
-          <view class="btn-next btn-primary" @click="submit">下一步</view>
+          <view class="btn-next btn-primary" @click="submit">{{ submitButtonText }}</view>
         </view>
       </btn-fixed>
     </view>
@@ -179,23 +207,31 @@
 var that;
 import { recent, getCompanyState } from '@/api/company.js';
 import { addTempStorage, templateDetail } from '@/api/file.js';
+import { approvalDetail, approvalConfig } from '@/api/contract-approval.js';
 import { save, edit, detail, del } from '@/api/draft.js';
-import initiator from './components/initiator';
-import config from '@/static/config/index.js';
+import config from '@/config/index.js';
 import { mapState, mapActions } from 'vuex';
 import userInfoApi from '@/api/api.js';
-import { addSigner } from './components/addSigner.vue';
+import addSigner from './components/addSigner.vue';
+import {
+  normalizeTemplateSignerId,
+  normalizeTemplateItems,
+  mergeApprovalSignerSnapshot,
+  findMissingTemplateSigner,
+} from '@/utils/templateSigner.js';
 // const FileSystemManager = wx.getFileSystemManager()
 export default {
-  components: { initiator, addSigner },
+  components: { addSigner },
   data() {
     return {
       start: '',
+      end: '',
       form: {
         ctId: '', // 合同模板id
         endTime: '',
         name: '',
         fileSize: 0,
+        requireVideo: true,
         items: [
           // {
           //   signers: [],
@@ -204,20 +240,31 @@ export default {
         ],
       },
       tempItems: [], // 没有组装为后端所需的格式
-      contractDetail: '',
+      contractDetail: {},
+      templateLoadError: '',
       reloading: true,
       fastClick: true,
+      DraftId: '',
+      requireVideoTouched: false,
       authObj: {},
       authCompanyObj: {},
       messageInfo: '', // 短信链接跳转信息
       handleIndex: [-1, -1], // 操作的索引值
       DraftId: '',
+      ApprovalId: '',
+      approvalRequired: false,
     };
   },
   computed: {
-    ...mapState(['userInfo']),
+    ...mapState(['userInfo', 'token', 'brandConfig']),
     forbidAddSigner() {
-      return this.tempItems.find(i => i.signers.length > 1);
+      return this.tempItems.find(i => Array.isArray(i.signers) && i.signers.length > 1);
+    },
+    submitButtonText() {
+      return this.approvalRequired ? '下一步：提交审批' : '下一步';
+    },
+    submittingTitle() {
+      return this.approvalRequired ? '准备提交审批...' : '发起中...';
     },
   },
   onShow(e) {
@@ -232,7 +279,8 @@ export default {
   onLoad(e) {
     that = this;
     uni.setStorageSync('signing', true);
-    const endTime = this.GetDateStr(1);
+    const endTime = this.GetDateStr(0);
+    that.end = this.GetDateStr(90).replace(' 23:59:59', '')
     // this.form.endTime = endTime;
     this.getCurrentState();
     if (that.userInfo.authentication && that.userInfo.companyAccountId) {
@@ -245,6 +293,7 @@ export default {
     }, 100);
     if (e.tid) {
       this.form.ctId = e.tid;
+      this.ApprovalId = e.approvalId || '';
       this.getTemplateDetail();
     }
     if (e.draftId) {
@@ -258,9 +307,14 @@ export default {
         const content = JSON.parse(res.content);
         console.log(content);
         this.form = content.form;
-        this.tempItems = content.tempItems;
+        this.tempItems = normalizeTemplateItems(content.tempItems);
+        this.requireVideoTouched = true;
         this.getTemplateDetail(true);
       });
+    },
+    setFormRequireVideo(value) {
+      this.requireVideoTouched = true;
+      this.form.requireVideo = value;
     },
     addSinger(signer) {
       const that = this;
@@ -274,48 +328,185 @@ export default {
         this.$refs.addSignerRef.open(1, signer.company.agentName ? signer.company : '', list);
       }
     },
-    getTemplateDetail(ByTemplate) {
-      templateDetail(this.form.ctId).then(res => {
-        res.signers = res.signers.map(i => {
-          if (i.signerType === 1) {
-            i.person = {
-              name: '',
-              mobile: '',
-            };
-          } else {
-            i.company = {
-              name: '',
-              agentName: '',
-              agentMobile: '',
-            };
-          }
-          return i;
+    async getTemplateDetail(ByTemplate) {
+      this.templateLoadError = '';
+      const res = await templateDetail(this.form.ctId);
+      if (!res) {
+        this.templateLoadError = '模板信息不存在，请返回重新选择模板';
+        uni.showToast({ title: this.templateLoadError, icon: 'none' });
+        return;
+      }
+      const pdfUrl = this.resolveTemplatePdfUrl(res);
+      if (!pdfUrl) {
+        this.templateLoadError = '模板PDF未生成，请联系管理员重新上传或转换模板文件';
+        uni.showModal({
+          title: '模板无法发起',
+          content: this.templateLoadError,
+          showCancel: false,
         });
-        res.components = res.components.map(i => {
-          i.signerBoxColor = res.signers.find(j => j.ctSignerId === i.ctSignerId).signerBoxColor;
-          i.value = '';
-          return i;
-        });
-        if (ByTemplate !== true) {
-          this.tempItems = res.signers.map(i => {
-            return {
-              signers: [],
-              ...i,
-            };
-          });
-          // this.form.signers = res.signers;
-          // this.form.components = res.components;
-          this.form.name = res.name;
-          this.form.pdfUrl = res.pdfUrl; // 用于预览
-          this.form.fileUrl = res.fileUrl; // 备用，暂时没用到
+      }
+      const templateSigners = Array.isArray(res.signers) ? res.signers : [];
+      const templateComponents = Array.isArray(res.components) ? res.components : [];
+      res.signers = normalizeTemplateItems(templateSigners).map(i => {
+        if (i.signerType === 1) {
+          i.person = {
+            name: '',
+            mobile: '',
+          };
+        } else {
+          i.company = {
+            name: '',
+            agentName: '',
+            agentMobile: '',
+          };
         }
-        this.contractDetail = res;
+        return i;
       });
+      res.components = templateComponents.map(i => {
+        const matchedSigner = res.signers.find(j =>
+          normalizeTemplateSignerId(j.ctSignerId) === normalizeTemplateSignerId(i.ctSignerId));
+        i.signerBoxColor = matchedSigner ? matchedSigner.signerBoxColor : '#317CFF';
+        i.value = '';
+        return i;
+      });
+      if (ByTemplate !== true) {
+        this.tempItems = normalizeTemplateItems(res.signers).map(i => {
+          return {
+            signers: [],
+            ...i,
+          };
+        });
+        this.form.name = res.name;
+        this.form.pdfUrl = pdfUrl;
+        this.form.fileUrl = res.fileUrl;
+
+        // 从本地存储获取外部参数
+        const externalParams = uni.getStorageSync('external_params');
+        // const externalParams = {type: 'cxs', id: '21'};
+        if(externalParams && externalParams.type && externalParams.id) {
+          const key = `${externalParams.type}:${externalParams.id}`;
+          try {
+            // 调用接口获取缓存数据
+            const response = await uni.request({
+              url: `${config.getBaseUrl()}/api/tc/v1/cache/${key}`,
+              method: 'GET'
+            });
+            if (response[1].data.code === 0 && response[1].data.data) {
+              const cacheData = response[1].data.data;
+
+              // 设置签署截止时间为当天23:59:59
+              const today = new Date();
+              const year = today.getFullYear();
+              const month = String(today.getMonth() + 1).padStart(2, '0');
+              const day = String(today.getDate()).padStart(2, '0');
+              this.form.endTime = `${year}-${month}-${day} 23:59:59`;
+
+              // 构造签署方数据并调用onChange方法
+              this.tempItems.forEach((item, index) => {
+                if (item.signerType === 1) {
+                  // 个人签署方
+                  const personData = {
+                    type: 0,
+                    person: {
+                      name: cacheData.b.name,
+                      mobile: cacheData.b.phone
+                    }
+                  };
+                  this.handleIndex = [index, -1];
+                  this.onChange(personData);
+                } else {
+                  // 历史版本曾在这里注入固定客户企业名称。该逻辑已注销：
+                  // 缓存仅包含经办人时，不能推断企业主体，必须由用户重新选择真实企业。
+                  console.warn('企业签署方缺少真实企业主体，已跳过历史缓存自动填充');
+                }
+              });
+            }
+          } catch (error) {
+            console.error('获取缓存数据失败:', error);
+          }
+        }
+      }
+      this.contractDetail = res;
+      this.contractDetail.pdfUrl = pdfUrl;
+      await this.loadApprovalConfig();
+      if (this.ApprovalId && ByTemplate !== true) {
+        await this.restoreApprovalSnapshot();
+      }
+    },
+    resolveTemplatePdfUrl(template) {
+      const pdfUrl = (template && template.pdfUrl) || '';
+      if (pdfUrl) return pdfUrl;
+      const fileUrl = (template && template.fileUrl) || '';
+      if (/\.pdf(\?|#|$)/i.test(fileUrl)) {
+        return fileUrl;
+      }
+      return '';
+    },
+    async loadApprovalConfig() {
+      this.approvalRequired = false;
+      if (!this.form.ctId) return;
+      try {
+        const approval = await approvalConfig(this.form.ctId, { silent: true });
+        this.approvalRequired = !!(approval && approval.requiresApproval);
+      } catch (e) {
+        this.approvalRequired = false;
+      }
+    },
+    async restoreApprovalSnapshot() {
+      const approval = await approvalDetail(this.ApprovalId);
+      const templateSigners = approval
+        ? (approval.templateSignersJson || approval.signersJson || approval.templateSigners)
+        : [];
+      const components = this.safeJson(approval && approval.componentsJson, []);
+      if (approval.contractName) {
+        this.form.name = approval.contractName;
+      }
+      if (approval.endTime) {
+        this.form.endTime = approval.endTime;
+      }
+      this.form.requireVideo = !!approval.requireVideo;
+      this.requireVideoTouched = true;
+      if (templateSigners) {
+        this.tempItems = mergeApprovalSignerSnapshot(this.tempItems, templateSigners)
+          .map(item => ({
+            ...item,
+            signers: item.signers.map(signer => ({
+              ...signer,
+              requireVideo:
+                signer.requireVideo !== undefined ? signer.requireVideo : this.form.requireVideo,
+            })),
+          }));
+      }
+      if (Array.isArray(components) && components.length) {
+        const valueMap = {};
+        components.forEach(component => {
+          if (component && component.id !== undefined) {
+            valueMap[String(component.id)] = component.value;
+          }
+        });
+        this.contractDetail.components = (this.contractDetail.components || []).map(component => ({
+          ...component,
+          value:
+            valueMap[String(component.id)] !== undefined
+              ? valueMap[String(component.id)]
+              : component.value,
+        }));
+      }
+    },
+    safeJson(text, fallback) {
+      if (!text) return fallback;
+      try {
+        return JSON.parse(text);
+      } catch (e) {
+        return fallback;
+      }
     },
     ...mapActions(['uinfo']),
     onChange(e) {
+      console.log('singaer :', e)
       const signer = JSON.parse(JSON.stringify(this.tempItems[this.handleIndex[0]]));
       delete signer.signers;
+      signer.requireVideo = this.form.requireVideo;
       if (e.type === 0) {
         if (this.handleIndex[1] === -1) {
           this.tempItems[this.handleIndex[0]].signers.push({
@@ -361,17 +552,17 @@ export default {
       // 1:需重新认证 (有authUrl直接跳转)
       // 3:认证中 (判断是否有authUrl，如果有就是认证到一半的用户，直接跳转authUrl继续认证即可，如果没有就是回调还没有回来，刷新认证状态即可)
       let flag = true;
-      switch (obj?.globalAuthState) {
+      switch (obj && obj.globalAuthState) {
         case 1:
-          if (obj?.authUrl) {
+          if (obj && obj.authUrl) {
             uni.showModal({
               content: `由于签署渠道变更，需要重新认证${type === 'person' ? '用户' : '企业'}`,
               confirmText: '去认证',
-              confirmColor: '#3277FF',
+              confirmColor: '#FF6565',
               success: function (res) {
                 if (res.confirm) {
                   uni.redirectTo({
-                    url: '/pages/user/company/authorize?path=' + encodeURIComponent(obj?.authUrl),
+                    url: '/pages/user/company/authorize?path=' + encodeURIComponent(obj && obj.authUrl),
                   });
                 }
               },
@@ -380,15 +571,15 @@ export default {
           }
           break;
         case 3:
-          if (obj?.authUrl) {
+          if (obj && obj.authUrl) {
             uni.showModal({
               content: `${type === 'person' ? '用户' : '企业'}认证中，请稍后再试`,
               confirmText: '继续认证',
-              confirmColor: '#3277FF',
+              confirmColor: '#FF6565',
               success: function (res) {
                 if (res.confirm) {
                   uni.redirectTo({
-                    url: '/pages/user/company/authorize?path=' + encodeURIComponent(obj?.authUrl),
+                    url: '/pages/user/company/authorize?path=' + encodeURIComponent(obj && obj.authUrl),
                   });
                 }
               },
@@ -398,7 +589,7 @@ export default {
             uni.showModal({
               content: `${type === 'person' ? '用户' : '企业'}认证中，请稍后再试`,
               confirmText: '刷新状态',
-              confirmColor: '#3277FF',
+              confirmColor: '#FF6565',
               success: function (res) {
                 if (res.confirm) {
                   if (type === 'person') {
@@ -419,6 +610,10 @@ export default {
       return flag;
     },
     saveDraft() {
+      if (this.templateLoadError || !this.form.pdfUrl) {
+        uni.showToast({ title: this.templateLoadError || '模板PDF未生成，暂不能保存草稿', icon: 'none' });
+        return;
+      }
       // 未认证
       if (!this.userInfo.authentication) {
         // this.common.showAuthModal(
@@ -440,7 +635,7 @@ export default {
         uni.showToast({ title: '截止时间不得小于当前时间', icon: 'none' });
         return;
       }
-      if (that.tempItems.find(i => !i.signers.length)) {
+      if (findMissingTemplateSigner(that.tempItems)) {
         uni.showToast({ title: '请添加签署方信息', icon: 'none' });
         return;
       }
@@ -485,18 +680,22 @@ export default {
     submit() {
       let personFlag = true;
       let companyFlag = true;
+      if (this.templateLoadError || !this.form.pdfUrl) {
+        uni.showToast({ title: this.templateLoadError || '模板PDF未生成，暂不能发起', icon: 'none' });
+        return;
+      }
       // 未认证
       if (!this.userInfo.authentication) {
         this.common.showAuthModal('?originType=sign');
         return;
       }
       // 检查个人globalAuthState
-      personFlag = that.checkGlobalAuthState(that?.authObj, 'person');
+      personFlag = that.checkGlobalAuthState(that && that.authObj, 'person');
       if (!personFlag) {
         return;
       }
       // 检查公司globalAuthState
-      companyFlag = that.checkGlobalAuthState(that?.authCompanyObj, 'company');
+      companyFlag = that.checkGlobalAuthState(that && that.authCompanyObj, 'company');
       if (!companyFlag) {
         return;
       }
@@ -513,7 +712,7 @@ export default {
           content: '剩余合同份数为0，请先购买套餐',
           confirmText: '购买',
           cancelText: '取消',
-          confirmColor: '#3277FF',
+          confirmColor: '#FF6565',
           cancelColor: '#999999',
           success: function (res) {
             if (res.confirm) {
@@ -536,9 +735,19 @@ export default {
         uni.showToast({ title: '截止时间不得小于当前时间', icon: 'none' });
         return;
       }
-      if (that.tempItems.find(i => !i.signers.length)) {
+      this.tempItems = normalizeTemplateItems(this.tempItems);
+      if (findMissingTemplateSigner(that.tempItems)) {
         uni.showToast({ title: '请添加签署方信息', icon: 'none' });
         return;
+      }
+      if (that.form.requireVideo) {
+        const selectedVideoSigner = that.tempItems.some(item =>
+          item.signers.some(signer => signer.requireVideo)
+        );
+        if (!selectedVideoSigner) {
+          uni.showToast({ title: '请至少选择一个需要录制视频的签署方', icon: 'none' });
+          return;
+        }
       }
       // 重新组装数据
       let items = [];
@@ -547,7 +756,8 @@ export default {
         console.log('一对多');
         items = maxItems.signers.map(k => {
           k['mutiple'] = false; // 是1
-          let otherSigners = this.tempItems.filter(l => l.ctSignerId !== k.ctSignerId);
+          let otherSigners = this.tempItems.filter(l =>
+            normalizeTemplateSignerId(l.ctSignerId) !== normalizeTemplateSignerId(k.ctSignerId));
           otherSigners = otherSigners.map(i => {
             i.signers[0]['mutiple'] = true; // 是多
             return i.signers[0];
@@ -573,9 +783,13 @@ export default {
       form.items = items;
       that.fastClick = false;
       uni.showLoading({
-        title: '发起中...',
+        title: this.submittingTitle,
       });
       console.log(form);
+
+      // 获取存储的外部参数
+      const externalParams = uni.getStorageSync('external_params');
+      // const externalParams = {type: 'cxs', id: '21'};
       addTempStorage({
         draftId: this.DraftId,
         type: 1,
@@ -586,11 +800,23 @@ export default {
       })
         .then(res => {
           if (that.DraftId) del(that.DraftId);
-          const path = encodeURIComponent(
+          let path = encodeURIComponent(
             config.manageAdminUrl + 'contract?token=' + uni.getStorageSync('token')
           );
+          console.log('externalParams :', externalParams)
+          // 如果有外部参数，添加到URL中
+
+
+          if(externalParams && externalParams.type && externalParams.id) {
+            const key = `${externalParams.type}:${externalParams.id}`;
+            path += encodeURIComponent(`&key=${key}`);
+            // 使用完参数后清除存储
+            uni.removeStorageSync('external_params');
+          }
+          let url = `/pages/user/company/authorize?path=${path}&title=合同预览`;
+          console.log('url :', url)
           uni.navigateTo({
-            url: `/pages/user/company/authorize?path=${path}&title=合同预览`,
+            url: url
           });
         })
         .finally(() => {
@@ -621,12 +847,26 @@ export default {
         this.authCompanyObj = res;
       });
     },
+    setTemplateSignerRequireVideo(itemIndex, signerIndex, value) {
+      this.$set(this.tempItems[itemIndex].signers[signerIndex], 'requireVideo', value);
+    },
     showInfo() {
       uni.showModal({
         showCancel: false,
         content: '签署文件最大5M，支持格式为pdf、doc、docx',
         title: '提示',
       });
+    },
+    getPdfDownloadUrl(url) {
+      const source = (url || '').trim();
+      if (!source || !/^https?:\/\//i.test(source)) {
+        return source;
+      }
+      const proxyPrefix = `${config.getBaseUrl()}/upload/v1/pdf`;
+      if (source.indexOf(proxyPrefix) === 0) {
+        return source;
+      }
+      return `${proxyPrefix}?url=${encodeURIComponent(source)}`;
     },
     openFile(url) {
       if (url) {
@@ -635,7 +875,10 @@ export default {
           title: '请稍等',
         });
         uni.downloadFile({
-          url: url,
+          url: this.getPdfDownloadUrl(url),
+          header: {
+            'x-access-token': this.token,
+          },
           success: function (res) {
             var filePath = res.tempFilePath;
             uni.openDocument({
@@ -653,14 +896,23 @@ export default {
         });
         // #endif
         // #ifdef H5
-        this.common.showToast('请在小程序端打开');
+        if (typeof window !== 'undefined') {
+          window.open(this.getPdfDownloadUrl(url), '_blank');
+        }
         // #endif
       } else {
-        // this.common.showToast('合同暂未签署完成');
+        uni.showToast({ title: '模板PDF未生成，暂不能预览', icon: 'none' });
       }
     },
   },
   watch: {
+    'form.requireVideo'(value) {
+      this.tempItems.forEach((item, itemIndex) => {
+        item.signers.forEach((signer, signerIndex) => {
+          this.$set(this.tempItems[itemIndex].signers[signerIndex], 'requireVideo', value);
+        });
+      });
+    },
     userInfo(value) {
       this.getCurrentState();
       if (value.authentication && value.companyAccountId) {
@@ -760,5 +1012,18 @@ export default {
   flex: 1;
   height: 88rpx;
   border-radius: 8rpx;
+}
+
+.contract-video-card {
+  .contract-video-empty {
+    padding: 0 0 20rpx;
+  }
+}
+
+.contract-video-inline-switch {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  margin-left: 16rpx;
 }
 </style>

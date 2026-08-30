@@ -1,6 +1,6 @@
 <template>
   <view class="page">
-    <image src="../../static/logo.png" mode="widthFix" class="logo"></image>
+    <image :src="setting.logoIcon" mode="widthFix" class="logo"></image>
     <view class="form-box">
       <view class="form-item flex-fs">
         <text class="iconfont icon-shouji"></text>
@@ -82,12 +82,14 @@ var that,
   timer = null,
   fastClick = true;
 import reg from '@/utils/reg.js'
+import setting from '@/config/setting.js';
 
 
 import { reset, getCode } from '@/api/login.js';
 export default {
   data() {
     return {
+      setting,
       passwordVisible: false,
       rePasswordVisible: false,
       form: {
@@ -234,7 +236,7 @@ export default {
       background-color: $uni-color-primary;
       white-space: nowrap;
     }
-    /deep/ {
+    ::v-deep {
       uni-button[type='primary'],
       uni-button[disabled][type='primary'] {
         background-color: $uni-color-primary;

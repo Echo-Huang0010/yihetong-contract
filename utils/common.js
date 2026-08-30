@@ -1,6 +1,34 @@
+let navigating = false;
+
+function unlockNavigation() {
+  setTimeout(() => {
+    navigating = false;
+  }, 260);
+}
+
 function navigateTo(url) {
+  if (!url || navigating) {
+    return;
+  }
+  navigating = true;
   uni.navigateTo({
-    url: url
+    url: url,
+    // #ifdef H5
+    animationType: 'pop-in',
+    animationDuration: 180,
+    // #endif
+    complete: unlockNavigation
+  })
+}
+
+function switchTab(url) {
+  if (!url || navigating) {
+    return;
+  }
+  navigating = true;
+  uni.switchTab({
+    url: url,
+    complete: unlockNavigation
   })
 }
 
@@ -17,7 +45,7 @@ function toLogin(txt) {
     content: '请先登录/注册，方可进行下一步操作',
     confirmText: '去登录',
     cancelText: '取消',
-    confirmColor: '#3277FF',
+    confirmColor: '#317CFF',
     cancelColor: '#999999',
     success: res => {
       if (res.confirm) {
@@ -33,7 +61,7 @@ function showAuthModal(params, content) {
     content: content || '签署前需要完成个人认证，方可进行下一步操作',
     confirmText: '去认证',
     cancelText: '算了',
-    confirmColor: '#3277FF',
+    confirmColor: '#317CFF',
     cancelColor: '#999999',
     success: function(res) {
       if (res.confirm) {
@@ -44,6 +72,7 @@ function showAuthModal(params, content) {
 }
 export default {
   navigateTo,
+  switchTab,
   showToast,
   toLogin,
   showAuthModal

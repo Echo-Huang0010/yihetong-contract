@@ -1,0 +1,65 @@
+/* Keep the production mini program independent from the iconfont CDN. */
+@font-face {
+    font-family: 'iconfont';  /* Project id 4916412 */
+    src: url('./iconfont.woff2') format('woff2'),
+         url('./iconfont.woff') format('woff'),
+         url('./iconfont.ttf') format('truetype');
+  }
+  
+  .iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-team:before {
+    content: "\e602";
+  }
+  
+  .icon-stamp:before {
+    content: "\e63e";
+  }
+  
+  .icon-invite:before {
+    content: "\e608";
+  }
+  
+  .icon-company:before {
+    content: "\e663";
+  }
+  
+  .icon-folder:before {
+    content: "\e615";
+  }
+
+  .icon-privacy:before {
+    content: "\e70a";
+  }
+
+  .icon-ai:before {
+    content: "\e67d";
+  }
+  
+  /* 底部Tab图标 */
+  .icon-tab-home:before {
+    content: "\e768";
+  }
+  
+  .icon-tab-contract:before {
+    content: "\e682";
+  }
+  
+  .icon-tab-content:before {
+    content: "\e8a7";
+  }
+  
+  .icon-tab-sign:before {
+    content: "\e61d";
+  }
+
+  .icon-tab-mine:before {
+    content: "\e606";
+  }
+

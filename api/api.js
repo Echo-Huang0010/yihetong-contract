@@ -8,12 +8,13 @@
 import request from '@/utils/request.js';
 
 let userInfo = {
-  contractList: data => {
+  contractList: (data, options = {}) => {
     //获取 合同列表
     return request({
       url: `/v4/contract`,
       method: 'GET',
       data,
+      silent: options.silent === true,
     });
   },
   personalInformation: () => {
@@ -47,6 +48,13 @@ let userInfo = {
       method: 'GET',
     });
   },
+  syncContractSignStatus: (contractId, options = {}) => {
+    return request({
+      url: `/v4/contract/${contractId}/sync-sign-status`,
+      method: 'PUT',
+      silent: options.silent === true,
+    });
+  },
   urgeContract: id => {
     // 合同详情
     return request({
@@ -54,11 +62,12 @@ let userInfo = {
       method: 'POST',
     });
   },
-  balanceQuery: () => {
+  balanceQuery: (options = {}) => {
     // 合同详情
     return request({
       url: `/meal/v1/surplus`,
       method: 'GET',
+      silent: options.silent === true,
     });
   },
   getCode(data) {
@@ -66,6 +75,10 @@ let userInfo = {
     return request({
       url: `/u/${data.phone}/verification-code/${data.type}`,
       method: 'GET',
+      data: {
+        challengeToken: data.challengeToken,
+        challengeAnswer: data.challengeAnswer,
+      },
     });
   },
   cancellationOfContract(data, contractId) {
@@ -85,10 +98,11 @@ let userInfo = {
     });
   },
   // 获取认证状态
-  getAuthState(data) {
+  getAuthState(data, options = {}) {
     return request({
-      url: `/v3/u/auth/state?params=${data.params ?? ''}&type=${data.type}`,
+      url: `/v3/u/auth/state?params=${data.params != null ? data.params : ''}&type=${data.type}`,
       method: 'GET',
+      silent: options.silent === true,
     });
   },
   // 用户签署方记录列表查询

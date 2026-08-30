@@ -6,7 +6,7 @@
         <input
           class="text-28 color-base flex-1"
           v-model="form.name"
-          :maxlength="10"
+          :maxlength="20"
           placeholder="请输入姓名"
           placeholder-class="place"
         />
@@ -51,7 +51,7 @@
 
 <script>
 import reg from '@/utils/reg.js';
-import setting from '@/static/config/setting.js';
+import setting from '@/config/setting.js';
 import { memberCreate, memberInfo, memberUpdate, memberDel } from '@/api/company.js';
 import { mapState, mapActions } from 'vuex';
 export default {
@@ -252,13 +252,13 @@ export default {
             position: relative;
             top: 4rpx;
             padding-bottom: 2rpx;
-            /deep/ .uniui-checkmarkempty {
+            ::v-deep .uniui-checkmarkempty {
               color: $uni-color-primary !important;
               display: none;
             }
             &.active {
               border: 1px solid $uni-color-primary;
-              /deep/ .uniui-checkmarkempty {
+              ::v-deep .uniui-checkmarkempty {
                 display: inline-block;
               }
             }

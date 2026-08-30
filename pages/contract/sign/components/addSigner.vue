@@ -4,7 +4,6 @@
       <view class="title bold text-32">添加签署方</view>
       <view class="form-box" :style="{ 'padding-bottom': KeyboardHeight + 'px' }">
         <view class="form-item flex-sb">
-          <!-- v-if="!userInfo.companyCheck" -->
           <text class="text-28 color-base text-required">签署方类型</text>
           <!-- 不能切换 -->
           <view v-if="unSwitch === 1">
@@ -26,18 +25,6 @@
           <view class="form-item flex-sb">
             <text class="text-28 color-base text-required">姓名</text>
             <input
-              v-if="userInfo.personCheck"
-              :adjust-position="false"
-              :disabled="true"
-              type="text"
-              @blur="KeyboardHeight = 0"
-              @click="jumpSearchPerson"
-              v-model="signer.person.name"
-              placeholder-class="place"
-              placeholder="请选择"
-            />
-            <input
-              v-else
               type="text"
               @blur="KeyboardHeight = 0"
               @input="onInput($event, 1)"
@@ -63,19 +50,6 @@
           <view class="form-item flex-sb">
             <text class="text-28 color-base text-required">企业名称</text>
             <input
-              v-if="userInfo.companyCheck"
-              :adjust-position="false"
-              :disabled="true"
-              type="text"
-              @blur="KeyboardHeight = 0"
-              @click="jumpSearchCompany"
-              v-model="signer.company.name"
-              :maxlength="50"
-              placeholder-class="place"
-              placeholder="请选择"
-            />
-            <input
-              v-else
               :adjust-position="false"
               type="text"
               @blur="KeyboardHeight = 0"
@@ -155,11 +129,7 @@
 <script>
 import reg from '@/utils/reg.js';
 import userInfo from '@/api/api.js';
-import { mapState } from 'vuex';
 export default {
-  computed: {
-    ...mapState(['userInfo']),
-  },
   props: ['messageInfo', 'unSwitch'],
   data() {
     return {
@@ -169,26 +139,6 @@ export default {
       signerRecordList: [],
       checkedList: [],
     };
-  },
-  created() {
-    // companyCheck
-    // if(this.userInfo.companyCheck) {
-    //   this.signer = {
-    //     type: 0, // 类型(0:个人;1:公司;)
-    //     person: {
-    //       name: '', // 用户名
-    //       mobile: '', // 手机号
-    //     },
-    //     company: {
-    //       name: '', // 公司名
-    //       agentName: '', // 经办人姓名
-    //       agentMobile: '', // 经办人手机
-    //     },
-    //   };
-    // }
-    // uni.onKeyboardHeightChange(res => {
-    //   this.KeyboardHeight = res.height;
-    // });
   },
   beforeDestroy() {
     // uni.offKeyboardHeightChange();
@@ -214,9 +164,9 @@ export default {
     onInput(e, t) {
       setTimeout(() => {
         if (t === 1) {
-          this.signer.person.name = this.signer.person.name.slice(0, 5);
+          this.signer.person.name = this.signer.person.name.slice(0, 20);
         } else if (t === 2) {
-          this.signer.company.agentName = this.signer.company.agentName.slice(0, 5);
+          this.signer.company.agentName = this.signer.company.agentName.slice(0, 20);
         }
       }, 50);
     },
@@ -332,16 +282,6 @@ export default {
     getSignerRecordList() {
       userInfo.signerRecordList({ userType: this.signer.type }).then(res => {
         this.signerRecordList = res.filter(i => i.name);
-      });
-    },
-    jumpSearchCompany() {
-      uni.navigateTo({
-        url: '/pages/user/company/searchCompany',
-      });
-    },
-    jumpSearchPerson() {
-      uni.navigateTo({
-        url: '/pages/user/personal/searchPerson',
       });
     },
     tabChange(type) {
@@ -485,7 +425,7 @@ export default {
       }
       .right {
         box-sizing: border-box;
-        background: #3277ff;
+        background: #FF6565;
         color: #fff;
         width: 70rpx;
         height: 40rpx;

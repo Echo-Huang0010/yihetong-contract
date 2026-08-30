@@ -14,10 +14,10 @@
       </view>
       <view class="butBox">
         <navigator open-type="exit" target="miniProgram">
-          <button id="disagree-btn" type="default">不同意</button>
+          <button class="privacy-button" id="disagree-btn" type="default">不同意</button>
         </navigator>
         <button
-          class="butRed"
+          class="privacy-button privacy-button--agree"
           id="agree-btn"
           type="default"
           @agreeprivacyauthorization="agree"
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import setting from '@/static/config/setting.js';
+import setting from '@/config/setting.js';
 const app = getApp().globalData;
 let that;
 export default {
@@ -55,14 +55,12 @@ export default {
   },
   methods: {
     agree(e) {
-      console.log(e);
       if (e.detail.errMsg == 'agreePrivacyAuthorization:ok') {
         that.show = false;
         that.$emit('agree');
       }
     },
     disagree(e) {
-      console.log(e);
       that.show = false;
     },
     openPrivacyContract() {
@@ -101,7 +99,7 @@ export default {
   display: flex;
   justify-content: space-between;
   margin-top: 40rpx;
-  button {
+  .privacy-button {
     width: 240rpx;
     text-align: center;
     font-size: 32rpx;
@@ -109,7 +107,7 @@ export default {
     color: #666;
     margin: 0;
   }
-  button.butRed {
+  .privacy-button--agree {
     color: white;
     background: #e82e2e;
   }

@@ -193,11 +193,12 @@ export function unSealAuth(data) {
   });
 }
 
-export function getCompanyState(data) {
+export function getCompanyState(data, options = {}) {
   // 获取公司认证状态
   return request({
-    url: `/v3/company/auth/state?params=${data.params ?? ''}&type=${data.type}`,
+    url: `/v3/company/auth/state?params=${data.params != null ? data.params : ''}&type=${data.type}`,
     method: 'GET',
+    silent: options.silent === true,
   });
 }
 
@@ -209,12 +210,12 @@ export function isAdmin() {
   });
 }
 
-export function getAuthCompanyList(data) {
-  // 查询已认证的企业列表
+export function queryCompanyList(data) {
+  // 搜索企业信息
   return request({
-    url: `/v3/company/auth/list`,
+    url: '/v3/company/queryCompanyInfo',
     method: 'GET',
-    data,
+    data
   });
 }
 

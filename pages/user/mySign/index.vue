@@ -1,19 +1,14 @@
 <template>
   <view class="page">
-    <view class="list" v-if="contract.length">
+    <view class="list" v-if="List.length">
       <!-- TO DO 判断当前使用 签名链接替换-->
-      <view
-        class="item"
-        @click="pick(item)"
-        :class="{ active: i === 0 }"
-        v-for="(item, i) in contract"
-        :key="item.id"
-      >
-        <image src="https://dummyimage.com/1000x1000?text=img路径" mode="aspectFill"></image>
+      <view class="item" @click="pick(item, i)" v-for="(item, i) in List" :key="item.id">
+        <image :src="item.sealUrl" mode="aspectFill"></image>
         <!-- <view class="flex-ct cur">
           <uni-icons type="checkmarkempty"></uni-icons>
           <text>当前使用</text>
         </view> -->
+        <view class="text-elps">{{ item.title }}</view>
       </view>
     </view>
     <loadMore v-if="loading"></loadMore>
@@ -23,7 +18,10 @@
     </view>
 
     <btn-fixed>
-      <navigator url="./create" class="btn-primary">添加个人签名</navigator>
+      <navigator v-if="userInfo.companyId" url="./createCompany" class="btn-primary">
+        添加企业印章
+      </navigator>
+      <navigator v-else url="./createPersonal" class="btn-primary">添加个人印章</navigator>
     </btn-fixed>
   </view>
 </template>
@@ -31,73 +29,68 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import userInfoApi from '@/api/api.js';
+import { deleteSeal, listSeal } from '@/api/seal.js';
 export default {
   data() {
     return {
-      contract: [],
-      params: {
-        pageNum: 1,
-        pageSize: 10,
-        state: '',
-        self: '',
-        showStartWithMe: false,
-      },
-      hasMore: false,
+      List: [],
       loading: true,
     };
   },
   computed: {
     noData() {
-      return !this.loading && !this.contract.length;
+      return !this.loading && !this.List.length;
     },
     showBaseline() {
-      return !this.hasMore && !this.loading && this.params.pageNum > 1;
+      return !this.loading && this.List.length > 10;
     },
     ...mapState(['token']),
     ...mapState(['userInfo']),
   },
   onShow() {
-    this.init();
+    this.getData();
+  },
+  onLoad() {
+    console.log(this.userInfo);
   },
   methods: {
-    init() {
-      this.loading = true;
-      this.params.pageNum = 1;
-      if (!this.token) {
-        this.loading = false;
-        return;
-      }
-      this.getData();
-    },
     getData() {
-      this.hasMore = false;
-      userInfoApi.contractList(this.params).then(data => {
-        if (this.params.pageNum == 1) {
-          this.contract = data.rows || [];
-        } else {
-          this.contract = this.contract.concat(data.rows);
-        }
-        if (data.rows.length == this.params.pageSize) {
-          this.hasMore = true;
-        }
+      listSeal({ sealType: this.userInfo.companyId ? 2 : 1 }).then(data => {
+        console.log(data);
+        this.List = data || [];
         this.loading = false;
         uni.stopPullDownRefresh();
       });
     },
-    pick(item) {
-      console.log(item);
+    pick(item, i) {
+      const that = this;
+      uni.showActionSheet({
+        itemList: ['删除'],
+        itemColor: '#ff0003',
+        success: function (response) {
+          console.log(response);
+          console.log(item);
+          uni.showModal({
+            title: '删除提醒',
+            content: '签名删除后，将不可恢复，是否继续',
+            confirmText: '删除',
+            confirmColor: '#ff0003',
+            cancelColor: '#999999',
+            success: function (res) {
+              if (res.confirm) {
+                deleteSeal(item.id).then(() => {
+                  that.List.splice(i, 1);
+                });
+              }
+            },
+          });
+        },
+      });
     },
   },
-  onReachBottom() {
-    if (this.hasMore) {
-      this.loading = true;
-      this.params.pageNum++;
-      this.getData();
-    }
-  },
+  onReachBottom() {},
   onPullDownRefresh() {
     this.loading = true;
-    this.params.pageNum = 1;
     this.getData();
   },
 };
@@ -119,7 +112,6 @@ export default {
   margin-right: -24rpx;
   .item {
     overflow: hidden;
-    height: 248rpx;
     width: calc(50% - 24rpx);
     background-color: #ffffff;
     position: relative;
@@ -129,8 +121,18 @@ export default {
     position: relative;
     image {
       width: 100%;
-      height: 100%;
+      height: 248rpx;
       display: block;
+    }
+    .text-elps{
+      text-align: center;
+      padding: 20rpx;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      font-size: 28rpx;
+      color: #333;
     }
     .cur {
       display: none;
@@ -145,7 +147,7 @@ export default {
         font-weight: bold;
         padding-left: 6rpx;
       }
-      /deep/ {
+      ::v-deep {
         .uni-icons {
           color: $uni-color-primary !important;
           font-weight: bold;

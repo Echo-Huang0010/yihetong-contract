@@ -1,0 +1,575 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.yihetong.local/customer-deployment-profile/v1",
+  "title": "CustomerDeploymentProfile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apiVersion",
+    "kind",
+    "installProfile",
+    "metadata",
+    "deployment",
+    "database",
+    "redis",
+    "storage",
+    "tls",
+    "security",
+    "commercialAuthorization",
+    "brand",
+    "miniProgram",
+    "capabilities",
+    "externalActions"
+  ],
+  "properties": {
+    "apiVersion": { "const": "yht.io/v1" },
+    "kind": { "const": "CustomerDeploymentProfile" },
+    "installProfile": { "enum": ["community", "commercial"] },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["customerCode", "profileRevision", "environment"],
+      "properties": {
+        "customerCode": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{2,31}$",
+          "x-yht-priority": "P0",
+          "x-yht-authority": "build_input"
+        },
+        "profileRevision": { "type": "integer", "minimum": 1 },
+        "environment": { "enum": ["production", "staging"] },
+        "changeTicket": { "type": "string", "minLength": 3, "maxLength": 128 }
+      }
+    },
+    "deployment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target", "paths", "ports", "endpoints"],
+      "properties": {
+        "target": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["osFamily", "architecture", "initSystem", "reverseProxy"],
+          "properties": {
+            "osFamily": { "const": "linux" },
+            "architecture": { "const": "x86_64" },
+            "initSystem": { "const": "systemd" },
+            "reverseProxy": { "const": "nginx" }
+          }
+        },
+        "identity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["targetId", "provider", "region", "instanceId", "workbenchProfile"],
+          "properties": {
+            "targetId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,63}$" },
+            "provider": { "const": "aliyun-ecs" },
+            "region": { "type": "string", "pattern": "^cn-[a-z0-9-]+$" },
+            "instanceId": { "type": "string", "pattern": "^i-[a-z0-9]+$" },
+            "workbenchProfile": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,63}$" }
+          },
+          "description": "Non-secret immutable deployment target identity. Production profiles must provide it; default/unconfirmed operator profiles are rejected semantically."
+        },
+        "paths": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["installRoot", "dataRoot", "configRoot", "backupRoot"],
+          "properties": {
+            "installRoot": { "$ref": "#/$defs/installRoot" },
+            "dataRoot": { "$ref": "#/$defs/dataRoot" },
+            "configRoot": { "$ref": "#/$defs/configRoot" },
+            "backupRoot": { "$ref": "#/$defs/backupRoot" }
+          }
+        },
+        "ports": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["api", "website"],
+          "properties": {
+            "api": { "$ref": "#/$defs/port" },
+            "website": { "$ref": "#/$defs/port" }
+          }
+        },
+        "endpoints": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["apiBaseUrl", "manageBaseUrl", "userBaseUrl", "h5BaseUrl", "websiteBaseUrl"],
+          "properties": {
+            "apiBaseUrl": { "$ref": "#/$defs/httpsUrl" },
+            "manageBaseUrl": { "$ref": "#/$defs/httpsUrl" },
+            "userBaseUrl": { "$ref": "#/$defs/httpsUrl" },
+            "h5BaseUrl": { "$ref": "#/$defs/httpsUrl" },
+            "websiteBaseUrl": { "$ref": "#/$defs/httpsUrl" }
+          }
+        }
+      },
+      "x-yht-priority": "P0"
+    },
+    "database": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["engine", "majorVersion", "host", "port", "name", "username", "passwordRef", "migration", "tlsMode"],
+      "properties": {
+        "engine": { "const": "mysql" },
+        "majorVersion": { "const": 8 },
+        "host": { "$ref": "#/$defs/host" },
+        "port": { "$ref": "#/$defs/port" },
+        "name": { "type": "string", "pattern": "^[A-Za-z0-9_]{1,64}$" },
+        "username": { "type": "string", "pattern": "^[A-Za-z0-9_@.-]{1,64}$" },
+        "passwordRef": { "$ref": "#/$defs/secretRef" },
+        "tlsMode": { "enum": ["disabled-loopback-only", "preferred", "required"] },
+        "migration": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["username", "passwordRef"],
+          "properties": {
+            "username": { "type": "string", "pattern": "^[A-Za-z0-9_@.-]{1,64}$" },
+            "passwordRef": { "$ref": "#/$defs/secretRef" }
+          }
+        },
+        "backup": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["username", "passwordRef"],
+          "properties": {
+            "username": { "type": "string", "pattern": "^[A-Za-z0-9_@.-]{1,64}$" },
+            "passwordRef": { "$ref": "#/$defs/secretRef" }
+          }
+        }
+      },
+      "x-yht-priority": "P0",
+      "x-yht-authority": "bootstrap_env"
+    },
+    "redis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["user", "default"],
+      "properties": {
+        "user": { "$ref": "#/$defs/redisConnection" },
+        "default": { "$ref": "#/$defs/redisConnection" }
+      },
+      "x-yht-priority": "P0"
+    },
+    "storage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "region", "privateBucket", "assetsBucket", "internalEndpoint", "externalEndpoint", "privateDomain", "assetsDomain", "credentialMode"],
+      "properties": {
+        "provider": { "const": "aliyun-oss" },
+        "region": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "privateBucket": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,62}$" },
+        "assetsBucket": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,62}$" },
+        "internalEndpoint": { "$ref": "#/$defs/host" },
+        "externalEndpoint": { "$ref": "#/$defs/host" },
+        "privateDomain": { "$ref": "#/$defs/httpsUrl" },
+        "assetsDomain": { "$ref": "#/$defs/httpsUrl" },
+        "privateUrlExpireSeconds": { "type": "integer", "minimum": 60, "maximum": 3600, "default": 900 },
+        "uploadPolicyExpireSeconds": { "type": "integer", "minimum": 60, "maximum": 900, "default": 300 },
+        "credentialMode": { "enum": ["ram-role", "secret-ref"] },
+        "ramRoleName": { "type": "string", "minLength": 3, "maxLength": 128 },
+        "accessKeyIdRef": { "$ref": "#/$defs/secretRef" },
+        "accessKeySecretRef": { "$ref": "#/$defs/secretRef" }
+      },
+      "oneOf": [
+        {
+          "properties": { "credentialMode": { "const": "ram-role" } },
+          "required": ["ramRoleName"],
+          "not": { "anyOf": [{ "required": ["accessKeyIdRef"] }, { "required": ["accessKeySecretRef"] }] }
+        },
+        {
+          "properties": { "credentialMode": { "const": "secret-ref" } },
+          "required": ["accessKeyIdRef", "accessKeySecretRef"],
+          "not": { "required": ["ramRoleName"] }
+        }
+      ],
+      "x-yht-priority": "P1",
+      "x-yht-authority": "deploy_db",
+      "x-yht-requiredIf": "file features are enabled"
+    },
+    "tls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode"],
+      "properties": {
+        "mode": { "enum": ["existing-files", "external-termination"] },
+        "certificateRef": { "type": "string", "pattern": "^file://certificates/[A-Za-z0-9._/-]+$" },
+        "privateKeySecretRef": { "$ref": "#/$defs/secretRef" },
+        "externalActionId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,63}$" }
+      },
+      "oneOf": [
+        { "properties": { "mode": { "const": "existing-files" } }, "required": ["certificateRef", "privateKeySecretRef"] },
+        { "properties": { "mode": { "const": "external-termination" } }, "required": ["externalActionId"] }
+      ],
+      "x-yht-priority": "P1",
+      "x-yht-authority": "restricted_file"
+    },
+    "security": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sensitiveDbCompatibilityMode"],
+      "properties": {
+        "sensitiveDbCompatibilityMode": { "type": "boolean" },
+        "compatibilityAcknowledgement": { "const": "I_ACCEPT_REDACTED_LEGACY_SECRET_DB_RISK" },
+        "migrationOwner": { "type": "string", "minLength": 2, "maxLength": 64 },
+        "compatibilityExpiresOn": { "type": "string", "format": "date" }
+      },
+      "oneOf": [
+        {
+          "properties": { "sensitiveDbCompatibilityMode": { "const": false } },
+          "not": { "anyOf": [{ "required": ["compatibilityAcknowledgement"] }, { "required": ["compatibilityExpiresOn"] }] }
+        },
+        {
+          "properties": { "sensitiveDbCompatibilityMode": { "const": true } },
+          "required": ["compatibilityAcknowledgement", "migrationOwner", "compatibilityExpiresOn"]
+        }
+      ],
+      "x-yht-priority": "P0"
+    },
+    "commercialAuthorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enforcement",
+        "product",
+        "edition",
+        "instanceId",
+        "controlPlaneUrl",
+        "licenseFile",
+        "leaseFile",
+        "trustBundleFile",
+        "identityFile",
+        "privateKeyFile",
+        "stateFile",
+        "leaseRequired",
+        "leaseRefreshSeconds",
+        "offlineGraceSeconds",
+        "clockSkewSeconds"
+      ],
+      "properties": {
+        "enforcement": { "enum": ["community", "required"] },
+        "product": { "const": "yihetong" },
+        "edition": { "enum": ["try", "use", "build", "govern"] },
+        "instanceId": { "type": "string", "format": "uuid" },
+        "controlPlaneUrl": { "$ref": "#/$defs/httpsUrl" },
+        "licenseFile": { "const": "commercial/license.json" },
+        "leaseFile": { "const": "commercial/lease.json" },
+        "trustBundleFile": { "const": "commercial/trust-bundle.json" },
+        "identityFile": { "const": "commercial/instance.json" },
+        "privateKeyFile": { "const": "commercial/instance-private.pem" },
+        "stateFile": { "const": "commercial/clock-state.json" },
+        "leaseRequired": { "type": "boolean" },
+        "leaseRefreshSeconds": { "type": "integer", "minimum": 60, "maximum": 86400 },
+        "offlineGraceSeconds": { "type": "integer", "minimum": 0, "maximum": 604800 },
+        "clockSkewSeconds": { "type": "integer", "minimum": 0, "maximum": 900 }
+      },
+      "x-yht-priority": "P0",
+      "x-yht-authority": "bootstrap_env"
+    },
+    "brand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["projectName", "companyName", "subtitle", "logo", "copyrightText", "privacySubject", "serviceAgreementSubject", "websiteEnabled"],
+      "properties": {
+        "projectName": { "type": "string", "minLength": 2, "maxLength": 64 },
+        "companyName": { "type": "string", "minLength": 2, "maxLength": 128 },
+        "subtitle": { "type": "string", "minLength": 2, "maxLength": 128 },
+        "logo": { "type": "string", "pattern": "^(asset://assets/|https://).+" },
+        "logoWhite": { "type": "string", "pattern": "^(asset://assets/|https://).+" },
+        "logoSquare": { "type": "string", "pattern": "^(asset://assets/|https://).+" },
+        "logoIcon": { "type": "string", "pattern": "^(asset://assets/|https://).+" },
+        "loginBackground": { "type": "string", "pattern": "^(asset://assets/|https://).+" },
+        "homeLogoWhiteBg": { "type": "string", "pattern": "^(asset://assets/|https://).+" },
+        "homeBannerImages": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^(asset://assets/|https://).+" }
+        },
+        "shareImage": { "type": "string", "pattern": "^(asset://assets/|https://).+" },
+        "agentApplyBackground": { "type": "string", "pattern": "^(asset://assets/|https://).+" },
+        "inviteBackground": { "type": "string", "pattern": "^(asset://assets/|https://).+" },
+        "shareTitle": { "type": "string", "minLength": 2, "maxLength": 128 },
+        "shareDesc": { "type": "string", "minLength": 2, "maxLength": 256 },
+        "telphone": { "type": "string", "minLength": 3, "maxLength": 64 },
+        "weixin": { "type": "string", "minLength": 2, "maxLength": 128 },
+        "customerServiceQrCode": { "type": "string", "pattern": "^(asset://assets/|https://).+" },
+        "address": { "type": "string", "minLength": 2, "maxLength": 256 },
+        "icpNo": { "type": "string", "minLength": 3, "maxLength": 128 },
+        "copyrightText": { "type": "string", "minLength": 2, "maxLength": 256 },
+        "privacySubject": { "type": "string", "minLength": 2, "maxLength": 128 },
+        "serviceAgreementSubject": { "type": "string", "minLength": 2, "maxLength": 128 },
+        "personalRegisterGiftContractCount": { "type": "integer", "minimum": 0, "maximum": 1000000 },
+        "enterpriseRegisterGiftContractCount": { "type": "integer", "minimum": 0, "maximum": 1000000 },
+        "websiteEnabled": { "type": "boolean" },
+        "websiteNotApplicable": { "$ref": "#/$defs/notApplicable" },
+        "websiteDomain": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9.-]*$" },
+        "websiteSeoTitle": { "type": "string", "maxLength": 128 },
+        "websiteSeoDescription": { "type": "string", "maxLength": 512 },
+        "websiteSeoKeywords": { "type": "string", "maxLength": 512 },
+        "websiteCtaText": { "type": "string", "minLength": 2, "maxLength": 64 },
+        "websiteCtaLink": { "$ref": "#/$defs/publicLink" },
+        "websiteDemoUrl": { "$ref": "#/$defs/publicLink" },
+        "websiteUserUrl": { "$ref": "#/$defs/publicLink" },
+        "websiteManageUrl": { "$ref": "#/$defs/publicLink" },
+        "websiteH5Url": { "$ref": "#/$defs/publicLink" },
+        "websiteMiniProgramQrCode": { "type": "string", "pattern": "^(asset://assets/|https://).+" },
+        "websiteContactEmail": { "type": "string", "format": "email" },
+        "websiteContent": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "features": { "$ref": "#/$defs/publicContentSection" },
+            "advantages": { "$ref": "#/$defs/publicContentSection" },
+            "industries": { "$ref": "#/$defs/publicContentSection" },
+            "productImages": { "$ref": "#/$defs/publicContentSection" },
+            "brandVisuals": { "$ref": "#/$defs/publicContentSection" },
+            "techFeatures": { "$ref": "#/$defs/publicContentSection" },
+            "versionCompare": { "$ref": "#/$defs/publicContentSection" },
+            "versionHighlights": { "$ref": "#/$defs/publicContentSection" }
+          }
+        },
+        "moduleSwitches": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "inviteEnabled": { "type": "boolean" },
+            "serviceAssistantEnabled": { "type": "boolean" },
+            "startContractEnabled": { "type": "boolean" },
+            "aiContractEnabled": { "type": "boolean" },
+            "contractAuditEnabled": { "type": "boolean" },
+            "contractCompareEnabled": { "type": "boolean" },
+            "rechargeEnabled": { "type": "boolean" },
+            "videoRecordingEnabled": { "type": "boolean" }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "websiteEnabled": { "const": true } }, "required": ["websiteEnabled"] },
+          "then": {
+            "required": ["websiteDomain", "websiteSeoTitle", "websiteSeoDescription", "websiteCtaText", "websiteCtaLink"],
+            "not": { "required": ["websiteNotApplicable"] }
+          },
+          "else": { "required": ["websiteNotApplicable"] }
+        }
+      ],
+      "x-yht-priority": "P1",
+      "x-yht-authority": "brand_db"
+    },
+    "miniProgram": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "appId": { "type": "string", "pattern": "^wx[A-Za-z0-9]{16}$" },
+        "appSecretRef": { "$ref": "#/$defs/secretRef" },
+        "platformActionIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } },
+        "notApplicable": { "$ref": "#/$defs/notApplicable" }
+      },
+      "oneOf": [
+        { "properties": { "enabled": { "const": true } }, "required": ["appId", "appSecretRef", "platformActionIds"], "not": { "required": ["notApplicable"] } },
+        { "properties": { "enabled": { "const": false } }, "required": ["notApplicable"], "not": { "anyOf": [{ "required": ["appId"] }, { "required": ["appSecretRef"] }] } }
+      ],
+      "x-yht-priority": "P1",
+      "x-yht-authority": "build_input",
+      "x-yht-notApplicable": true
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["openapi", "payment", "sms", "ai", "ocr"],
+      "properties": {
+        "openapi": { "$ref": "#/$defs/openapiCapability" },
+        "payment": { "$ref": "#/$defs/paymentCapability" },
+        "sms": { "$ref": "#/$defs/smsCapability" },
+        "ai": { "$ref": "#/$defs/aiCapability" },
+        "ocr": { "$ref": "#/$defs/ocrCapability" }
+      },
+      "x-yht-priority": "P2"
+    },
+    "externalActions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "platform", "action", "owner", "state", "verification"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,63}$" },
+          "platform": { "type": "string", "minLength": 2, "maxLength": 64 },
+          "action": { "type": "string", "minLength": 4, "maxLength": 256 },
+          "owner": { "type": "string", "minLength": 2, "maxLength": 64 },
+          "state": { "enum": ["pending", "ready", "completed", "not-applicable", "user-final-required"] },
+          "verification": { "type": "string", "minLength": 4, "maxLength": 256 },
+          "attachment": { "type": "string", "pattern": "^external-actions/[A-Za-z0-9._/-]+$" }
+        }
+      },
+      "x-yht-priority": "P1",
+      "x-yht-authority": "external_platform"
+    }
+  },
+  "dependentRequired": {
+    "miniProgram": ["externalActions"],
+    "tls": ["externalActions"]
+  },
+  "$defs": {
+    "absolutePath": { "type": "string", "pattern": "^/(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+$" },
+    "installRoot": { "type": "string", "pattern": "^/opt/yihetong(?:[._-][A-Za-z0-9][A-Za-z0-9._-]*)?$" },
+    "dataRoot": { "type": "string", "pattern": "^/var/lib/yihetong(?:[._-][A-Za-z0-9][A-Za-z0-9._-]*)?$" },
+    "configRoot": { "type": "string", "pattern": "^/etc/yihetong(?:[._-][A-Za-z0-9][A-Za-z0-9._-]*)?$" },
+    "backupRoot": { "type": "string", "pattern": "^/var/backups/yihetong(?:[._-][A-Za-z0-9][A-Za-z0-9._-]*)?$" },
+    "port": { "type": "integer", "minimum": 1, "maximum": 65535 },
+    "host": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9.-]*$" },
+    "httpsUrl": { "type": "string", "format": "uri", "pattern": "^https://" },
+    "publicLink": { "type": "string", "pattern": "^(https://|/|#).+" },
+    "publicContentSection": {
+      "type": "array",
+      "maxItems": 100,
+      "items": { "type": "object" }
+    },
+    "secretRef": { "type": "string", "pattern": "^secret://[a-z0-9][a-z0-9._-]{2,127}$" },
+    "notApplicable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reason", "approvedBy"],
+      "properties": {
+        "reason": { "type": "string", "minLength": 4, "maxLength": 256 },
+        "approvedBy": { "type": "string", "minLength": 2, "maxLength": 64 }
+      }
+    },
+    "redisConnection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["host", "port", "database", "passwordRef"],
+      "properties": {
+        "host": { "$ref": "#/$defs/host" },
+        "port": { "$ref": "#/$defs/port" },
+        "database": { "type": "integer", "minimum": 0, "maximum": 15 },
+        "passwordRef": { "$ref": "#/$defs/secretRef" }
+      }
+    },
+    "disabledCapability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "notApplicable"],
+      "properties": {
+        "enabled": { "const": false },
+        "notApplicable": { "$ref": "#/$defs/notApplicable" }
+      }
+    },
+    "openapiCapability": {
+      "oneOf": [
+        { "$ref": "#/$defs/disabledCapability" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["enabled", "appKeyRef", "appSecretRef", "domain", "redirectUrl"],
+          "properties": {
+            "enabled": { "const": true },
+            "appKeyRef": { "$ref": "#/$defs/secretRef" },
+            "appSecretRef": { "$ref": "#/$defs/secretRef" },
+            "domain": { "$ref": "#/$defs/httpsUrl" },
+            "redirectUrl": { "$ref": "#/$defs/httpsUrl" }
+          }
+        }
+      ],
+      "x-yht-requiredIf": "capabilities.openapi.enabled == true",
+      "x-yht-notApplicable": true
+    },
+    "paymentCapability": {
+      "oneOf": [
+        { "$ref": "#/$defs/disabledCapability" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["enabled", "verificationMode", "appId", "merchantId", "apiV3KeyRef", "certificateRef", "privateKeySecretRef", "certificateSerialNumber"],
+          "properties": {
+            "enabled": { "const": true },
+            "verificationMode": { "enum": ["platform-certificate", "wechat-public-key"] },
+            "appId": { "type": "string", "minLength": 3, "maxLength": 64 },
+            "merchantId": { "type": "string", "minLength": 3, "maxLength": 64 },
+            "apiV3KeyRef": { "$ref": "#/$defs/secretRef" },
+            "certificateRef": { "type": "string", "pattern": "^file://certificates/[A-Za-z0-9._/-]+$" },
+            "privateKeySecretRef": { "$ref": "#/$defs/secretRef" },
+            "certificateSerialNumber": { "type": "string", "minLength": 4, "maxLength": 128 },
+            "publicKeyId": { "type": "string", "pattern": "^PUB_KEY_ID_[A-Za-z0-9_-]+$" },
+            "publicKeyRef": { "type": "string", "pattern": "^file://certificates/[A-Za-z0-9._/-]+$" }
+          },
+          "allOf": [
+            {
+              "if": { "properties": { "verificationMode": { "const": "wechat-public-key" } }, "required": ["verificationMode"] },
+              "then": { "required": ["publicKeyId", "publicKeyRef"] }
+            }
+          ]
+        }
+      ],
+      "x-yht-dependsOn": ["miniProgram.enabled"],
+      "x-yht-notApplicable": true
+    },
+    "smsCapability": {
+      "oneOf": [
+        { "$ref": "#/$defs/disabledCapability" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["enabled", "provider", "accessKeyIdRef", "accessKeySecretRef", "endpoint", "signName", "templateCode"],
+          "properties": {
+            "enabled": { "const": true },
+            "provider": { "const": "aliyun-sms" },
+            "accessKeyIdRef": { "$ref": "#/$defs/secretRef" },
+            "accessKeySecretRef": { "$ref": "#/$defs/secretRef" },
+            "endpoint": { "$ref": "#/$defs/host" },
+            "signName": { "type": "string", "minLength": 2, "maxLength": 64 },
+            "templateCode": { "type": "string", "minLength": 3, "maxLength": 64 }
+          }
+        }
+      ],
+      "x-yht-notApplicable": true
+    },
+    "aiCapability": {
+      "oneOf": [
+        { "$ref": "#/$defs/disabledCapability" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["enabled", "provider", "apiKeyRef", "baseUrl", "model"],
+          "properties": {
+            "enabled": { "const": true },
+            "provider": { "const": "deepseek" },
+            "apiKeyRef": { "$ref": "#/$defs/secretRef" },
+            "baseUrl": { "$ref": "#/$defs/httpsUrl" },
+            "model": { "type": "string", "minLength": 2, "maxLength": 128 }
+          }
+        }
+      ],
+      "x-yht-notApplicable": true
+    },
+    "ocrCapability": {
+      "oneOf": [
+        { "$ref": "#/$defs/disabledCapability" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["enabled", "provider"],
+          "properties": {
+            "enabled": { "const": true },
+            "provider": { "enum": ["openapi", "baidu"] },
+            "apiKeyRef": { "$ref": "#/$defs/secretRef" },
+            "secretKeyRef": { "$ref": "#/$defs/secretRef" },
+            "fallbackOpenapiEnabled": { "type": "boolean" }
+          },
+          "allOf": [
+            {
+              "if": { "properties": { "provider": { "const": "baidu" } }, "required": ["provider"] },
+              "then": { "required": ["apiKeyRef", "secretKeyRef"] }
+            }
+          ]
+        }
+      ],
+      "x-yht-requiredIf": "capabilities.ocr.enabled == true and provider == baidu",
+      "x-yht-notApplicable": true
+    }
+  }
+}

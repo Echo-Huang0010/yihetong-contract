@@ -1,0 +1,25 @@
+<svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 113">
+<g id="Frame" clip-path="url(#clip0_22_882)">
+<g id="Group">
+<g id="Group_2">
+<g id="Clip path group">
+<mask id="mask0_22_882" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="9" height="15">
+<g id="SVGID_2_">
+<path id="Vector" d="M-6.67813e-07 -9.53674e-07L0 15L9.00018 15L9.00018 -1.33993e-06L-6.67813e-07 -9.53674e-07Z" fill="white"/>
+</g>
+</mask>
+<g mask="url(#mask0_22_882)">
+<path id="Vector_2" d="M8.96393 7.51274C8.96393 7.93137 8.7825 8.33069 8.45878 8.62695L1.70686 14.7358C1.31911 15.0868 0.685895 15.0868 0.29814 14.7358C-0.0896145 14.3848 -0.0896146 13.8116 0.29814 13.4606L6.86863 7.51274L0.29814 1.56169C-0.0896151 1.21068 -0.0896152 0.63747 0.29814 0.286462C0.685895 -0.0645476 1.31911 -0.0645476 1.70686 0.286462L8.45522 6.39531C8.7825 6.69157 8.96393 7.0941 8.96393 7.51274Z" fill="#6E7C93"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_22_882">
+<rect width="15" height="9.00018" fill="white" transform="translate(0 15) rotate(-90)"/>
+</clipPath>
+</defs>
+</svg>

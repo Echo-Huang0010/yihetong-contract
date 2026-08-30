@@ -53,14 +53,21 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .tag-auth {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
-  padding: 0 12rpx;
-  line-height: 34rpx;
+  padding: 0 14rpx;
+  line-height: 36rpx;
+  height: 36rpx;
   border-radius: 18rpx;
-  border: 1px solid currentColor;
+  font-weight: 500;
+  transition: all 0.3s;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
 }
+
 .icon-auth {
   margin-right: 4rpx;
   width: 24rpx;
@@ -69,17 +76,23 @@ export default {
 
 .tag-auth__unauth {
   color: #999999;
-  border: 1px solid #bbb;
+  background: rgba(#999999, 0.1);
+  border: 1px solid rgba(#999999, 0.2);
+  
+  &:active {
+    background: rgba(#999999, 0.15);
+  }
 }
 
 .tag-auth__auth {
-  color: #3277ff;
-  background: #f5f8ff;
+  color: $uni-color-primary;
+  background: rgba($uni-color-primary, 0.08);
+  border: 1px solid rgba($uni-color-primary, 0.15);
 }
 
 .tag-auth__enterauth {
-  color: #7a4100;
-  background: #fff8eb;
-  border: 1px solid #e9c896;
+  color: $uni-color-minor;
+  background: rgba($uni-color-minor, 0.08);
+  border: 1px solid rgba($uni-color-minor, 0.15);
 }
 </style>
