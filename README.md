@@ -18,12 +18,12 @@ Contract.Pro 面向需要建设电子合同能力的企业、软件服务商、�
 
 ## 为什么选择 Contract.Pro
 
-- **完整合同流程**：从模板、文书和文件开始，完成发起、参与方配置、签名签章、进度跟踪、下载和归档。
-- **个人与企业共同使用**：一个账号可按认证结果使用个人身份，并管理或加入多个企业，适配个人签署、企业签章和多方合同。
-- **多端协同**：小程序适合移动发起与签署，H5 适合链接直达，PC 适合集中处理，管理后台负责运营和配置。
-- **合法电子签署能力**：支持接入实名认证、CA 数字证书、签署意愿确认和签署过程记录。
-- **私有化部署**：可部署到自有服务器、数据库、域名与对象存储环境，品牌、入口和第三方服务按项目配置。
-- **快速安装与外部接入**：提供安装包、配置中心、CLI 和安装辅助能力，支持 Codex、Claude Code、WorkBuddy 等 Agent 辅助安装部署；支持通过 Agent、Skill、MCP 与 CLI 调用合同创建、文件上传、参与方配置、发起签署和状态查询等主要能力。
+- **完整合同流程**　从模板、文书和文件开始，完成发起、参与方配置、签名签章、进度跟踪、下载和归档。
+- **个人与企业共同使用**　一个账号可按认证结果使用个人身份，并管理或加入多个企业，适配个人签署、企业签章和多方合同。
+- **多端协同**　小程序适合移动发起与签署，H5 适合链接直达，PC 适合集中处理，管理后台负责运营和配置。
+- **合法电子签署能力**　支持接入实名认证、CA 数字证书、签署意愿确认和签署过程记录。
+- **私有化部署**　可部署到自有服务器、数据库、域名与对象存储环境，品牌、入口和第三方服务按项目配置。
+- **快速安装与外部接入**　提供安装包、配置中心、CLI 和安装辅助能力，支持 Codex、Claude Code、WorkBuddy 等 Agent 辅助安装部署；支持通过 Agent、Skill、MCP 与 CLI 调用合同创建、文件上传、参与方配置、发起签署和状态查询等主要能力。
 
 <p align="center">
   <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/contract-pro-core-advantages.png" alt="Contract.Pro 电子合同平台的核心优势" width="100%">
@@ -84,6 +84,118 @@ Contract.Pro 面向需要建设电子合同能力的企业、软件服务商、�
 - 数据库、缓存、对象存储、短信、开放接口和第三方服务配置
 - 配置帮助文档、申请入口、示例和生效方式说明
 
+## 完整功能说明
+
+### 移动端合同业务
+
+小程序和 H5 覆盖合同查看、发起、签署与个人中心。用户可以从模板、文书或已有文件开始，选择个人身份或已加入的企业，添加多个个人和企业参与方，并设置有效期、签署顺序与处理要求。合同发起后可以查看每一方的处理状态，继续签署、拒签、撤销、催办、分享、下载和归档。
+
+个人用户可以维护常用签名并完成实名认证。企业管理人员可以维护企业资料、成员、印章和用章权限。一个手机号账号可以保留个人身份，同时管理或加入多个企业，签署时再选择本次使用的主体。
+
+文件管理用于保存合同文件、生成结果和签署完成文件。常用合同可以进入模板或文书体系复用，一对多场景可以批量组织参与方并发起合同。
+
+### PC 用户端
+
+PC 用户端适合集中处理合同工作。用户可以查看我发起的、待我处理、待他人处理、已完成、已拒签、已撤销和已逾期合同，在线打开合同详情，完成签名或企业签章，并下载已经完成的合同文件。
+
+企业管理人员可以在 PC 端维护成员与身份，处理企业合同和归档文件。个人与企业身份共用同一账号体系，切换身份后只展示当前主体对应的合同、成员和签署权限。
+
+### 运营管理后台
+
+管理后台覆盖用户、企业、认证、合同、模板、文书、订单、服务消耗、角色权限和内容运营。运营人员可以维护合同分类与模板，预设个人或企业参与方，设置动态填写参数，并查看合同处理与服务使用情况。
+
+品牌与部署配置集中维护 Logo、登录背景、多端入口、数据库、缓存、对象存储、短信、签署服务和其他第三方能力。重要配置提供点击式帮助、填写示例、申请地址和生效说明，客户配置通过配置中心和安装配置包进入运行环境。
+
+### 安装部署与外部接入
+
+安装包支持 Windows 10、Windows 11 配合 WSL2，也支持 Ubuntu 22.04、Ubuntu 24.04 和 Rocky Linux 9。安装工具负责环境准备、配置生成、安装、重复执行、备份和回退，Word 转 PDF 所需的系统组件也包含在安装流程中。
+
+CLI、安装 Skill 和标准接口用于外部接入。Codex、Claude Code、WorkBuddy 等 Agent 可以辅助准备环境和执行安装，也可以按实例身份与授权调用文件上传、参与方配置、合同发起和状态查询等能力。
+
+## 最新功能结构
+
+```text
+Contract.Pro
+├─ 合同准备
+│  ├─ 合同分类与模板
+│  ├─ 专业文书与在线编辑
+│  ├─ Word、PDF 与文件管理
+│  └─ 草稿与历史文件复用
+├─ 合同发起
+│  ├─ 个人或企业身份
+│  ├─ 多个人与多企业参与方
+│  ├─ 签署顺序与有效期
+│  ├─ 一对一、多方与一对多批量发起
+│  └─ 合同分享与催办
+├─ 认证与签署
+│  ├─ 个人实名认证
+│  ├─ 企业实名认证
+│  ├─ 个人签名与企业印章
+│  ├─ 成员和用章权限
+│  └─ CA 数字证书与签署记录
+├─ 合同处理
+│  ├─ 待我处理与待他人处理
+│  ├─ 已完成、已拒签、已撤销与已逾期
+│  ├─ 进度、审批与视频签署规则
+│  └─ 查看、下载与归档
+├─ 运营管理
+│  ├─ 用户、企业、角色与权限
+│  ├─ 合同、模板、文书与内容
+│  ├─ 认证、订单、额度与服务消耗
+│  └─ 品牌、入口和部署配置
+├─ 多端产品
+│  ├─ 微信小程序
+│  ├─ H5
+│  ├─ PC 用户端
+│  └─ 运营管理后台
+└─ 安装与接入
+   ├─ 私有化安装包
+   ├─ 客户配置包
+   ├─ CLI 与安装 Skill
+   └─ Agent、Skill、MCP 与标准接口
+```
+
+## 项目目录结构
+
+当前公开仓以小程序和 H5 共用的 uni-app 工程为根目录，同时包含 PC 用户端、官网、安装工具和部署资料。
+
+```text
+contract-pro
+├─ api                         小程序与 H5 接口封装
+├─ components                  通用业务组件与页面组件
+├─ config                      多端运行配置
+├─ pages
+│  ├─ contract                合同列表、详情、发起与签署
+│  ├─ template                合同模板与文书
+│  ├─ content                 甄选内容与服务内容
+│  ├─ user                    认证、企业、印章、文件与套餐
+│  ├─ login                   登录注册
+│  └─ home                    首页与快捷入口
+├─ static                      图标、分享图与公共素材
+├─ store                       多端状态管理
+├─ utils                       请求、缓存、文件与通用工具
+├─ frontends
+│  ├─ pc                      PC 用户端源码
+│  └─ website                 官网源码
+├─ installer
+│  ├─ yhtctl                  安装与配置命令行工具
+│  └─ skill                   Agent 辅助安装 Skill
+├─ deploy
+│  └─ customer-profile        客户配置包模板
+├─ docs                        安装、许可与使用文档
+├─ examples
+│  └─ customer-profile        脱敏配置示例
+├─ LICENSE                     AGPL-3.0-only 社区许可证
+├─ COMMERCIAL-LICENSE.md       商业许可说明
+├─ THIRD_PARTY_NOTICES         第三方组件说明
+├─ TRADEMARKS.md               商标与品牌说明
+├─ FILE_MANIFEST.json          公开文件清单
+├─ SBOM.spdx.json              软件物料清单
+└─ SHA256SUMS                  文件完整性校验
+```
+
+完整产品由上述公开前端、可下载运行安装包和官方商业服务共同组成。运营管理、正式签署、商业授权和合同额度通过完整产品与商业交付提供。
+
 <p align="center">
   <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/contract-pro-function-architecture.png" alt="Contract.Pro 小程序、H5、PC、管理后台与部署能力结构" width="100%">
 </p>
@@ -140,6 +252,12 @@ Contract.Pro 面向需要建设电子合同能力的企业、软件服务商、�
 
 ### 小程序与移动端
 
+移动端首页可以快速进入合同模板、文书、待办和最近合同。发起合同时可以选择个人或企业主体，添加多个签署人或企业，并设置合同有效期。个人需要完成实名认证后使用个人签名，企业需要完成认证并配置印章和成员权限。
+
+合同详情会展示全部参与方及当前签署状态。待签署人可以从小程序或 H5 打开合同，完成手写签名或企业盖章。发起人可以催办和分享合同，全部参与方完成后再查看、下载和归档文件。
+
+移动端还包含企业管理、成员管理、印章管理、文件管理、合同套餐、专业模板和批量发起能力。下面保留的历史截图记录了这些功能在早期版本中的界面形态。
+
 <p>
   <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/23.png" alt="历史版本移动端首页" width="32%">
   <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/3.png" alt="历史版本移动端合同列表" width="32%">
@@ -170,6 +288,10 @@ Contract.Pro 面向需要建设电子合同能力的企业、软件服务商、�
 
 ### PC 用户端
 
+PC 用户端提供合同工作台、在线签署、个人与企业身份切换、成员管理、文件管理和账号设置。合同可以按发起、待办、完成、拒签、撤销和逾期等状态查询，已完成合同支持在线查看、下载和归档。
+
+企业管理人员可以添加成员并分配签署与用章权限。个人用户可以维护签名，企业用户可以选择印章处理合同。下面的历史截图保留了 PC 端各项能力的完整介绍。
+
 <p>
   <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a1.png" alt="历史版本 PC 用户端首页" width="49%">
   <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a2.png" alt="历史版本 PC 合同工作台" width="49%">
@@ -195,6 +317,10 @@ Contract.Pro 面向需要建设电子合同能力的企业、软件服务商、�
 </p>
 
 ### 运营管理后台
+
+运营管理后台用于查看平台整体使用情况，并维护个人认证、企业认证、合同、订单、服务消耗、价格、管理员角色和合同模板。模板可以预设个人或企业参与方，也可以配置需要填写的动态参数。
+
+当前版本继续扩展了文书分类、视频签署规则、品牌素材、多端入口和部署配置帮助。历史截图展示了运营后台早期已经具备的数据概况、认证、订单、套餐、角色和模板管理能力。
 
 <p>
   <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d1.png" alt="历史版本管理后台数据概况" width="49%">
@@ -244,19 +370,19 @@ Contract.Pro 可以安装到个人电脑的 WSL2 Ubuntu 环境，也可以部署
 - [查看制品清单](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.0/ARTIFACT_MANIFEST.json)
 - [查看系统部署手册](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.0/Contract.Pro-%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C.pdf)
 
-安装包 SHA-256：
+安装包 SHA-256
 
 ```text
 e66c1635256fb88fb96ea994f73273579dfa16937204cda94fca0f57bd8f21a2
 ```
 
-Windows 校验：
+Windows 校验
 
 ```powershell
 Get-FileHash .\yihetong-installer-2.0.0-vnext-20260830-community.zip -Algorithm SHA256
 ```
 
-Linux / WSL2 校验：
+Linux / WSL2 校验
 
 ```bash
 sha256sum yihetong-installer-2.0.0-vnext-20260830-community.zip
@@ -266,7 +392,7 @@ sha256sum yihetong-installer-2.0.0-vnext-20260830-community.zip
 
 ## 社区内容与完整产品
 
-Contract.Pro 通过两种交付形态服务不同用户：
+Contract.Pro 通过两种交付形态服务不同用户。
 
 ### 社区公开内容
 
@@ -319,46 +445,84 @@ Contract.Pro 通过两种交付形态服务不同用户：
 
 可以。安装包提供 CLI 和安装辅助能力，外部 Agent 可通过 Skill、MCP 或标准接口完成合同文件上传、参与方设置、发起与状态查询等流程。调用时需要使用对应部署实例的身份与授权。
 
-## 最近更新
+## 更新记录
 
-### V2.1.0
+### Contract.Pro v2.0.0
 
-- 新增内容资讯模块
-- 新增后台用户合同分配
-- 修复用户实名认证已知问题
-- 优化企业实名认证流程
+- 统一 Contract.Pro 产品名称、品牌素材和公开项目入口
+- 补齐小程序、H5、PC 用户端和官网的脱敏公开源码
+- 发布可下载运行安装包、客户配置包、安装 CLI 和辅助安装 Skill
+- 支持 Windows 配合 WSL2、Ubuntu 22.04、Ubuntu 24.04 与 Rocky Linux 9
+- 补齐 Word 转 PDF 环境准备、重复安装、备份和回退流程
+- 新增合同文书、内容服务、合同生成与审查等产品入口
+- 新增品牌素材、多端入口和部署配置帮助
+- 完整产品上线统一商业门户、商业授权与一合通合同份额入口
+- 增加 AGPL-3.0-only、商业许可、第三方组件、商标、SBOM 和文件校验资料
 
-### V2.0.0
+### Mini-Contract V2.1.0
 
-- 全新页面风格与多端体验
-- 支持一对多批量发起合同
-- 支持个性签名、草稿箱和发起人催办
-- 支持图片辅助生成在线合同
-- 新增文件管理与合同详情分享
+- [x] 新增内容资讯模块
+- [x] 新增后台用户合同分配
+- [x] 修复用户实名认证已知问题
+- [x] 优化企业实名认证流程
 
-### V1.5.x
+### Mini-Contract V2.0.0
 
-- 支持实名认证环节的人证对比
-- 支持签署完成短信通知
-- 支持签署方与发起方分离
-- 优化印章管理、企业认证和多渠道签署逻辑
+- [x] 更新页面风格和移动端使用体验
+- [x] 支持一对多批量发起合同，适用于一个主体对应多个签署人的场景
+- [x] 支持个性签名，用户可以维护自己的签名样式
+- [x] 支持通过图片整理合同内容并生成在线合同
+- [x] 新增草稿箱，发起过程可以中断后继续
+- [x] 新增发起人催办
+- [x] 新增文件管理
+- [x] 新增合同详情分享
+- [x] 修复已知问题并优化其他使用体验
 
-### V1.1.x
+### Mini-Contract V1.5.5
 
-- 支持后台查看企业合同
-- 优化个人与企业合同套餐
-- 丰富合同模板和应用内签署体验
+- [x] 实名认证增加人证对比
+- [x] 签署完成后通知参与方
+- [x] 支持签署方与发起方分离，可以代发起合同
+- [x] 优化个人与企业身份切换
+- [x] 修复已知问题并优化使用体验
+
+### Mini-Contract V1.5.0
+
+- [x] 支持企业内部日常审批使用的非证据链合同流程
+- [x] 优化印章管理
+- [x] 优化企业实名认证
+- [x] 优化证据链多渠道签署
+- [x] 升级第三方组件
+- [x] 优化隐私政策和使用体验
+- [x] 修复已知问题
+
+### Mini-Contract V1.1.2
+
+- [x] 支持管理后台查看企业合同情况
+- [x] 修复已知问题并优化使用体验
+
+### Mini-Contract V1.1.1
+
+- [x] 优化企业与个人的合同套餐份数
+- [x] 修复已知问题并优化使用体验
+
+### Mini-Contract V1.1.0
+
+- [x] 增加多种合同模板
+- [x] 支持应用内合同签署
+- [x] 增加签署方通知
+- [x] 修复已知问题并优化使用体验
 
 ## 项目入口
 
-- Gitee：[yi-lian-shu-ju/mini-contract](https://gitee.com/yi-lian-shu-ju/mini-contract)
-- GitHub：[Echo-Huang0010/yihetong-contract](https://github.com/Echo-Huang0010/yihetong-contract)
-- 官网：[https://esign.yi-types.com/](https://esign.yi-types.com/)
-- 完整产品：[https://smart.yi-types.com/](https://smart.yi-types.com/)
+- Gitee　[yi-lian-shu-ju/mini-contract](https://gitee.com/yi-lian-shu-ju/mini-contract)
+- GitHub　[Echo-Huang0010/yihetong-contract](https://github.com/Echo-Huang0010/yihetong-contract)
+- 官网　[https://esign.yi-types.com/](https://esign.yi-types.com/)
+- 完整产品　[https://smart.yi-types.com/](https://smart.yi-types.com/)
 
 ## 交流合作
 
-如果你有任何对 Contract.Pro 产品上的想法、意见或建议，或商务上的合作需求，请扫码添加 Contract.Pro 项目团队进一步沟通：
+如果你有任何对 Contract.Pro 产品上的想法、意见或建议，或商务上的合作需求，请扫码添加 Contract.Pro 项目团队进一步沟通。
 
 ![Contract.Pro 项目团队联系方式](https://resource.yi-types.com/eSign/hx_qrcode_git.jpg)
 

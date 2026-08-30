@@ -1,6 +1,6 @@
 {
   "schema": "contract-pro-public-file-manifest-v2",
-  "generated_at": "2026-08-30T18:52:00+08:00",
+  "generated_at": "2026-08-30T22:30:00+08:00",
   "files": [
     {
       "path": ".gitignore",
@@ -2764,8 +2764,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 19882,
-      "sha256": "21ff1f7f555507a85389ee97ca6db1b7b3a4e2fc24aa48c01db9b507d4b96549"
+      "bytes": 29215,
+      "sha256": "ac9123ab5a69e9a2d486cea90173dce4aa19f2a7938b819abf80b08454793583"
     },
     {
       "path": "SBOM.spdx.json",
