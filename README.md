@@ -238,10 +238,7 @@ contract-pro
 
 ![Contract.Pro 品牌配置与多端入口管理](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/brand-config-redacted.png)
 
-历史版本中的合同模板、发起签署、个人签名、企业印章、认证、套餐和运营后台截图继续保留，用于展示产品从早期版本到当前版本的功能积累。历史截图中的页面样式可能与当前版本不同，功能以当前演示环境为准。
-
-<details>
-<summary><strong>展开查看历史版本功能与界面</strong></summary>
+历史版本中的合同模板、发起签署、个人签名、企业印章、认证、套餐和运营后台截图继续保留，用于展示产品从早期版本到当前版本的功能积累。以下内容按原 README 的图文顺序直接恢复。历史截图中的页面样式可能与当前版本不同，功能以当前演示环境为准。
 
 ### 历史功能导览
 
@@ -250,104 +247,157 @@ contract-pro
   <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/8.png" alt="Contract.Pro 历史版本合同业务能力" width="49%">
 </p>
 
-### 小程序与移动端
+#### 用户端（移动端）
 
-移动端首页可以快速进入合同模板、文书、待办和最近合同。发起合同时可以选择个人或企业主体，添加多个签署人或企业，并设置合同有效期。个人需要完成实名认证后使用个人签名，企业需要完成认证并配置印章和成员权限。
+> 首页可以快速发起合同签署。签署人或签署企业支持多选，可以同时添加多个人或多家企业，并设置本次合同的有效期。
 
-合同详情会展示全部参与方及当前签署状态。待签署人可以从小程序或 H5 打开合同，完成手写签名或企业盖章。发起人可以催办和分享合同，全部参与方完成后再查看、下载和归档文件。
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/23.png)
 
-移动端还包含企业管理、成员管理、印章管理、文件管理、合同套餐、专业模板和批量发起能力。下面保留的历史截图记录了这些功能在早期版本中的界面形态。
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/3.png)
 
-<p>
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/23.png" alt="历史版本移动端首页" width="32%">
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/3.png" alt="历史版本移动端合同列表" width="32%">
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/1.png" alt="历史版本移动端合同详情" width="32%">
-</p>
+> 企业在正式签署前需要完成企业认证和法人实名认证。合同额度用完后，可以进入套餐页面查看和补充额度。
 
-<p>
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/4.png" alt="历史版本合同模板" width="32%">
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/16.png" alt="历史版本发起合同" width="32%">
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/19.png" alt="历史版本参与方配置" width="32%">
-</p>
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/1.png)
 
-<p>
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/2.png" alt="历史版本个人签署" width="32%">
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/11.png" alt="历史版本企业签章" width="32%">
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/20.png" alt="历史版本签署进度" width="32%">
-</p>
+> 登录后可以进入企业管理、印章管理、签署文件管理和合同额度等功能。
 
-<p>
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/30.png" alt="历史版本身份认证" width="32%">
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/21.png" alt="历史版本企业管理" width="32%">
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/24.png" alt="历史版本合同套餐" width="32%">
-</p>
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/4.png)
 
-<p>
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/6.png" alt="历史版本文件与归档管理" width="32%">
-</p>
+> 用户可以设置和上传自己的个性签名。企业可以维护印章和骑缝章。
 
-### PC 用户端
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/16.png)
 
-PC 用户端提供合同工作台、在线签署、个人与企业身份切换、成员管理、文件管理和账号设置。合同可以按发起、待办、完成、拒签、撤销和逾期等状态查询，已完成合同支持在线查看、下载和归档。
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/19.png)
 
-企业管理人员可以添加成员并分配签署与用章权限。个人用户可以维护签名，企业用户可以选择印章处理合同。下面的历史截图保留了 PC 端各项能力的完整介绍。
+> 个人正式签署前需要完成实名认证。接入的认证流程支持人证比对和人脸核验，用于确认签署人身份。
 
-<p>
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a1.png" alt="历史版本 PC 用户端首页" width="49%">
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a2.png" alt="历史版本 PC 合同工作台" width="49%">
-</p>
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/2.png)
 
-<p>
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a3.png" alt="历史版本 PC 合同详情" width="49%">
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a4.png" alt="历史版本 PC 企业管理" width="49%">
-</p>
+> 合同详情可以查看全部签署人和各方处理状态。签署方可以从详情页进入签署，使用手写签名或企业印章。
 
-<p>
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a5.png" alt="历史版本 PC 模板管理" width="49%">
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a6.png" alt="历史版本 PC 签署流程" width="49%">
-</p>
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/11.png)
 
-<p>
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a7.png" alt="历史版本 PC 文件管理" width="49%">
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a8.png" alt="历史版本 PC 账号设置" width="49%">
-</p>
+> 企业管理人员可以维护企业成员，并为成员分配合同签署和用章权限。
 
-<p>
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a9.png" alt="历史版本 PC 合同归档" width="49%">
-</p>
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/19.png)
 
-### 运营管理后台
+> 企业完成实名认证后，可以按接入的签署服务申请企业数字证书和签章。企业管理人员可以为不同成员设置相应的签章权限。
 
-运营管理后台用于查看平台整体使用情况，并维护个人认证、企业认证、合同、订单、服务消耗、价格、管理员角色和合同模板。模板可以预设个人或企业参与方，也可以配置需要填写的动态参数。
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/20.png)
 
-当前版本继续扩展了文书分类、视频签署规则、品牌素材、多端入口和部署配置帮助。历史截图展示了运营后台早期已经具备的数据概况、认证、订单、套餐、角色和模板管理能力。
+> 平台提供多种合同模板。用户可以直接选择模板，填写内容并配置参与方。
 
-<p>
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d1.png" alt="历史版本管理后台数据概况" width="49%">
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d2.png" alt="历史版本个人认证管理" width="49%">
-</p>
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/30.png)
 
-<p>
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d3.png" alt="历史版本企业认证管理" width="49%">
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d5.png" alt="历史版本销售订单管理" width="49%">
-</p>
+> 尚未发起签署的临时合同文件也可以上传到文件管理，后续继续用于合同发起。
 
-<p>
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d6.png" alt="历史版本服务消耗管理" width="49%">
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d7.png" alt="历史版本价格设置" width="49%">
-</p>
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/21.png)
 
-<p>
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d8.png" alt="历史版本管理员与角色设置" width="49%">
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d9.png" alt="历史版本合同模板分类" width="49%">
-</p>
+> 系统支持一对多批量发起。该功能适合甲方信息固定、乙方信息不同的合同签署场景。
 
-<p>
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d0.png" alt="历史版本模板参与方设置" width="49%">
-  <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d10.png" alt="历史版本模板动态参数设置" width="49%">
-</p>
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/23.png)
 
-</details>
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/24.png)
+
+> 参与签署的人可以收到签署提醒，并在有效期内从链接进入 H5 或小程序。全部签署人完成后，系统可以发送完成通知。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/6.png)
+
+#### 用户端（Web端）
+
+> Web 用户端可以查看和签署自己的合同。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a1.png)
+
+> Web 用户端支持在线签署合同。点击签署后进入对应的签署页面。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a2.png)
+
+> 用户可以手写签署，也可以使用自己已经保存的个性签名。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a3.png)
+
+> Web 用户端支持个人和企业身份切换。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a4.png)
+
+> 企业管理人员可以在 Web 端管理企业成员。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a5.png)
+
+> 输入手机号和姓名即可添加成员，成员加入后再由企业管理人员分配权限。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a7.png)
+
+> Web 端可以按照我发起的、待我处理、待他人处理、已完成、已拒签、已撤销和已逾期查询合同。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a6.png)
+
+> 企业管理人员和个人用户可以查看已经签署并归档的合同，支持在线查看和下载。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a8.png)
+
+> Web 用户端还提供账号和密码等常用设置入口。具体登录和验证方式以当前部署配置为准。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/a9.png)
+
+#### 平台端
+
+***数据概况***
+
+> 查看合同平台用户、企业和合同等基本信息，并对平台数据进行汇总。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d1.png)
+
+***个人认证***
+
+> 平台可以查看脱敏后的个人认证信息和认证状态。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d2.png)
+
+***企业认证***
+
+> 平台可以查看脱敏后的企业认证信息和处理状态。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d3.png)
+
+***销售订单***
+
+> 平台可以查看合同服务订单和销售情况。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d5.png)
+
+***消耗服务***
+
+> 平台可以查看合同服务的使用和消耗记录。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d6.png)
+
+***价格设置***
+
+> 平台可以按运营方案设置个人和企业合同套餐的价格。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d7.png)
+
+***账号管理***
+
+> 平台可以按照角色设置管理员权限，不同账号使用各自负责的管理功能。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d8.png)
+
+***模板分类***
+
+> 运营平台可以维护自己的合同模板和分类。模板发布后，合同用户和企业可以在发起合同时直接使用。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d9.png)
+
+> 设置合同模板时，可以提前设置模板需要的个人或企业签署方。历史版本单个模板最多支持十个签署对象。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d0.png)
+
+> 合同模板支持动态参数，也可以提前写入固定内容，方便同类合同重复使用。
+
+![](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/history/d10.png)
 
 ## 在线体验
 
