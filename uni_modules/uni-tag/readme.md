@@ -1,13 +1,5 @@
+# uni-tag
 
+用于展示和切换文字标签。使用说明：<https://uniapp.dcloud.net.cn/component/uniui/uni-tag.html>。
 
-## Tag 标签
-> **组件名：uni-tag**
-> 代码块： `uTag`
-
-
-用于展示1个或多个文字标签，可点击切换选中、不选中的状态 。
-
-### [查看文档](https://uniapp.dcloud.io/component/uniui/uni-tag)
-#### 如使用过程中有任何问题，或者您对uni-ui有一些好的建议，欢迎加入 uni-ui 交流群：871950839 
-
-
+上游：<https://github.com/dcloudio/uni-ui>，vendored 版本 `2.1.0`。随附文件未声明许可证，清单标记为 `NOASSERTION`。

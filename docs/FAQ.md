@@ -1,13 +1,17 @@
 # FAQ
 
-## Does this include the server or admin consoles?
+## What source code is included?
 
-No. Backend, management admin, PC admin, OpenPlatform, commercial portal and Yilink source are excluded.
+The repository includes the sanitized Mini Program/H5 source, the PC user frontend, the official website frontend, and the installer CLI and Skill. Backend, management-console, commercial-control, OpenPlatform and Yilink source code are not included.
 
-## Why is the website source not included?
+## Where is the website source?
 
-The examined source is the official flagship marketing website and includes platform-specific public-link behavior. No separately accepted generic delivery website source was proven for this candidate.
+The public website application is in `frontends/website`. Its runtime endpoints and public links are supplied through deployment configuration; credentials and production environment files are not part of the repository.
 
-## Is the community attachment production-ready?
+## Does the installer package contain production configuration?
 
-No. Its receipt proves the recorded Ubuntu 22.04 technical chain only. The examined archive is withheld because it includes an internal official profile and operational SQL. Customer configuration, security review, third-party accounts and business UAT remain external.
+No. The downloadable community package contains runnable components, installer tooling and schema/upgrade resources, but no customer credentials or production Profile. Generate configuration for your own environment and provide secrets through protected references.
+
+## Is a successful installation production acceptance?
+
+No. The published validation establishes the recorded technical installation chain. Security review, third-party account setup, certificates, domain registration, backups and business acceptance remain the operator's responsibility.

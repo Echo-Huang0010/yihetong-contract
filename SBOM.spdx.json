@@ -5,7 +5,7 @@
   "name": "Contract.Pro public repository dependency inventory",
   "documentNamespace": "https://contract-pro.example/spdx/public-b2abc007-47ce-471a-adc7-b7937496bc7d",
   "creationInfo": {
-    "created": "2026-08-30T10:50:00Z",
+    "created": "2026-08-30T15:30:00Z",
     "creators": [
       "Tool: Contract.Pro dependency inventory generator"
     ]
@@ -18853,6 +18853,138 @@
       "licenseDeclared": "ISC",
       "copyrightText": "NOASSERTION",
       "comment": "Included by pc-user"
+    },
+    {
+      "SPDXID": "SPDXRef-Vendored-color-picker",
+      "name": "color-picker",
+      "versionInfo": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "Vendored at components/color-picker; source and license require verification before redistribution"
+    },
+    {
+      "SPDXID": "SPDXRef-Vendored-v-tabs",
+      "name": "v-tabs",
+      "versionInfo": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "Vendored at components/v-tabs; source and license require verification before redistribution"
+    },
+    {
+      "SPDXID": "SPDXRef-Vendored-feng-seal-1.0.0",
+      "name": "feng-seal",
+      "versionInfo": "1.0.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "Vendored at uni_modules/feng-seal; source and license require verification before redistribution"
+    },
+    {
+      "SPDXID": "SPDXRef-Vendored-Sansnn-uQRCode-4.0.6",
+      "name": "Sansnn-uQRCode",
+      "versionInfo": "4.0.6",
+      "downloadLocation": "https://github.com/Sansnn/uQRCode",
+      "filesAnalyzed": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "comment": "Vendored at uni_modules/Sansnn-uQRCode; license evidence in uni_modules/Sansnn-uQRCode/LICENSE.md"
+    },
+    {
+      "SPDXID": "SPDXRef-Vendored-shmily-drag-image-2.0.2",
+      "name": "shmily-drag-image",
+      "versionInfo": "2.0.2",
+      "downloadLocation": "https://github.com/shmilyany/shmily-drag-image",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "Vendored at uni_modules/shmily-drag-image; license requires verification before redistribution"
+    },
+    {
+      "SPDXID": "SPDXRef-Vendored-uni-datetime-picker-2.2.4",
+      "name": "uni-datetime-picker",
+      "versionInfo": "2.2.4",
+      "downloadLocation": "https://github.com/dcloudio/uni-ui",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "Vendored at uni_modules/uni-datetime-picker; license requires verification before redistribution"
+    },
+    {
+      "SPDXID": "SPDXRef-Vendored-uni-icons-1.3.5",
+      "name": "uni-icons",
+      "versionInfo": "1.3.5",
+      "downloadLocation": "https://github.com/dcloudio/uni-ui",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "Vendored at uni_modules/uni-icons; license requires verification before redistribution"
+    },
+    {
+      "SPDXID": "SPDXRef-Vendored-uni-load-more-1.3.3",
+      "name": "uni-load-more",
+      "versionInfo": "1.3.3",
+      "downloadLocation": "https://github.com/dcloudio/uni-ui",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "Vendored at uni_modules/uni-load-more; license requires verification before redistribution"
+    },
+    {
+      "SPDXID": "SPDXRef-Vendored-uni-popup-1.8.3",
+      "name": "uni-popup",
+      "versionInfo": "1.8.3",
+      "downloadLocation": "https://github.com/dcloudio/uni-ui",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "Vendored at uni_modules/uni-popup; license requires verification before redistribution"
+    },
+    {
+      "SPDXID": "SPDXRef-Vendored-uni-scss-1.0.3",
+      "name": "uni-scss",
+      "versionInfo": "1.0.3",
+      "downloadLocation": "https://github.com/dcloudio/uni-ui",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "Vendored at uni_modules/uni-scss; license requires verification before redistribution"
+    },
+    {
+      "SPDXID": "SPDXRef-Vendored-uni-tag-2.1.0",
+      "name": "uni-tag",
+      "versionInfo": "2.1.0",
+      "downloadLocation": "https://github.com/dcloudio/uni-ui",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "Vendored at uni_modules/uni-tag; license requires verification before redistribution"
+    },
+    {
+      "SPDXID": "SPDXRef-Vendored-uni-transition-1.3.2",
+      "name": "uni-transition",
+      "versionInfo": "1.3.2",
+      "downloadLocation": "https://github.com/dcloudio/uni-ui",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "Vendored at uni_modules/uni-transition; license requires verification before redistribution"
     }
   ],
   "hasExtractedLicensingInfos": [

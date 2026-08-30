@@ -30,7 +30,7 @@ Stop and return `user_final_required` or `blocked` at any of these boundaries:
 
 - a credential, password, private key, certificate private material, token or secret value would need to be collected or displayed;
 - DNS, public TLS, WeChat platform, payment merchant, SMS/provider, formal License issuance or production access is required;
-- the package/Profile/target fingerprint drifts, a production placeholder remains, or an action would affect another customer or worktree;
+- the package/Profile/target fingerprint drifts, a production placeholder remains, or an action would affect another deployment environment;
 - a merge, push, release, destructive cleanup, database restore or rollback lacks exact authorization.
 
 An install command, HTTP 200, service `active`, package hash or upload receipt proves only its own plane. Never label it customer UAT, third-party completion or the latest formal release without the corresponding acceptance.

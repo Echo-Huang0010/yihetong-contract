@@ -1,34 +1,116 @@
 {
-  "schema": "contract-pro-public-component-source-manifest-v2",
-  "generated_at": "2026-08-30T18:40:00+08:00",
+  "schema": "contract-pro-public-component-source-manifest-v3",
+  "generated_at": "2026-08-30T23:30:00+08:00",
   "product": "Contract.Pro",
-  "public_repository_base_commit": "a28d82ea723dc62caa775c1b35e2c4251e625af1",
-  "private_source_head": "55bf1dd0e7d7add9f5177a5ab8e79545b1fdac67",
-  "release_artifact_source_head": "daa3a930bd953e627564748461f51b12660e663a",
+  "product_version": "2.0.0",
+  "source_snapshot_base_commit": "81485c9bf2bb62e852355951e06dace33d4726c4",
   "components": [
     {
       "id": "mini-h5",
-      "private_path": "esign-mini",
       "public_path": ".",
       "delivery": "sanitized_source"
     },
     {
       "id": "pc-user",
-      "private_path": "esign-pc-admin",
       "public_path": "frontends/pc",
       "delivery": "sanitized_source"
     },
     {
       "id": "official-website",
-      "private_path": "website",
       "public_path": "frontends/website",
       "delivery": "sanitized_source"
     },
     {
       "id": "installer-cli-skill",
-      "private_path": "tools/yhtctl + skills/yihetong-installer",
       "public_path": "installer",
       "delivery": "source_and_release_artifact"
+    }
+  ],
+  "vendored_components": [
+    {
+      "id": "color-picker",
+      "path": "components/color-picker",
+      "version": "NOASSERTION",
+      "source": "NOASSERTION",
+      "license": "NOASSERTION"
+    },
+    {
+      "id": "v-tabs",
+      "path": "components/v-tabs",
+      "version": "NOASSERTION",
+      "source": "NOASSERTION",
+      "license": "NOASSERTION"
+    },
+    {
+      "id": "feng-seal",
+      "path": "uni_modules/feng-seal",
+      "version": "1.0.0",
+      "source": "NOASSERTION",
+      "license": "NOASSERTION"
+    },
+    {
+      "id": "Sansnn-uQRCode",
+      "path": "uni_modules/Sansnn-uQRCode",
+      "version": "4.0.6",
+      "source": "https://github.com/Sansnn/uQRCode",
+      "license": "Apache-2.0",
+      "license_evidence": "uni_modules/Sansnn-uQRCode/LICENSE.md"
+    },
+    {
+      "id": "shmily-drag-image",
+      "path": "uni_modules/shmily-drag-image",
+      "version": "2.0.2",
+      "source": "https://github.com/shmilyany/shmily-drag-image",
+      "license": "NOASSERTION"
+    },
+    {
+      "id": "uni-datetime-picker",
+      "path": "uni_modules/uni-datetime-picker",
+      "version": "2.2.4",
+      "source": "https://github.com/dcloudio/uni-ui",
+      "license": "NOASSERTION"
+    },
+    {
+      "id": "uni-icons",
+      "path": "uni_modules/uni-icons",
+      "version": "1.3.5",
+      "source": "https://github.com/dcloudio/uni-ui",
+      "license": "NOASSERTION"
+    },
+    {
+      "id": "uni-load-more",
+      "path": "uni_modules/uni-load-more",
+      "version": "1.3.3",
+      "source": "https://github.com/dcloudio/uni-ui",
+      "license": "NOASSERTION"
+    },
+    {
+      "id": "uni-popup",
+      "path": "uni_modules/uni-popup",
+      "version": "1.8.3",
+      "source": "https://github.com/dcloudio/uni-ui",
+      "license": "NOASSERTION"
+    },
+    {
+      "id": "uni-scss",
+      "path": "uni_modules/uni-scss",
+      "version": "1.0.3",
+      "source": "https://github.com/dcloudio/uni-ui",
+      "license": "NOASSERTION"
+    },
+    {
+      "id": "uni-tag",
+      "path": "uni_modules/uni-tag",
+      "version": "2.1.0",
+      "source": "https://github.com/dcloudio/uni-ui",
+      "license": "NOASSERTION"
+    },
+    {
+      "id": "uni-transition",
+      "path": "uni_modules/uni-transition",
+      "version": "1.3.2",
+      "source": "https://github.com/dcloudio/uni-ui",
+      "license": "NOASSERTION"
     }
   ],
   "download_artifacts": [
@@ -40,19 +122,12 @@
     }
   ],
   "source_exclusions": [
-    "management-admin source",
+    "management-console source",
     "server source",
     "commercial-control source",
     "production and customer configuration",
     "credentials, certificates and private keys",
     "real customer records and contracts",
-    "internal governance and release receipts",
     "build output, caches and dependency directories"
-  ],
-  "public_services": [
-    "official signing service",
-    "commercial authorization",
-    "contract quota",
-    "delivery and update support"
   ]
 }

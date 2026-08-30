@@ -1,7 +1,22 @@
 # Third-party notices
 
-Contract.Pro includes third-party open-source packages and frontend assets. Their copyrights and license terms remain with their respective owners.
+Contract.Pro includes packages recorded from four lockfiles and source-vendored frontend components. Package identities, versions and declared metadata are in `SBOM.spdx.json`; paths and origins are in `COMPONENT_SOURCE_MANIFEST.json` and `DEPENDENCY_AND_ASSET_ORIGINS.json`.
 
-The repository provides `SBOM.spdx.json` and `DEPENDENCY_AND_ASSET_ORIGINS.json` as the machine-readable dependency and asset inventory. Package-level `LICENSE` files remain with the corresponding components.
+| Vendored component | Version | Source recorded in the repository | License status |
+| --- | --- | --- | --- |
+| `components/color-picker` | NOASSERTION | NOASSERTION | NOASSERTION — verify before redistribution |
+| `components/v-tabs` | NOASSERTION | NOASSERTION | NOASSERTION — verify before redistribution |
+| `uni_modules/feng-seal` | 1.0.0 | NOASSERTION | NOASSERTION — verify before redistribution |
+| `uni_modules/Sansnn-uQRCode` | 4.0.6 | <https://github.com/Sansnn/uQRCode> | Apache-2.0; see component `LICENSE.md` |
+| `uni_modules/shmily-drag-image` | 2.0.2 | <https://github.com/shmilyany/shmily-drag-image> | NOASSERTION — verify before redistribution |
+| `uni_modules/uni-datetime-picker` | 2.2.4 | <https://github.com/dcloudio/uni-ui> | NOASSERTION — verify before redistribution |
+| `uni_modules/uni-icons` | 1.3.5 | <https://github.com/dcloudio/uni-ui> | NOASSERTION — verify before redistribution |
+| `uni_modules/uni-load-more` | 1.3.3 | <https://github.com/dcloudio/uni-ui> | NOASSERTION — verify before redistribution |
+| `uni_modules/uni-popup` | 1.8.3 | <https://github.com/dcloudio/uni-ui> | NOASSERTION — verify before redistribution |
+| `uni_modules/uni-scss` | 1.0.3 | <https://github.com/dcloudio/uni-ui> | NOASSERTION — verify before redistribution |
+| `uni_modules/uni-tag` | 2.1.0 | <https://github.com/dcloudio/uni-ui> | NOASSERTION — verify before redistribution |
+| `uni_modules/uni-transition` | 1.3.2 | <https://github.com/dcloudio/uni-ui> | NOASSERTION — verify before redistribution |
 
-Before redistributing a modified build, review the lock files, SBOM and component notices for the exact version being distributed. Do not reuse third-party names, logos, certificates or promotional material as Contract.Pro endorsements.
+`NOASSERTION` means the vendored files do not carry enough license evidence to make a license declaration. It is not a permission statement. Review the exact component and upstream terms before redistribution.
+
+Third-party copyrights, licenses and trademarks remain with their owners. Do not use third-party names, logos, certificates or promotional material as Contract.Pro endorsements.

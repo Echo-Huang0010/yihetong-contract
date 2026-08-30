@@ -1,52 +1,9 @@
-支持初始化颜色、自适应容器大小方便自定义开发、返回hex、rgba/rgb两种颜色格式。
+# color-picker
 
-## 属性/事件列表:
+用于在 uni-app 页面中选择颜色，支持初始化颜色、显示/隐藏控制，并通过 `pickerColor` 事件返回 HEX 与 RGB 值。
 
-| 属性/事件 | 必填 |  默认  |  功能  |
-| :-----:  | :-----:  | :-----:  | :-----  |
-| color  | 否 |  ''     | 初始化picker的颜色 |
-| show  | 否 |   true    | 控制picker显示隐藏 |
-| @pickerColor |   否   |   null   | 取色器发生取色动作触发，返回两种颜色格式：`{hex: '#ff0000', rgb: 'rgb(255, 0, 0)'}` |
-
-
-
-## Demo：
-
+```vue
+<color-picker :show="true" :color="color" @pickerColor="pickerColor" />
 ```
 
-// 这里演示在uni-modal中显示color-picker，color-picker支持自适应容器
-<uni-modal>
-    <div class="uni-mask"></div>
-    <div class="uni-modal" style="padding: 20rpx;">
-    <color-picker :show='true' :color="color" @pickerColor="pickerColor"></color-picker>
-    <div class="actions">
-        <i class="iconfont icon-del"></i>
-        <i class="iconfont icon-yes"></i>
-    </div>
-    </div>
-</uni-modal>
-
-```
-
-```
-
-import colorPicker from "../../components/colorPicker";
-
-export default {
-  components: { colorPicker },
-  data() {
-    return {
-      color: '#123456f0'
-    };
-  },
-  methods: {
-    pickerColor(color) {
-      this.color = color.hex
-    }
-  }
-};
-
-```
-
-
-
+该 vendored 组件未在随附文件中声明上游仓库、版本或许可证；来源与许可在 `THIRD_PARTY_NOTICES` 和 `SBOM.spdx.json` 中标记为 `NOASSERTION`，再分发前需核实。

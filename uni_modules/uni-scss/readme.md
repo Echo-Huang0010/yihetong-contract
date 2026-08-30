@@ -1,4 +1,5 @@
-`uni-sass` 是 `uni-ui`提供的一套全局样式 ，通过一些简单的类名和`sass`变量，实现简单的页面布局操作，比如颜色、边距、圆角等。
+# uni-scss
 
-### [查看文档](https://uniapp.dcloud.io/component/uniui/uni-sass)
-#### 如使用过程中有任何问题，或者您对uni-ui有一些好的建议，欢迎加入 uni-ui 交流群：871950839 
+uni-ui 的 Sass 变量、工具函数和通用样式。使用说明：<https://uniapp.dcloud.net.cn/component/uniui/uni-sass.html>。
+
+上游：<https://github.com/dcloudio/uni-ui>，vendored 版本 `1.0.3`。随附文件未声明许可证，清单标记为 `NOASSERTION`。

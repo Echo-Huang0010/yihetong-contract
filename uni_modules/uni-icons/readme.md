@@ -1,8 +1,5 @@
-## Icons 图标
-> **组件名：uni-icons**
-> 代码块： `uIcons`
+# uni-icons
 
-用于展示 icons 图标 。
+uni-ui 图标组件，支持图标类型、颜色和尺寸配置。使用说明：<https://uniapp.dcloud.net.cn/component/uniui/uni-icons.html>。
 
-### [查看文档](https://uniapp.dcloud.io/component/uniui/uni-icons)
-#### 如使用过程中有任何问题，或者您对uni-ui有一些好的建议，欢迎加入 uni-ui 交流群：871950839 
+上游：<https://github.com/dcloudio/uni-ui>，vendored 版本 `1.3.5`。随附文件未声明许可证，清单标记为 `NOASSERTION`。

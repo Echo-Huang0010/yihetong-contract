@@ -1,6 +1,6 @@
 {
-  "schema": "contract-pro-public-origin-inventory-v2",
-  "generated_at": "2026-08-30T18:50:00+08:00",
+  "schema": "contract-pro-public-origin-inventory-v3",
+  "generated_at": "2026-08-30T23:30:00+08:00",
   "components": [
     {
       "id": "mini-h5",
@@ -29,9 +29,13 @@
   ],
   "dependency_summary": {
     "lockfile_entries": 2235,
-    "unique_packages": 1713,
-    "package_metadata_missing_license": 47
+    "lockfile_unique_packages": 1713,
+    "lockfile_package_metadata_missing_license": 47,
+    "vendored_components": 12,
+    "vendored_components_license_noassertion": 11,
+    "sbom_packages": 1725
   },
+  "vendored_component_inventory": "COMPONENT_SOURCE_MANIFEST.json#vendored_components",
   "asset_origins": [
     {
       "host": "yeeco.oss-cn-chengdu.aliyuncs.com",
@@ -63,7 +67,6 @@
     "production credentials",
     "customer data",
     "server source",
-    "management source",
-    "internal release material"
+    "management-console source"
   ]
 }

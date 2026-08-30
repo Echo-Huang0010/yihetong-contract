@@ -1,11 +1,14 @@
-# Contract.Pro
+# Contract.Pro 2.0.0
 
-Contract.Pro is an open-source electronic contract and private-deployment platform covering contract templates, document upload, participants, identity verification, personal signatures, enterprise seals, multi-party signing, status tracking, downloads and archiving.
+Contract.Pro is an electronic-contract and private-deployment platform covering contract templates, document upload, participants, identity verification, personal signatures, enterprise seals, multi-party signing, status tracking, downloads and archiving.
 
-The Chinese [README](README.md) is the primary product guide and contains current demo entrances, product screenshots, installation downloads, checksums, public-source scope and license details.
+This public repository contains sanitized Mini Program/H5 source, the PC user frontend, the official website frontend, the installer CLI and Skill, configuration templates, checksums and an SPDX SBOM. Backend, management-console, commercial-control, OpenPlatform and Yilink source code, production configuration and customer data are not included. See [Public scope](docs/PUBLIC_SCOPE.md).
 
-Community source code is licensed under `AGPL-3.0-only`. Official signing services, commercial authorization, contract quota, delivery and update support are provided through the complete product offering.
+Community source code is licensed under `AGPL-3.0-only`, except for third-party components and assets governed by their own notices. Review [LICENSE](LICENSE), [NOTICE](NOTICE), [third-party notices](THIRD_PARTY_NOTICES), [trademark terms](TRADEMARKS.md) and [SBOM](SBOM.spdx.json) before redistribution. Entries marked `NOASSERTION` require independent license verification.
 
+- Chinese product guide: [README.md](README.md)
+- Quick start: [docs/QUICKSTART.md](docs/QUICKSTART.md)
+- Installation guide and verified download: [docs/INSTALLATION.md](docs/INSTALLATION.md)
 - Website: <https://esign.yi-types.com/>
 - Complete product: <https://smart.yi-types.com/>
-- Installer: <https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.0/yihetong-installer-2.0.0-vnext-20260830-community.zip>
+- Installer 2.0.0: <https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.0/yihetong-installer-2.0.0-vnext-20260830-community.zip>

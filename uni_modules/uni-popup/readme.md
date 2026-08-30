@@ -1,17 +1,5 @@
+# uni-popup
 
+弹层、消息提示与对话框容器，依赖 `uni-transition`。使用说明：<https://uniapp.dcloud.net.cn/component/uniui/uni-popup.html>。
 
-## Popup 弹出层
-> **组件名：uni-popup**
-> 代码块： `uPopup`
-> 关联组件：`uni-transition`
-
-
-弹出层组件，在应用中弹出一个消息提示窗口、提示框等
-
-### [查看文档](https://uniapp.dcloud.io/component/uniui/uni-popup)
-#### 如使用过程中有任何问题，或者您对uni-ui有一些好的建议，欢迎加入 uni-ui 交流群：871950839 
-
-
-
-
-
+上游：<https://github.com/dcloudio/uni-ui>，vendored 版本 `1.8.3`。随附文件未声明许可证，清单标记为 `NOASSERTION`。

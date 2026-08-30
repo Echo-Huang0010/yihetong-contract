@@ -2,7 +2,7 @@
   "id": "feng-seal",
   "displayName": "canvas电子印章、图章生成工具",
   "version": "1.0.0",
-  "description": "一款解决前端页面生成印章、图章、签章的组件，问题沟通qq：754443793",
+  "description": "用于前端页面生成印章、图章和签章的 canvas 组件。",
   "keywords": [
     "印章",
     "电子印章",
@@ -23,9 +23,7 @@
         "price": "0.00"
       }
     },
-    "contact": {
-      "qq": "754443793"
-    },
+    "contact": {},
     "declaration": {
       "ads": "无",
       "data": "无",

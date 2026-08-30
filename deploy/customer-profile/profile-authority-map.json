@@ -1,14 +1,6 @@
 {
   "version": "1.0.0",
   "profileKind": "CustomerDeploymentProfile",
-  "sourceBindings": {
-    "deployRegistry": "esign-api/esign-api/esign-commons/src/main/java/com/xuran/esign/common/config/SystemDeployConfigRegistry.java",
-    "deployDatabase": "esign-api/esign-api/ddl/system-deploy-config-v1.sql",
-    "brandDataObject": "esign-api/esign-api/esign-infrastructure/src/main/java/com/xuran/esign/infra/system/dal/dataobject/SystemBrandConfigDO.java",
-    "configurationCatalog": "customer-delivery/docs/CONFIGURATION_CATALOG.json",
-    "environmentTemplate": "deploy/ops/yihetong.env.example",
-    "yamlTemplate": "deploy/backend/application-template-prod.example.yml"
-  },
   "authorityValues": [
     "bootstrap_env",
     "deploy_db",
