@@ -10,11 +10,21 @@ Contract.Pro 面向需要建设电子合同能力的企业、软件服务商、�
 
 正式签署服务支持对接 e签宝 CA 能力。根据实际业务配置，可完成签署主体实名认证、数字证书申请、签署意愿确认、可信签名签章和签署记录留存。电子签名的法律效力以具体签署流程、证据完整性、适用法律及业务场景为准。
 
-**[访问官网](https://esign.yi-types.com/)**　**[PC 用户端](https://esign-pc-admin.yi-types.com/)**　**[H5 体验](https://esign.yi-types.com/h5/)**　**[管理后台演示](https://esign-manage-admin.yi-types.com/demo/manage/)**　**[完整产品入口](https://smart.yi-types.com/)**
+**[一合通官方网站](https://yihetong.yi-types.com/)**　**[客户交付官网演示](https://esign.yi-types.com/)**　**[H5 体验](https://esign.yi-types.com/h5/)**　**[管理后台演示](https://esign-manage-admin.yi-types.com/demo/manage/)**　**[开放智能平台 / 完整产品](https://smart.yi-types.com/)**
 
 <p align="center">
   <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/contract-pro-business-flow.png" alt="Contract.Pro 从合同创建到签署归档的完整业务流程" width="100%">
 </p>
+
+## 产品介绍视频
+
+<p align="center">
+  <a href="https://yihetong.yi-types.com/media/yihetong-promo-master-16x9.mp4">
+    <img src="https://yihetong.yi-types.com/media/yihetong-promo-master-cover-16x9.png" alt="Contract.Pro 企业级电子合同平台产品介绍视频" width="100%">
+  </a>
+</p>
+
+<p align="center"><strong><a href="https://yihetong.yi-types.com/media/yihetong-promo-master-16x9.mp4">▶ 观看 Contract.Pro 产品介绍视频</a></strong></p>
 
 ## 为什么选择 Contract.Pro
 
@@ -23,7 +33,7 @@ Contract.Pro 面向需要建设电子合同能力的企业、软件服务商、�
 - **多端协同**　小程序适合移动发起与签署，H5 适合链接直达，PC 适合集中处理，管理后台负责运营和配置。
 - **合法电子签署能力**　支持接入实名认证、CA 数字证书、签署意愿确认和签署过程记录。
 - **私有化部署**　可部署到自有服务器、数据库、域名与对象存储环境，品牌、入口和第三方服务按项目配置。
-- **快速安装与外部接入**　提供安装包、配置中心、CLI 和安装辅助能力，支持 Codex、Claude Code、WorkBuddy 等 Agent 辅助安装部署；支持通过 Agent、Skill、MCP 与 CLI 调用合同创建、文件上传、参与方配置、发起签署和状态查询等主要能力。
+- **快速安装与外部接入**　提供安装包、配置中心、CLI、Skill 和 MCP 接入方式。每个部署实例使用自己的域名、服务地址、身份与授权。
 
 <p align="center">
   <img src="https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/assets/contract-pro-core-advantages.png" alt="Contract.Pro 电子合同平台的核心优势" width="100%">
@@ -403,11 +413,12 @@ contract-pro
 
 | 入口 | 地址 | 说明 |
 | --- | --- | --- |
-| 官方网站 | [打开官网](https://esign.yi-types.com/) | 查看产品介绍与公开入口 |
+| 一合通官方网站 | [打开官方网站](https://yihetong.yi-types.com/) | 查看一合通产品介绍与公开入口 |
+| 客户交付官网演示 | [打开演示](https://esign.yi-types.com/) | 查看客户交付官网模板与在线体验 |
 | PC 用户端 | [打开 PC 用户端](https://esign-pc-admin.yi-types.com/) | 合同、企业与个人工作台 |
 | H5 | [打开 H5](https://esign.yi-types.com/h5/) | 移动网页体验 |
-| 管理后台演示 | [打开演示管理后台](https://esign-manage-admin.yi-types.com/demo/manage/) | 来自安装包验证环境，不使用线上生产管理数据 |
-| 完整产品入口 | [进入完整产品](https://smart.yi-types.com/) | 商业授权、合同额度与产品服务入口 |
+| 管理后台演示 | [打开演示管理后台](https://esign-manage-admin.yi-types.com/demo/manage/) | 了解平台运营、配置和合同管理功能 |
+| 开放智能平台 / 完整产品 | [进入平台](https://smart.yi-types.com/) | 商业授权、合同额度与产品服务入口 |
 
 体验环境用于查看产品流程，不承诺永久保存测试数据。请勿上传真实身份证件、商业合同、印章、证书或其他敏感资料。
 
@@ -567,8 +578,9 @@ Contract.Pro 通过两种交付形态服务不同用户。
 
 - Gitee　[yi-lian-shu-ju/mini-contract](https://gitee.com/yi-lian-shu-ju/mini-contract)
 - GitHub　[Echo-Huang0010/yihetong-contract](https://github.com/Echo-Huang0010/yihetong-contract)
-- 官网　[https://esign.yi-types.com/](https://esign.yi-types.com/)
-- 完整产品　[https://smart.yi-types.com/](https://smart.yi-types.com/)
+- 一合通官方网站　[https://yihetong.yi-types.com/](https://yihetong.yi-types.com/)
+- 客户交付官网演示　[https://esign.yi-types.com/](https://esign.yi-types.com/)
+- 开放智能平台 / 完整产品　[https://smart.yi-types.com/](https://smart.yi-types.com/)
 
 ## 交流合作
 
@@ -578,7 +590,7 @@ Contract.Pro 通过两种交付形态服务不同用户。
 
 ## 产品认可
 
-> 从产品对外开源之后，得到了特别多朋友们的关注和认可最终我们也达成了一些深度的合作，目前我们已经合作超过200+以上的合作伙伴，这当中有“企业”的朋友也有一些“个人独立开发者”
+感谢企业用户、实施团队与独立开发者对 Contract.Pro 的关注、反馈与贡献。
 
 ## 给个鼓励
 

@@ -2634,13 +2634,13 @@
     },
     {
       "path": "README.en.md",
-      "bytes": 1488,
-      "sha256": "bf1fbb19e2104059c709adfb047f1aee4dd0f736b4159558b4ee063594540c10"
+      "bytes": 1824,
+      "sha256": "4debf6c9d92422eed1f64a63adb8b42989b08a39dd959bcd4bd32e3bffd1b5a4"
     },
     {
       "path": "README.md",
-      "bytes": 29701,
-      "sha256": "64ae4ea0640932bbcb1970a2934873bfdc1a1f66038e159bae53ea553c31fc30"
+      "bytes": 30169,
+      "sha256": "32a3a43fb95bf4e9e60d327d8a5991f2d36b1431ff8127111996b1404f31a329"
     },
     {
       "path": "SBOM.spdx.json",

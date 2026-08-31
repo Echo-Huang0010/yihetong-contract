@@ -9,6 +9,10 @@ Community source code is licensed under `AGPL-3.0-only`, except for third-party 
 - Chinese product guide: [README.md](README.md)
 - Quick start: [docs/QUICKSTART.md](docs/QUICKSTART.md)
 - Installation guide and verified download: [docs/INSTALLATION.md](docs/INSTALLATION.md)
-- Website: <https://esign.yi-types.com/>
-- Complete product: <https://smart.yi-types.com/>
+- Official website: <https://yihetong.yi-types.com/>
+- Customer delivery website demo: <https://esign.yi-types.com/>
+- H5 demo: <https://esign.yi-types.com/h5/>
+- Open intelligent platform / complete product: <https://smart.yi-types.com/>
+- Product video: <https://yihetong.yi-types.com/media/yihetong-promo-master-16x9.mp4>
+- Video cover: <https://yihetong.yi-types.com/media/yihetong-promo-master-cover-16x9.png>
 - Installer 2.0.0: <https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.0/yihetong-installer-2.0.0-vnext-20260830-community.zip>
