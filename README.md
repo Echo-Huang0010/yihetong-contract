@@ -417,8 +417,10 @@ contract-pro
 | 客户交付官网演示 | [打开演示](https://esign.yi-types.com/) | 查看客户交付官网模板与在线体验 |
 | PC 用户端 | [打开 PC 用户端](https://esign-pc-admin.yi-types.com/) | 合同、企业与个人工作台 |
 | H5 | [打开 H5](https://esign.yi-types.com/h5/) | 移动网页体验 |
-| 管理后台演示 | [打开演示管理后台](https://esign-manage-admin.yi-types.com/demo/manage/) | 了解平台运营、配置和合同管理功能 |
+| 管理后台演示 | [打开演示管理后台](https://esign-manage-admin.yi-types.com/demo/manage/) | 了解平台运营、配置和合同管理功能；账号 `18888888888`，密码 `123456` |
 | 开放智能平台 / 完整产品 | [进入平台](https://smart.yi-types.com/) | 商业授权、合同额度与产品服务入口 |
+
+管理后台演示账号为 `18888888888`，密码为 `123456`。该账号只连接隔离的演示数据，不具备一合通正式环境访问能力。
 
 体验环境用于查看产品流程，不承诺永久保存测试数据。请勿上传真实身份证件、商业合同、印章、证书或其他敏感资料。
 
