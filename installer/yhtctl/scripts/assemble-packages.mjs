@@ -239,7 +239,7 @@ function finalizePackage(root, metadata, packages = []) {
   manifest.manifestFingerprint = computeManifestFingerprint(manifest)
   writeFileSync(path.join(root, 'MANIFEST.json'), canonicalJson(manifest), 'utf8')
   const checksumFiles = packageFiles(root, new Set(['SHA256SUMS.txt']))
-  writeFileSync(path.join(root, 'SHA256SUMS.txt'), `${checksumFiles.map((file) => `${file.sha256}  ${file.path}`).join('\n')}\n`, 'ascii')
+  writeFileSync(path.join(root, 'SHA256SUMS.txt'), `${checksumFiles.map((file) => `${file.sha256}  ${file.path}`).join('\n')}\n`, 'utf8')
   return { manifest, fileCount: checksumFiles.length }
 }
 
@@ -302,15 +302,43 @@ function writeDatabaseBundles(repoRoot, databaseRoot) {
   )
 }
 
-function assembleInstaller({ repoRoot, buildOutputRoot, outputRoot, version, sourceVersion, officialTrustBundlePath }) {
-  const name = `yihetong-installer-${version}`
+function assembleInstaller({ repoRoot, buildOutputRoot, outputRoot, version, sourceVersion, edition, officialTrustBundlePath, windowsLauncherPath, windowsNodePath }) {
+  const community = edition === 'community'
+  const packageKind = community ? 'community-installer' : 'generic-installer'
+  const packageName = community ? 'yihetong-community-installer' : 'yihetong-installer'
+  const name = `${packageName}-${version}`
   const root = path.join(outputRoot, name)
   safeRemove(outputRoot, root)
   ensureDir(root)
   copyRequired(path.join(repoRoot, 'tools', 'yhtctl'), path.join(root, 'tools', 'yhtctl'))
   rmSync(path.join(root, 'tools', 'yhtctl', 'test'), { recursive: true, force: true })
   rmSync(path.join(root, 'tools', 'yhtctl', 'scripts'), { recursive: true, force: true })
+  for (const generated of [
+    ['node_modules', '.bin'],
+    ['node_modules', '.pnpm'],
+    ['node_modules', '.modules.yaml'],
+    ['node_modules', '.package-map.json'],
+    ['node_modules', '.pnpm-workspace-state-v1.json'],
+    ['wizard', 'node_modules'],
+    ['wizard', 'tsconfig.app.tsbuildinfo'],
+  ]) {
+    rmSync(path.join(root, 'tools', 'yhtctl', ...generated), { recursive: true, force: true })
+  }
   copyRequired(path.join(repoRoot, 'deploy', 'customer-profile'), path.join(root, 'deploy', 'customer-profile'))
+  rmSync(path.join(root, 'deploy', 'customer-profile', 'profiles'), { recursive: true, force: true })
+  copyRequired(path.join(repoRoot, 'deploy', 'community'), path.join(root, 'deploy', 'community'))
+  copyRequired(path.join(repoRoot, 'deploy', 'installer', 'linux'), path.join(root, 'deploy', 'installer', 'linux'))
+  copyRequired(path.join(repoRoot, 'mcp', 'yihetong-installer'), path.join(root, 'mcp', 'yihetong-installer'))
+  rmSync(path.join(root, 'mcp', 'yihetong-installer', 'test'), { recursive: true, force: true })
+  if (windowsLauncherPath || windowsNodePath) {
+    if (!windowsLauncherPath || !windowsNodePath) throw new YhtError('Windows packaging requires both --windows-launcher and --windows-node', { code: 'WINDOWS_ENTRY_INPUT_INCOMPLETE' })
+    copyRequired(windowsLauncherPath, path.join(root, 'YihetongInstaller.exe'))
+    copyRequired(windowsNodePath, path.join(root, 'runtime', 'node.exe'))
+    copyRequired(path.join(repoRoot, 'deploy', 'installer', 'windows', 'README.md'), path.join(root, 'docs', 'WINDOWS_INSTALLER.md'))
+  }
+  for (const outputName of ['java', 'manage-html', 'admin-html', 'h5-html', 'website-node']) {
+    copyRequired(path.join(buildOutputRoot, outputName), path.join(root, 'deploy', 'output', outputName))
+  }
   copyRequired(path.join(repoRoot, 'deploy', 'backend', 'application-template-prod.example.yml'), path.join(root, 'deploy', 'backend', 'application-template-prod.example.yml'))
   copyRequired(path.join(repoRoot, 'deploy', 'ops', 'initialize-fresh-mysql8.sh'), path.join(root, 'deploy', 'initialize-fresh-mysql8.sh'))
   copyRequired(path.join(repoRoot, 'deploy', 'ops', 'install-document-conversion-deps.sh'), path.join(root, 'deploy', 'ops', 'install-document-conversion-deps.sh'))
@@ -318,6 +346,12 @@ function assembleInstaller({ repoRoot, buildOutputRoot, outputRoot, version, sou
   copyRequired(path.join(repoRoot, 'deploy', 'vnext', 'PACKAGE_LAYOUT.md'), path.join(root, 'docs', 'PACKAGE_LAYOUT.md'))
   copyRequired(path.join(repoRoot, 'deploy', 'vnext', 'CONFIGURATION_ORDER.md'), path.join(root, 'docs', 'CONFIGURATION_ORDER.md'))
   copyRequired(path.join(repoRoot, 'deploy', 'vnext', 'SMOKE_PATHS.json'), path.join(root, 'docs', 'SMOKE_PATHS.json'))
+  for (const extension of ['md', 'docx', 'pdf']) {
+    copyRequired(
+      path.join(repoRoot, 'customer-delivery', 'docs', `系统部署手册.${extension}`),
+      path.join(root, 'docs', 'customer', `系统部署手册.${extension}`),
+    )
+  }
   copyRequired(path.join(buildOutputRoot, 'java', 'esign.jar'), path.join(root, 'payload', 'server', 'esign.jar'))
   copyRequired(path.join(buildOutputRoot, 'website-node'), path.join(root, 'payload', 'website'))
   copyRequired(path.join(buildOutputRoot, 'agent-cli', 'yihetong-cli.pyz'), path.join(root, 'agent-cli', 'yihetong-cli.pyz'))
@@ -326,8 +360,8 @@ function assembleInstaller({ repoRoot, buildOutputRoot, outputRoot, version, sou
   copyRequired(path.join(repoRoot, 'agent-harness', 'cli_anything', 'yihetong', 'README.md'), path.join(root, 'agent-cli', 'README.md'))
   copyRequired(path.join(repoRoot, 'skills', 'cli-anything-yihetong', 'SKILL.md'), path.join(root, 'agent-cli', 'SKILL.md'))
   copyRequired(path.join(repoRoot, 'skills', 'yihetong-installer'), path.join(root, 'skills', 'yihetong-installer'))
-  const officialTrustBundle = loadTrustBundle(officialTrustBundlePath)
-  copyRequired(officialTrustBundlePath, path.join(root, ...OFFICIAL_TRUST_BUNDLE_RELATIVE.split('/')))
+  const officialTrustBundle = community ? null : loadTrustBundle(officialTrustBundlePath)
+  if (!community) copyRequired(officialTrustBundlePath, path.join(root, ...OFFICIAL_TRUST_BUNDLE_RELATIVE.split('/')))
   websiteLauncher(path.join(root, 'payload', 'website'))
   writeDatabaseBundles(repoRoot, path.join(root, 'database'))
   writeFileSync(path.join(root, 'yhtctl'), launcherText(), 'utf8')
@@ -338,18 +372,23 @@ function assembleInstaller({ repoRoot, buildOutputRoot, outputRoot, version, sou
     product: 'yihetong',
     version,
     sourceVersion,
-    packageKind: 'generic-installer',
-    status: 'candidate',
-    officialTrustBundleFingerprint: sha256Object(officialTrustBundle),
+    packageKind,
+    edition,
+    installProfile: community ? 'community' : 'commercial',
+    formalSigning: community ? 'disabled' : 'external_authorization_required',
+    licenseRequired: !community,
+    leaseRequired: !community,
+    status: community ? 'release' : 'candidate',
+    ...(community ? {} : { officialTrustBundleFingerprint: sha256Object(officialTrustBundle) }),
   }), 'utf8')
   const genericDependencies = mergePackages(
-    lockPackages(repoRoot, ['tools/yhtctl/package-lock.json', 'website/package-lock.json'], 'generic-installer build/runtime dependency'),
+    lockPackages(repoRoot, ['tools/yhtctl/package-lock.json', 'website/package-lock.json'], `${packageKind} build/runtime dependency`),
     javaPackagesFromSpringBootJar(path.join(root, 'payload', 'server', 'esign.jar')),
     pythonPackagesFromLock(path.join(repoRoot, 'agent-harness', 'requirements.lock'), 'generic-installer agent CLI runtime dependency'),
   )
   const finalized = finalizePackage(root, {
-    packageKind: 'generic-installer',
-    name: 'yihetong-installer',
+    packageKind,
+    name: packageName,
     version,
     sourceVersion,
   }, genericDependencies)
@@ -405,6 +444,10 @@ function assembleCustomer({ repoRoot, buildOutputRoot, outputRoot, profileRoot, 
   ensureDir(root)
   copyRequired(profilePath, path.join(root, 'customer-profile.yaml'))
   copyRequired(secretsPath, path.join(root, 'secrets.refs.yaml'))
+  for (const checklistName of ['REQUIRED_CONFIGURATION_CHECKLIST.md', 'REQUIRED_CONFIGURATION_CHECKLIST.json']) {
+    const source = path.join(profileRoot, checklistName)
+    if (existsSync(source)) copyRequired(source, path.join(root, checklistName))
+  }
   const assetManifest = path.join(profileRoot, 'official-assets.manifest.json')
   if (existsSync(assetManifest)) copyRequired(assetManifest, path.join(root, 'official-assets.manifest.json'))
   for (const directory of ['assets', 'certificates', 'external-actions', 'receipts']) {
@@ -460,11 +503,26 @@ async function main() {
     : path.join(repoRoot, 'deploy', 'output')
   const version = String(options.version || '')
   const sourceVersion = String(options['source-version'] || '')
-  const officialTrustBundlePath = required(options, 'official-trust-bundle')
+  const edition = String(options.edition || 'commercial')
+  if (!['community', 'commercial'].includes(edition)) throw new YhtError('--edition must be community or commercial', { code: 'EDITION_INVALID' })
+  const officialTrustBundlePath = options['official-trust-bundle'] ? path.resolve(String(options['official-trust-bundle'])) : null
+  if (edition === 'commercial' && !officialTrustBundlePath) throw new YhtError('Commercial packaging requires --official-trust-bundle', { code: 'OPTION_REQUIRED' })
+  if (edition === 'community' && officialTrustBundlePath) throw new YhtError('Community packaging must not receive or embed a commercial trust bundle', { code: 'COMMUNITY_TRUST_INPUT_FORBIDDEN' })
+  if (edition === 'community' && options['profile-root']) throw new YhtError('Community release packaging must not embed a customer profile', { code: 'COMMUNITY_PROFILE_INPUT_FORBIDDEN' })
   if (!/^[0-9A-Za-z][0-9A-Za-z._-]{2,63}$/.test(version)) throw new YhtError('Invalid --version', { code: 'VERSION_INVALID' })
   if (!/^[0-9a-f]{40}$/.test(sourceVersion)) throw new YhtError('--source-version must be a full Git commit', { code: 'SOURCE_VERSION_INVALID' })
   ensureDir(outputRoot)
-  const installer = assembleInstaller({ repoRoot, buildOutputRoot, outputRoot, version, sourceVersion, officialTrustBundlePath })
+  const installer = assembleInstaller({
+    repoRoot,
+    buildOutputRoot,
+    outputRoot,
+    version,
+    sourceVersion,
+    edition,
+    officialTrustBundlePath,
+    windowsLauncherPath: options['windows-launcher'] ? path.resolve(String(options['windows-launcher'])) : null,
+    windowsNodePath: options['windows-node'] ? path.resolve(String(options['windows-node'])) : null,
+  })
   let customer = null
   if (options['profile-root']) {
     const profileRoot = path.resolve(String(options['profile-root']))

@@ -1,12 +1,12 @@
 {
   "schema": "contract-pro-public-origin-inventory-v3",
-  "generated_at": "2026-08-30T23:30:00+08:00",
+  "generated_at": "2026-09-02T19:20:00+08:00",
   "components": [
     {
       "id": "mini-h5",
       "lockfile": "package-lock.json",
       "packages": 30,
-      "sha256": "635492964f1e1a0d09ab12d300643197c7e799ce8b1c018b8bc6735df301878f"
+      "sha256": "500be6135ef76d8f28217e192295d5b354d38dc6825c0e56961f41d028f6e4d5"
     },
     {
       "id": "pc-user",
@@ -18,22 +18,28 @@
       "id": "official-website",
       "lockfile": "frontends/website/package-lock.json",
       "packages": 529,
-      "sha256": "1c7a70a3a3ef7dc34cf763ed200e49429c417d9aff34422fe409e8bce737d0a0"
+      "sha256": "99ff1b64aaee5ddb68459045f28c8be49d512c085ffbf1fce898a6ac9b0b1702"
     },
     {
-      "id": "installer-cli-skill",
+      "id": "installer-cli",
       "lockfile": "installer/yhtctl/package-lock.json",
       "packages": 7,
-      "sha256": "5ec0b1026f0c3c8523e9c534a4fc8cc8468908d46f2a4adb133d6386dfd40055"
+      "sha256": "77bc5534be37e12166c917196c6366c59de6b94011d038527bd981606dc20885"
+    },
+    {
+      "id": "installer-wizard",
+      "lockfile": "installer/yhtctl/wizard/package-lock.json",
+      "packages": 49,
+      "sha256": "a1dc867017940fac3b8f1e071acb9a18b57a8894efc06d018aa1687fef0f3d79"
     }
   ],
   "dependency_summary": {
-    "lockfile_entries": 2235,
-    "lockfile_unique_packages": 1713,
-    "lockfile_package_metadata_missing_license": 47,
+    "lockfile_entries": 2284,
+    "lockfile_unique_packages": 1747,
+    "lockfile_package_metadata_missing_license": 1531,
     "vendored_components": 12,
     "vendored_components_license_noassertion": 11,
-    "sbom_packages": 1725
+    "sbom_packages": 1747
   },
   "vendored_component_inventory": "COMPONENT_SOURCE_MANIFEST.json#vendored_components",
   "asset_origins": [

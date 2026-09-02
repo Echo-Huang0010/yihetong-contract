@@ -1,8 +1,8 @@
-# Contract.Pro 2.0.0
+# Contract.Pro 2.0.1
 
 Contract.Pro is an electronic-contract and private-deployment platform covering contract templates, document upload, participants, identity verification, personal signatures, enterprise seals, multi-party signing, status tracking, downloads and archiving.
 
-This public repository contains sanitized Mini Program/H5 source, the PC user frontend, the official website frontend, the installer CLI and Skill, configuration templates, checksums and an SPDX SBOM. Backend, management-console, commercial-control, OpenPlatform and Yilink source code, production configuration and customer data are not included. See [Public scope](docs/PUBLIC_SCOPE.md).
+This public repository contains sanitized Mini Program/H5 source, the PC user frontend, the official website frontend, the installer CLI, installer Skill and installer MCP, configuration templates, checksums and an SPDX SBOM. Backend, management-console, commercial-control, OpenPlatform and Yilink source code, production configuration and customer data are not included. See [Public scope](docs/PUBLIC_SCOPE.md).
 
 Community source code is licensed under `AGPL-3.0-only`, except for third-party components and assets governed by their own notices. Review [LICENSE](LICENSE), [NOTICE](NOTICE), [third-party notices](THIRD_PARTY_NOTICES), [trademark terms](TRADEMARKS.md) and [SBOM](SBOM.spdx.json) before redistribution. Entries marked `NOASSERTION` require independent license verification.
 
@@ -15,4 +15,6 @@ Community source code is licensed under `AGPL-3.0-only`, except for third-party 
 - Open intelligent platform / complete product: <https://smart.yi-types.com/>
 - Product video: <https://yihetong.yi-types.com/media/yihetong-promo-master-16x9.mp4>
 - Video cover: <https://yihetong.yi-types.com/media/yihetong-promo-master-cover-16x9.png>
-- Installer 2.0.0: <https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.0/yihetong-installer-2.0.0-vnext-20260830-community.zip>
+- Community installer 2.0.1: <https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.1/yihetong-community-installer-2.0.1.zip>
+
+The community installer does not require a License or Lease and keeps formal signing disabled. Commercial authorization and formal issuance remain in a separate controlled delivery channel.

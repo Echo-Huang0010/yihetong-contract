@@ -27,7 +27,7 @@ const {
 test('uses a neutral Yihetong fallback without customer brand bytes', () => {
   assert.equal(fallbackSiteConfig.projectName, '一合通')
   assert.match(fallbackSiteConfig.websiteSeoTitle, /^一合通/)
-  assert.doesNotMatch(JSON.stringify(fallbackSiteConfig), /企安签/)
+  assert.doesNotMatch(JSON.stringify(fallbackSiteConfig), /历史品牌/)
 })
 
 test('publishes only the active V1 website content fields', () => {
@@ -234,8 +234,8 @@ test('maps footer identity and contact fields from the backend brand config', ()
 
 test('does not publish legacy product identity or old vendor contact details', () => {
   const config = mergeSiteConfig({
-    projectName: '企安签',
-    companyName: '企安签服务',
+    projectName: '历史品牌',
+    companyName: '历史品牌服务',
     websiteContactEmail: 'support@yeeco.cn',
   })
 

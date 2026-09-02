@@ -117,6 +117,54 @@ export function verifyPackage(packageRoot) {
   return result
 }
 
+export function verifyConfigurationWorkspace(workspaceRoot) {
+  const receiptPath = path.join(workspaceRoot, 'CONFIG_WORKSPACE.json')
+  if (!existsSync(receiptPath)) {
+    throw new YhtError('Configuration workspace is missing CONFIG_WORKSPACE.json', {
+      code: 'CONFIG_WORKSPACE_RECEIPT_MISSING',
+    })
+  }
+  const receipt = readJson(receiptPath)
+  if (receipt.kind !== 'CustomerConfigurationWorkspace' || !Array.isArray(receipt.files)) {
+    throw new YhtError('Configuration workspace receipt is invalid', {
+      code: 'CONFIG_WORKSPACE_RECEIPT_INVALID',
+    })
+  }
+  const failures = []
+  const declaredPaths = new Set()
+  for (const item of receipt.files) {
+    if (!item?.path || path.isAbsolute(item.path) || item.path.includes('..') || declaredPaths.has(item.path)) {
+      failures.push({ path: item?.path, code: 'CONFIG_WORKSPACE_PATH_INVALID' })
+      continue
+    }
+    declaredPaths.add(item.path)
+    const filePath = path.resolve(workspaceRoot, ...item.path.split('/'))
+    const root = path.resolve(workspaceRoot)
+    if (!filePath.startsWith(`${root}${path.sep}`) || !existsSync(filePath) || !statSync(filePath).isFile()) {
+      failures.push({ path: item.path, code: 'CONFIG_WORKSPACE_FILE_MISSING' })
+      continue
+    }
+    const content = readFileSync(filePath)
+    if (content.length !== item.bytes) failures.push({ path: item.path, code: 'CONFIG_WORKSPACE_SIZE_MISMATCH' })
+    if (sha256(content) !== item.sha256) failures.push({ path: item.path, code: 'CONFIG_WORKSPACE_HASH_MISMATCH' })
+  }
+  if (!declaredPaths.has('customer-profile.yaml') || !declaredPaths.has('secrets.refs.yaml')) {
+    failures.push({ path: 'CONFIG_WORKSPACE.json', code: 'CONFIG_WORKSPACE_REQUIRED_FILE_UNDECLARED' })
+  }
+  if (failures.length) {
+    throw new YhtError('Configuration workspace verification failed', {
+      code: 'CONFIG_WORKSPACE_INVALID',
+      details: failures,
+    })
+  }
+  return {
+    status: 'pass',
+    packageKind: 'configuration-workspace',
+    manifestFingerprint: sha256Object(receipt),
+    checkedFiles: receipt.files.length,
+  }
+}
+
 export function packageSummary(packageRoot) {
   const { version, manifest } = loadPackageMetadata(packageRoot)
   return {

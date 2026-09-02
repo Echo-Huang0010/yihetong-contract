@@ -1,0 +1,9 @@
+{
+  "name": "@yihetong/installer-mcp",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "bin": { "yihetong-installer-mcp": "server.mjs" },
+  "engines": { "node": ">=20" },
+  "scripts": { "test": "node --test test/*.test.mjs" }
+}

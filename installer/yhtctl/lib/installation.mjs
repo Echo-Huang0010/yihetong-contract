@@ -41,7 +41,7 @@ import {
   resolveDatabaseCredentials,
   restoreDatabase,
 } from './database.mjs'
-import { verifyPackage } from './package.mjs'
+import { verifyConfigurationWorkspace, verifyPackage } from './package.mjs'
 import { commandExists, run, targetPath } from './system.mjs'
 
 const API_SERVICE = 'yihetong-api.service'
@@ -212,8 +212,14 @@ function composeRelease({ packageRoot, payloadDir, customerRoot, releaseDir, ver
   chmodSync(path.join(releaseDir, 'tooling', 'yhtctl'), 0o755)
   copyFileSync(path.join(packageRoot, 'yihetong-cli'), path.join(releaseDir, 'tooling', 'yihetong-cli'))
   chmodSync(path.join(releaseDir, 'tooling', 'yihetong-cli'), 0o755)
-  for (const frontend of ['manage-admin', 'pc-admin', 'h5']) {
-    const source = path.join(customerRoot, 'frontends', frontend)
+  const integratedCommunityFrontends = customerCheck.packageKind === 'configuration-workspace'
+  const frontends = integratedCommunityFrontends
+    ? [['manage-admin', 'manage-html'], ['pc-admin', 'admin-html'], ['h5', 'h5-html']]
+    : [['manage-admin', 'manage-admin'], ['pc-admin', 'pc-admin'], ['h5', 'h5']]
+  for (const [frontend, sourceName] of frontends) {
+    const source = integratedCommunityFrontends
+      ? path.join(packageRoot, 'deploy', 'output', sourceName)
+      : path.join(customerRoot, 'frontends', sourceName)
     if (!existsSync(source)) {
       throw new YhtError(`Customer frontend build is missing: ${frontend}`, {
         code: 'CUSTOMER_FRONTEND_MISSING',
@@ -905,8 +911,13 @@ export async function install({
   if (typeof process.getuid === 'function' && process.getuid() !== 0) throw new YhtError('Install requires root', { code: 'ROOT_REQUIRED' })
   const packageCheck = verifyPackage(packageRoot)
   const customerRoot = path.dirname(profilePath)
-  const customerCheck = verifyPackage(customerRoot)
   const metadata = readJson(path.join(packageRoot, 'VERSION.json'))
+  const integratedCommunity = profile.installProfile === 'community'
+    && metadata.edition === 'community'
+    && metadata.packageKind === 'community-installer'
+  const customerCheck = integratedCommunity
+    ? verifyConfigurationWorkspace(customerRoot)
+    : verifyPackage(customerRoot)
   const paths = statePaths(profile, rootPrefix)
   assertRuntimeDeploymentRoots(paths, profile.deployment.paths, rootPrefix)
   const releaseIdentity = `${metadata.version}-${profileFingerprint.slice(0, 12)}-${customerCheck.manifestFingerprint.slice(0, 12)}`
@@ -1260,7 +1271,7 @@ export function verifyInstallation({ profile, profileFingerprint, rootPrefix = '
     checks,
   }
   const receipt = writeReceipt(paths, 'VerificationReceipt', result)
-  return { ...result, ...receipt }
+  return { ...result, ...receipt, state: status.state, paths }
 }
 
 export async function createBackup({ profile, secrets, rootPrefix = '/', reason = 'manual' }) {

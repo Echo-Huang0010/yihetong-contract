@@ -428,30 +428,30 @@ contract-pro
 
 Contract.Pro 可以安装到个人电脑的 WSL2 Ubuntu 环境，也可以部署到 Ubuntu 22.04/24.04 或 Rocky Linux 9 服务器。安装过程不限定云厂商，也不强制使用 Agent、阿里云 RAM 或特定控制台。
 
-- [下载安装包](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.0/yihetong-installer-2.0.0-vnext-20260830-community.zip)
-- [查看 SHA-256 校验清单](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.0/ARTIFACT_SHA256SUMS.txt)
-- [查看制品清单](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.0/ARTIFACT_MANIFEST.json)
-- [查看系统部署手册](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.0/Contract.Pro-%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C.pdf)
+- [下载 2.0.1 社区安装包](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.1/yihetong-community-installer-2.0.1.zip)
+- [查看 SHA-256 校验清单](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.1/ARTIFACT_SHA256SUMS.txt)
+- [查看制品清单](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.1/ARTIFACT_MANIFEST.json)
+- [查看系统部署手册](https://yeeco.oss-cn-chengdu.aliyuncs.com/open-source/contract-pro/releases/2.0.1/Yihetong-Deployment-Manual.pdf)
 
 安装包 SHA-256
 
 ```text
-e66c1635256fb88fb96ea994f73273579dfa16937204cda94fca0f57bd8f21a2
+ac90b7867a89dea5f9ce5d3e8a817223201db5c0dfc58c983b369df39187c397
 ```
 
 Windows 校验
 
 ```powershell
-Get-FileHash .\yihetong-installer-2.0.0-vnext-20260830-community.zip -Algorithm SHA256
+Get-FileHash .\yihetong-community-installer-2.0.1.zip -Algorithm SHA256
 ```
 
 Linux / WSL2 校验
 
 ```bash
-sha256sum yihetong-installer-2.0.0-vnext-20260830-community.zip
+sha256sum yihetong-community-installer-2.0.1.zip
 ```
 
-校验值一致后，再按照压缩包内的部署手册准备配置并安装。密码、AccessKey、AppSecret、证书私钥和正式 License 只放在自己的受保护配置中，不写入代码仓库。
+校验值一致后，再按照压缩包内的部署手册准备配置并安装。社区安装不要求 License 或 Lease，正式签署保持关闭；密码、AccessKey、AppSecret 和证书私钥只放在自己的受保护配置中，不写入代码仓库。商业授权和正式签发由独立受控渠道提供，不包含在社区包中。
 
 ## 社区内容与完整产品
 
@@ -509,6 +509,13 @@ Contract.Pro 通过两种交付形态服务不同用户。
 可以。安装包提供 CLI 和安装辅助能力，外部 Agent 可通过 Skill、MCP 或标准接口完成合同文件上传、参与方设置、发起与状态查询等流程。调用时需要使用对应部署实例的身份与授权。
 
 ## 更新记录
+
+### Contract.Pro v2.0.1
+
+- 社区安装包与商业信任材料分离；社区模式不要求 License 或 Lease，正式签署保持关闭
+- Windows、Linux、网页向导、`yhtctl`、安装 Skill 与安装 MCP 复用同一配置工作区和安装链路
+- 完成全新安装、重复安装、五入口、配置读回、Word 转 PDF、备份与回滚技术验证
+- 客户配置、私钥、信任根、商业签发工具和真实客户数据继续排除在公开发行物之外
 
 ### Contract.Pro v2.0.0
 

@@ -1,4 +1,4 @@
 interface:
-  display_name: "Yihetong Installer"
-  short_description: "Safely prepare and operate a Yihetong installer"
-  default_prompt: "Use $yihetong-installer to prepare or operate a Yihetong installation without collecting secrets."
+  display_name: "一合通安装辅助"
+  short_description: "用同一安装会话完成一合通安装、验证、修复与回退"
+  default_prompt: "使用 $yihetong-installer 通过当前安装包的 yhtctl 会话协助安装；秘密只在本机受保护表单输入，不进入对话、工具参数、日志或回执。"
